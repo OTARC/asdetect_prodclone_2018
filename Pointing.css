@@ -1,0 +1,27 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("files/resources/lib/jquerymobile/1.4.4/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilecontainer */
+.ui-content.Pointing_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* mobiletextarea_2 */
+.Pointing_mobiletextarea_2 {
+	margin: 4px 0px 4px 0px;
+}
+/* mobileselectmenu_5 */
+.Pointing_mobileselectmenu_5 {
+	margin: 4px 5px 4px 5px;
+}
+/* vimeo_10 */
+.Pointing_vimeo_10 {
+	margin: 0px 0px 0px 0px;
+	width: 100%; height: 178px;
+	display: block;
+}
+/* mobilefooter */
+.Pointing_mobilefooter {
+	min-height:38px;
+}

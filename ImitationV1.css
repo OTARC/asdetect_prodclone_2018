@@ -1,0 +1,91 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("files/resources/lib/jquerymobile/1.4.4/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilebutton_11 */
+#ImitationV1_mobilebutton_11 {
+
+}
+.ui-btn.ImitationV1_mobilebutton_11 {
+
+}
+/* mobilecontainer1 */
+.ui-content.ImitationV1_mobilecontainer1 {
+	padding: 15px 15px 15px 15px;
+}
+/* mobileimage_12 */
+.ImitationV1_mobileimage_12 {
+	margin: 2px 0px 0px 230px;
+	width: 60px; height: 30px;
+	display: block;
+}
+/* mobileworkarea_10*/
+.ImitationV1_mobileworkarea_10 {
+	background-color: transparent;
+	padding: 0px;
+}
+/* mobilelabel_12 */
+.ImitationV1_mobilelabel_12 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Helvetica; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobileradiogroup_13 */
+.ImitationV1_mobileradiogroup_13 {
+	margin: 4px 0px 4px 0px;
+}
+/* rImYes */
+.ImitationV1_rImYes {
+	-webkit-border-radius: inherit;
+	border-radius: inherit;
+}
+/* rImNo */
+.ImitationV1_rImNo {
+	-webkit-border-radius: inherit;
+	border-radius: inherit;
+}
+/* vimeo_16 */
+.ImitationV1_vimeo_16 {
+	margin: 0px 0px 0px 0px;
+	width: 259px; height: 223px;
+	display: block;
+}
+/* btnImNext */
+#ImitationV1_btnImNext {
+
+}
+.ui-btn.ImitationV1_btnImNext {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter1 */
+.ImitationV1_mobilefooter1 {
+	min-height:38px;
+}
+/* panel_menu */
+.ImitationV1_panel_menu .ui-panel-inner {
+	padding: 0px 15px 15px 15px;
+}
+.ImitationV1_panel_menu:focus {
+	outline: 0;
+}
+/* mobilelist_3 */
+.ui-page .ImitationV1_mobilelist_3 {
+	margin: 0px -15px 0px -15px;
+}
+/* mobilelistitem_4 */
+/* mobilelistitembutton_5 */
+.ImitationV1_mobilelistitembutton_5 {
+
+}
+/* liHelp */
+/* mobilelistitembutton_7 */
+.ImitationV1_mobilelistitembutton_7 {
+
+}
+/* panelAboutOTARC */
+/* mobilelistitembutton_9 */
+.ImitationV1_mobilelistitembutton_9 {
+
+}

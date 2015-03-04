@@ -1,0 +1,76 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("files/resources/lib/jquerymobile/1.4.4/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilebutton_11 */
+#Account_mobilebutton_11 {
+
+}
+.ui-btn.Account_mobilebutton_11 {
+
+}
+/* mobilecontainer1 */
+.ui-content.Account_mobilecontainer1 {
+	padding: 15px 15px 15px 15px;
+}
+/* mobileimage_12 */
+.Account_mobileimage_12 {
+	margin: 2px 0px 0px 230px;
+	width: 60px; height: 30px;
+	display: block;
+}
+/* mobileworkarea_10*/
+.Account_mobileworkarea_10 {
+	background-color: transparent;
+	padding: 0px;
+}
+/* mobiletextinput_25 */
+.Account_mobiletextinput_25 {
+	margin: 4px 0px 4px 0px;
+}
+/* mobiletextinput_26 */
+.Account_mobiletextinput_26 {
+	margin: 4px 0px 4px 0px;
+}
+/* mobileselectmenu_30 */
+.Account_mobileselectmenu_30 {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilebutton_33 */
+#Account_mobilebutton_33 {
+
+}
+.ui-btn.Account_mobilebutton_33 {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter1 */
+.Account_mobilefooter1 {
+	min-height:38px;
+}
+/* panel_menu */
+.Account_panel_menu .ui-panel-inner {
+	padding: 0px 15px 15px 15px;
+}
+.Account_panel_menu:focus {
+	outline: 0;
+}
+/* mobilelist_3 */
+.ui-page .Account_mobilelist_3 {
+	margin: 0px -15px 0px -15px;
+}
+/* mobilelistitem_4 */
+/* mobilelistitembutton_5 */
+.Account_mobilelistitembutton_5 {
+
+}
+/* liHelp */
+/* mobilelistitembutton_7 */
+.Account_mobilelistitembutton_7 {
+
+}
+/* panelAboutOTARC */
+/* mobilelistitembutton_9 */
+.Account_mobilelistitembutton_9 {
+
+}
