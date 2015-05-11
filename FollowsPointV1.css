@@ -1,0 +1,91 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("files/resources/lib/jquerymobile/1.4.4/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilebutton_11 */
+#FollowsPointV1_mobilebutton_11 {
+
+}
+.ui-btn.FollowsPointV1_mobilebutton_11 {
+
+}
+/* mobilecontainer1 */
+.ui-content.FollowsPointV1_mobilecontainer1 {
+	padding: 15px 15px 15px 15px;
+}
+/* mobileimage_12 */
+.FollowsPointV1_mobileimage_12 {
+	margin: 2px 0px 0px 230px;
+	width: 60px; height: 30px;
+	display: block;
+}
+/* mobileworkarea_10*/
+.FollowsPointV1_mobileworkarea_10 {
+	background-color: transparent;
+	padding: 0px;
+}
+/* mobilelabel_12 */
+.FollowsPointV1_mobilelabel_12 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Helvetica; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobileradiogroup_13 */
+.FollowsPointV1_mobileradiogroup_13 {
+	margin: 4px 0px 4px 0px;
+}
+/* rFPYes */
+.FollowsPointV1_rFPYes {
+	-webkit-border-radius: inherit;
+	border-radius: inherit;
+}
+/* rFPNo */
+.FollowsPointV1_rFPNo {
+	-webkit-border-radius: inherit;
+	border-radius: inherit;
+}
+/* vimeo_17 */
+.FollowsPointV1_vimeo_17 {
+	margin: 0px 0px 0px 0px;
+	width: 270px; height: 197px;
+	display: block;
+}
+/* btnFPNext */
+#FollowsPointV1_btnFPNext {
+
+}
+.ui-btn.FollowsPointV1_btnFPNext {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter1 */
+.FollowsPointV1_mobilefooter1 {
+	min-height:38px;
+}
+/* panel_menu */
+.FollowsPointV1_panel_menu .ui-panel-inner {
+	padding: 0px 15px 15px 15px;
+}
+.FollowsPointV1_panel_menu:focus {
+	outline: 0;
+}
+/* mobilelist_3 */
+.ui-page .FollowsPointV1_mobilelist_3 {
+	margin: 0px -15px 0px -15px;
+}
+/* mobilelistitem_4 */
+/* mobilelistitembutton_5 */
+.FollowsPointV1_mobilelistitembutton_5 {
+
+}
+/* liHelp */
+/* mobilelistitembutton_7 */
+.FollowsPointV1_mobilelistitembutton_7 {
+
+}
+/* panelAboutOTARC */
+/* mobilelistitembutton_9 */
+.FollowsPointV1_mobilelistitembutton_9 {
+
+}

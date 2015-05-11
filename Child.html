@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>
+            Child
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-tap-highlight" content="no">
+        <link href="files/resources/lib/theme/jqm/jqm.css" rel="stylesheet" />
+        <link href="files/resources/lib/theme/gelato/gelato.css" rel="stylesheet" />
+        <link href="files/resources/lib/jquerymobile/1.4.4/jquery.mobile.structure-1.4.4.css"
+        rel="stylesheet" />
+        <script type="text/javascript" src="files/resources/lib/underscore/underscore.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/store/json2.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/jquery/jquery-1.9.1.js">
+        </script>
+        <script type="text/javascript">
+                    $(document).bind("mobileinit", function()
+            {
+                if (navigator.userAgent.toLowerCase().indexOf("android") != -1)
+                {
+                    $.mobile.defaultPageTransition = 'none';
+                    $.mobile.defaultDialogTransition = 'none';
+                }
+                else if (navigator.userAgent.toLowerCase().indexOf("msie") != -1)
+                {
+                    $.mobile.allowCrossDomainPages = true;
+                    $.support.cors = true;
+                }
+            });
+        </script>
+        <script type="text/javascript" src="files/resources/lib/jquerymobile/1.4.4/jquery.mobile-1.4.4.js">
+        </script>
+        <script type="text/javascript" src="files/resources/js/mobilebase.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/event/customEventHandler.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/sha1.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/oauth.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/contexts.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/jquery.xml2json.min.js">
+        </script>
+        <link href="files/resources/lib/datepicker/jquery.ui.datepicker.mobile.css" rel="stylesheet"
+        type="text/css" />
+        <script type="text/javascript" src="files/resources/lib/datepicker/jQuery.ui.datepicker.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/datepicker/jquery.ui.datepicker.mobile.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/appery.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/component-manager.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/mapping-impl.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/entity-api.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/base/storage-api.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/get_target_platform.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/cordova.js">
+        </script>
+        <link href="files/resources/css/mobilebase.css" rel="stylesheet" type="text/css"
+        />
+        <script type="text/javascript" src="files/views/assets/js/services/model.js">
+        </script>
+        <script type="text/javascript" src="files/views/assets/js/Salesforce_utils.js">
+        </script>
+        <script type="text/javascript" src="files/views/assets/js/JavaScript1.js">
+        </script>
+        <script type="text/javascript" src="files/views/assets/js/services/service.js">
+        </script>
+        <script type="text/javascript" src="files/resources/lib/vimeo/vimeo.lib.js">
+        </script>
+    </head>
+    
+    <body>
+        <script language="JavaScript" type="text/javascript">
+                        $(document).bind("mobileinit", function()
+                {
+                    $.mobile.page.prototype.options.degradeInputs.date = true;
+                });
+        </script>
+        <div data-role="page" style="min-height:480px;" dsid="Child" id="Child" class="type-interior"
+        data-theme="a">
+            <!-- mobileheader1 -->
+            <div data-role="header" data-position="fixed" data-add-back-btn="false" data-back-btn-text="Back"
+            data-theme="a" name="mobileheader1" id="Child_mobileheader1" class="Child_mobileheader1">
+                <h1 dsid="mobileheader1">
+                    Child Details
+                </h1>
+                <!-- mobilebutton_11 --><!--
+                --><a data-role="button" name="mobilebutton_11" dsid="mobilebutton_11" class="Child_mobilebutton_11 ui-btn-left"
+                id="Child_mobilebutton_11" data-corners="false" data-icon="bars" data-iconpos="right"
+                x-apple-data-detectors="false" data-inline='true' data-mini='true' data-theme="a"
+                tabindex="2">
+                Menu
+                </a>
+            </div>
+            <!-- mobilecontainer1 -->
+            <div data-role="content" id="Child_mobilecontainer1" name="mobilecontainer1" class="Child_mobilecontainer1 ui-content"
+            dsid="mobilecontainer1" data-theme="a">
+                <link href="Child.css" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="Child.js">
+                </script>
+                <!-- mobileimage_12 -->
+                <img class="Child_mobileimage_12" src="files/views/assets/image/logo.png" id="Child_mobileimage_12"
+                dsid="mobileimage_12" name="mobileimage_12" />
+                <!-- mobileworkarea_10 -->
+                <div class="Child_mobileworkarea_10 Child_mobileworkarea_10">
+                    <!-- mobilelabel_39 -->
+                    <div name="mobilelabel_39" id="Child_mobilelabel_39" dsid="mobilelabel_39" data-role="appery_label"
+                    class="Child_mobilelabel_39">
+                        Please tell us a little bit about your child.
+                    </div>
+                    <!-- fldCDFname -->
+                    <div data-role="fieldcontain" class="Child_fldCDFname ">
+                        <input type="text" name="fldCDFname" dsid="fldCDFname" value="" placeholder="First name"
+                        id="Child_fldCDFname" tabindex="6" multiple data-theme="a" data-mini="true" class="Child_fldCDFname"
+                        />
+                    </div>
+                    <!-- spacer_48 -->
+                    <div id="Child_spacer_48" data-role="appery_spacer" dsid="spacer_48" class='mobilespacer Child_spacer_48'>
+                    </div>
+                    <!-- rgCDGender -->
+                    <div data-role="fieldcontain" class="Child_rgCDGender" id="Child_rgCDGender" dsid="rgCDGender">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-theme="a">
+                            <!-- rbBoyChild -->
+                            <span dsid="rbBoyChild" class="Child_rbBoyChild" name="rbBoyChild">
+                                <input type="radio" name="rgCDGender" id="Child_rbBoyChild" style='display:none'
+                                tabindex="14" value="Boy" />
+                                <label id="Child_rbBoyChild_label" for="Child_rbBoyChild">
+                                    Boy
+                                </label>
+                            </span>
+                            <!-- rbGirlChild -->
+                            <span dsid="rbGirlChild" class="Child_rbGirlChild" name="rbGirlChild">
+                                <input type="radio" name="rgCDGender" id="Child_rbGirlChild" style='display:none'
+                                value="Girl" />
+                                <label id="Child_rbGirlChild_label" for="Child_rbGirlChild">
+                                    Girl
+                                </label>
+                            </span>
+                        </fieldset>
+                    </div>
+                    <!-- spacer_47 -->
+                    <div id="Child_spacer_47" data-role="appery_spacer" dsid="spacer_47" class='mobilespacer Child_spacer_47'>
+                    </div>
+                    <!-- mobilelabel_46 -->
+                    <div name="mobilelabel_46" id="Child_mobilelabel_46" dsid="mobilelabel_46" data-role="appery_label"
+                    class="Child_mobilelabel_46">
+                        What is your child's birth date?
+                    </div>
+                    <!-- fldCDBirthdate -->
+                    <div id="Child_fldCDBirthdate" dsid="fldCDBirthdate" name="fldCDBirthdate" tiggzitype="object"
+                    apperytype="object" apperyclass="datepicker" tiggziclass="datepicker" data-theme="a"
+                    class="Child_fldCDBirthdate ui-field-contain">
+                        <div class="datePickerControls">
+                            <a data-role="button" data-corners="true" data-icon="grid" data-iconpos="notext"
+                            data-mini="false" data-theme="a" class="datepickeropenbutton" title="Open Date Picker"
+                            style="margin-top:3px; vertical-align: middle; display: inline-block;">
+                            Open Date Picker
+                            </a>
+                            <div class="inputContainer">
+                                <input type="text" data-theme="a" value="" tabindex="17" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- spacer_42 -->
+                    <div id="Child_spacer_42" data-role="appery_spacer" dsid="spacer_42" class='mobilespacer Child_spacer_42'>
+                    </div>
+                    <!-- btnCDStart --><!--
+                    --><a data-role="button" name="btnCDStart" dsid="btnCDStart" class="Child_btnCDStart"
+                    id="Child_btnCDStart" data-corners="true" data-icon="none" data-iconpos='nowhere'
+                    x-apple-data-detectors="false" data-mini="false" data-theme="a" tabindex="15">
+                    Next
+                    </a>
+                </div>
+            </div>
+            <!-- panel_menu -->
+            <div data-role="panel" tabindex="-1" data-position="left" data-display="reveal"
+            id="Child_panel_menu" class="Child_panel_menu" name="panel_menu" dsid="panel_menu"
+            data-theme="a">
+                <!-- mobilelist_3 -->
+                <ul data-role="listview" id="Child_mobilelist_3" class="Child_mobilelist_3" name="mobilelist_3"
+                dsid="mobilelist_3" data-theme="a" data-divider-theme="b" data-count-theme="b" style=""
+                data-split-icon="carat-r">
+                    <!-- mobilelistitem_4 -->
+                    <li class="Child_mobilelistitem_4" data-icon="home">
+                        <a id="Child_mobilelistitem_4" name="mobilelistitem_4" dsid="mobilelistitem_4" tabindex="1"
+                        class="Child_mobilelistitem_4">
+                        <h3>Home</h3>
+                        </a>
+                    </li>
+                    <!-- liHelp -->
+                    <li class="Child_liHelp" data-icon="shop">
+                        <a id="Child_liHelp" name="liHelp" dsid="liHelp" tabindex="1" class="Child_liHelp">
+                        <h3>Help</h3>
+                        </a>
+                    </li>
+                    <!-- panelAboutOTARC -->
+                    <li class="Child_panelAboutOTARC" data-icon="user">
+                        <a id="Child_panelAboutOTARC" name="panelAboutOTARC" dsid="panelAboutOTARC" tabindex="1"
+                        class="Child_panelAboutOTARC">
+                        <h3>About OTARC</h3>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</html>

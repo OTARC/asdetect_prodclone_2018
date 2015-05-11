@@ -1,0 +1,76 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("files/resources/lib/jquerymobile/1.4.4/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilebutton_11 */
+#SummaryV1_mobilebutton_11 {
+
+}
+.ui-btn.SummaryV1_mobilebutton_11 {
+
+}
+/* mobilecontainer1 */
+.ui-content.SummaryV1_mobilecontainer1 {
+	padding: 15px 15px 15px 15px;
+}
+/* mobileimage_12 */
+.SummaryV1_mobileimage_12 {
+	margin: 2px 0px 0px 230px;
+	width: 60px; height: 30px;
+	display: block;
+}
+/* mobileworkarea_10*/
+.SummaryV1_mobileworkarea_10 {
+	background-color: transparent;
+	padding: 0px;
+}
+/* lblAtRisk */
+.SummaryV1_lblAtRisk {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Helvetica; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* spacer_12 */
+.SummaryV1_spacer_12 {
+	width: 260px; height: 34px;
+	margin: 4px 0px 4px 0px;
+}
+/* btnSummary */
+#SummaryV1_btnSummary {
+
+}
+.ui-btn.SummaryV1_btnSummary {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter1 */
+.SummaryV1_mobilefooter1 {
+	min-height:38px;
+}
+/* panel_menu */
+.SummaryV1_panel_menu .ui-panel-inner {
+	padding: 0px 15px 15px 15px;
+}
+.SummaryV1_panel_menu:focus {
+	outline: 0;
+}
+/* mobilelist_3 */
+.ui-page .SummaryV1_mobilelist_3 {
+	margin: 0px -15px 0px -15px;
+}
+/* mobilelistitem_4 */
+/* mobilelistitembutton_5 */
+.SummaryV1_mobilelistitembutton_5 {
+
+}
+/* liHelp */
+/* mobilelistitembutton_7 */
+.SummaryV1_mobilelistitembutton_7 {
+
+}
+/* panelAboutOTARC */
+/* mobilelistitembutton_9 */
+.SummaryV1_mobilelistitembutton_9 {
+
+}
