@@ -50,7 +50,7 @@ app.get('/offers', auth.validateToken, offers.getAll);
 app.get('/offers/:id', offers.getById);
 app.get('/products', auth.validateToken, products.getAll);
 app.get('/products/:id', auth.validateToken, products.getById);
-app.get('/stores', stores.findAll);
+app.get('/stores', stores.getAll);
 
 app.get('/wallet', auth.validateToken, wallet.getItems);
 app.post('/wallet', auth.validateToken, wallet.addItem);
