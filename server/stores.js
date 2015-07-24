@@ -22,6 +22,6 @@ function getAll(req, res, next) {
         })
         .catch(next);
 };
-f
+
 
 exports.getAll = getAll;
