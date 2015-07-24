@@ -8,6 +8,7 @@ var db = require('./pghelper'),
  * @param next
  */
 function findAll(req, res, next) {
+	console.log("hello world!!!!!");
     db.query("SELECT id, name, location__latitude__s AS latitude, location__longitude__s AS longitude FROM salesforce.store__c ORDER BY lastmodifieddate DESC")
         .then(function (stores) {
         	console.log(JSON.stringify(stores));
