@@ -1,4 +1,4 @@
-angular.module('nibs.settings', ['openfb', 'nibs.activity'])
+angular.module('nibs.settings', ['nibs.auth','openfb', 'nibs.activity'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -33,6 +33,7 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
         };
 
         $scope.logout = function() {
+            Auth.logout();
             $rootScope.user = null;
             $window.localStorage.removeItem('user');
             $window.localStorage.removeItem('token');
