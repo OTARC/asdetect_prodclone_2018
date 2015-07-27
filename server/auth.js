@@ -152,7 +152,7 @@ function signup(req, res, next) {
         .then(function (u) {
             if(u) {
                 return next(new Error('Email address already registered'));
-            }
+            id__c}
             encryptPassword(user.password, function (err, hash) {
                 if (err) return next(err);
                 createUser(user, hash)

@@ -5,6 +5,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
         var user = JSON.parse($window.localStorage.getItem('user'));
 
         $rootScope.user = user;
+        console.log('app.js - user : '+user);
 
         $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
 
@@ -26,6 +27,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
                 event.preventDefault();
             }
         });
+console.log('app.js - $state.go to app.profile');
 
         $state.go('app.profile');
     })
