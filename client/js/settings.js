@@ -33,6 +33,7 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
         };
 
         $scope.logout = function() {
+            Auth.logout();
             $rootScope.user = null;
             $window.localStorage.removeItem('user');
             $window.localStorage.removeItem('token');
