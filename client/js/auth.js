@@ -168,7 +168,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     })
 
     .controller('LogoutCtrl', function ($rootScope, $window) {
-        console.log("Logout");
+        console.log('Logout');
         $rootScope.user = null;
         
         $window.localStorage.removeItem('user');
