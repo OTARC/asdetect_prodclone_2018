@@ -13,10 +13,11 @@
             <div class="header status{{user.status}}-bg">
                 <img class="avatar" ng-src="{{user.pictureurl || 'img/avatar.jpg'}}" ng-click="popupDialog()"/>
                 <h2>{{user.firstname}} {{user.lastname}}</h2>
-                <h3>Member since {{user.createddate | date:'longDate'}}</h3>
+                <h3>Registered {{user.createddate | date:'longDate'}}</h3>
             </div>
 
-            <div style="padding: 8px 16px;" class="status{{user.status}}">
+
+            <!--<div style="padding: 8px 16px;" class="status{{user.status}}">
 
                 <div class="profile-status">
                     <div>
@@ -42,7 +43,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
 
     </ion-content>
