@@ -71,12 +71,12 @@ a {
 }
 
 .welcome {
-    /*background: url('img/background2.jpg') no-repeat center center fixed;*/
+    background: url('img/latrobe.jpg') no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: #ffffff;
+    color: brown;
 }
 
 .welcome h2 {
