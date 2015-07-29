@@ -34,26 +34,15 @@
                     <span class="input-label">Last Name</span>
                     <input type="text" ng-model="user.lastname" />
                 </label>
-                <label class="item item-input">
-                    <span class="input-label">Mobile Phone</span>
-                    <input type="text" ng-model="user.mobilephone" />
-                </label>
-                <li class="item item-toggle">
-                    See Premium Offers
-                    <label class="toggle">
-                        <input type="checkbox">
-                        <div class="track">
-                            <div class="handle"></div>
-                        </div>
-                    </label>
-                </li>
+                
+                
             </form>
         </div>
 
         <div ng-if="panel===2">
             <form class="list list-inset">
                 <div class="item item-divider">
-                    Chocolate
+                    Video options
                 </div>
                 <ion-radio name = "pref" ng-repeat="preference in preferences"
                            ng-value="preference.value"
@@ -61,7 +50,7 @@
                     {{ preference.text }}
                 </ion-radio>
                 <div class="item item-divider">
-                    T-Shirt Size
+                    Fonts
                 </div>
                 <ion-radio name="size" ng-repeat="size in sizes"
                            ng-value="size.value"

@@ -15,7 +15,7 @@ function getProfile(req, res, next) {
     activities.getPointBalance(externalUserId)
         .then(function (activity) {
             db.query(
-                    'SELECT id, firstName__c as firstName, lastName__c as lastName, email__c as email,createddate FROM salesforce.asdetect_contact__c WHERE id=$1',
+                    'SELECT id, firstName__c as firstName, lastName__c as lastName, email__c as email,createddate,preference__c as preference,size__c as size FROM salesforce.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
                     user.points = activity.points;
@@ -41,8 +41,8 @@ function updateProfile(req, res, next) {
 
     console.log('updating: ' + JSON.stringify(user));
 
-    db.query('update salesforce.asdetect_contact__c SET firstName__c=$1, lastName__c=$2 WHERE id=$3',
-            [user.firstname, user.lastname, userId])
+    db.query('update salesforce.asdetect_contact__c SET firstName__c=$1, lastName__c=$2, Preference__c=$3,size__c=$4  WHERE id=$5',
+            [user.firstname, user.lastname, user.preference,user.size, userId])
         .then(function () {
             res.send(user);
         })
