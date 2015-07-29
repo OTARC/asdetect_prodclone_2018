@@ -148,7 +148,7 @@ function signup(req, res, next) {
         return res.send(400, "Password must be at least 4 characters");
     }
 
-    db.query('SELECT id FROM salesforce.asdect_contact__C WHERE email__c=$1', [user.email], true)
+    db.query('SELECT id FROM salesforce.asdetect_contact__C WHERE email__c=$1', [user.email], true)
         .then(function (u) {
             if(u) {
                 return next(new Error('Email address already registered'));
