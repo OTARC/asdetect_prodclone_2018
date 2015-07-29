@@ -83,7 +83,8 @@ function deleteItems(userId) {
  * @returns {*}
  */
 function getPointBalance(userId) {
-    return db.query('select sum(points__c) as points from salesforce.interaction__c where contact__loyaltyid__c=$1', [userId], true);
+    //return db.query('select sum(points__c) as points from salesforce.interaction__c where contact__loyaltyid__c=$1', [userId], true);
+return 0;
 }
 
 /**
@@ -92,13 +93,14 @@ function getPointBalance(userId) {
  * @returns {number}
  */
 function getStatus(points) {
-    if (points>9999) {
-        return 3;
-    } else if (points>4999) {
-        return 2;
-    } else {
-        return 1;
-    }
+    //if (points>9999) {
+       // return 3;
+   // } else if (points>4999) {
+        //return 2;
+    //} else {
+        //return 1;
+    //}
+    return 0;
 }
 
 exports.getItems = getItems;

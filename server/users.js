@@ -18,8 +18,9 @@ function getProfile(req, res, next) {
                     'SELECT id, firstName__c as firstName, lastName__c as lastName, email__c as email,createddate FROM salesforce.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
-                    //user.points = activity.points;
-                    //user.status = activities.getStatus(activity.points);
+                    user.points = activity.points;
+                    user.status = activities.getStatus(activity.points);
+                    console.log(user);
                     res.send(JSON.stringify(user));
                 })
                 .catch(next);
@@ -40,8 +41,8 @@ function updateProfile(req, res, next) {
 
     console.log('updating: ' + JSON.stringify(user));
 
-    db.query('update salesforce.contact SET firstName=$1, lastName=$2, mobilePhone=$3, pictureURL__c=$4, preference__c=$5, size__c=$6 WHERE id=$7',
-            [user.firstname, user.lastname, user.mobilephone, user.pictureurl, user.preference, user.size, userId])
+    db.query('update salesforce.asdetect_contact__c SET firstName__c=$1, lastName__c=$2 WHERE id=$3',
+            [user.firstname, user.lastname, userId])
         .then(function () {
             res.send(user);
         })
