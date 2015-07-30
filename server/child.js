@@ -3,6 +3,7 @@ var db = require('./pghelper'),
 
 function findAll(limit) {
     //return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
+    console.log('in child.findAll');
     return db.query("select id,sfId,Childs_Initials__c as childsInitials,Birthdate__c as birthdate,gender__c as gender ,Child_currently_at_risk__c as currentlyAtRisk from salesforce.mch_child_Asdetect__c LIMIT $1", [limit]);
 
 };
