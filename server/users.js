@@ -18,6 +18,7 @@ function getProfile(req, res, next) {
                     'SELECT id, firstName__c as firstName, lastName__c as lastName, email__c as email,createddate,preference__c as preference,size__c as size FROM salesforce.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
+                    //dtermine what to do with Points later - perhaps we could introduce a membership concept??
                     user.points = activity.points;
                     user.status = activities.getStatus(activity.points);
                     console.log(user);

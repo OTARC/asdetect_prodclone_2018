@@ -174,6 +174,7 @@ function signup(req, res, next) {
 function createUser(user, password) {
 
     var deferred = Q.defer(),
+        //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
 
     db.query('INSERT INTO salesforce.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstName__c as firstName, lastName__c as lastName, email__c as email, loyaltyid__c as externalUserId',

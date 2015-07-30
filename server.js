@@ -20,6 +20,9 @@ var express = require('express'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
+    //ASDECTECT
+    child=require('./server/child');
+
     app = express();
 
 app.set('port', process.env.PORT || 5000);
@@ -72,6 +75,10 @@ app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
+
+// REST to ASDETECT -- for the moment ignore the token validation
+app.get('/child'),child.getAll();
+
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
