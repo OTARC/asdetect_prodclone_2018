@@ -15,7 +15,7 @@ function findById(id) {
 
 function getAll(req, res, next) {
     findAll(20)
-        .then(function (offers) {
+        .then(function (child) {
             console.log(JSON.stringify(child));
             return res.send(JSON.stringify(child));
         })
@@ -25,7 +25,7 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     var id = req.params.id;
     findById(id)
-        .then(function (offer) {
+        .then(function (child) {
             console.log(JSON.stringify(child));
             return res.send(JSON.stringify(child));
         })
