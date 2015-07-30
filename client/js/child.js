@@ -34,7 +34,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
     //Controllers
     .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User) {
-        Offer.all().success(function(children) {
+        Child.all().success(function(children) {
             $scope.children = children;
         });
 
