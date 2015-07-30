@@ -76,7 +76,7 @@ app.post('/cases', auth.validateToken, cases.createCase);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
-// REST to ASDETECT -- for the moment ignore the token validation
+// REST to ASDETECT 
 app.get('/child', auth.validateToken,child.getAll);
 
 
