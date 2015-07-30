@@ -26,14 +26,14 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             all: function() {
                 return $http.get($rootScope.server.url + '/child');
             },
-            get: function(offerId) {
+            get: function(childId) {
                 return $http.get($rootScope.server.url + '/child/' + childId);
             }
         };
     })
 
     //Controllers
-    .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User) {
+    .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, User) {
         Child.all().success(function(children) {
             $scope.children = children;
         });
