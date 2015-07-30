@@ -27,7 +27,7 @@ function getById(req, res, next) {
         .catch(next);
 };
 
-exports.findAll = findAll;
+
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
