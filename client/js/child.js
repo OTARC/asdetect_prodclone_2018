@@ -15,6 +15,15 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
                 }
             })
 
+ .state('app.edit-child', {
+                url: "/child/:childId",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/add-child.html",
+                        controller: "ChildEditCtrl"
+                    }
+                }
+            })
 
                .state('app.add-child', {
                 url: "/add-child",
@@ -88,6 +97,15 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
        
     })
+
+      .controller('ChildEditCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, User) {
+        Child.get($stateParams.childId).success(function(child) {
+            $scope.child = child;
+        });
+
+       
+    })
+
 
 
     .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
