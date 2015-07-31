@@ -17,7 +17,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
 
                .state('app.add-child', {
-                url: "/edit-child",
+                url: "/add-child",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/add-child.html",
