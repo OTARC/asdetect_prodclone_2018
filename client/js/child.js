@@ -50,7 +50,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
         var diagnoses = [
             { text: 'Austism Spectrum Disorder', value: 'Austism Spectrum Disorder' },
-           { text: 'Aspergers Syndrome/Disorder', value: 'Aspergers Syndrome/Disorder' },     
+           { text: 'Autism', value: 'Autism' },     
             { text: 'PDD', value: 'PDD' }     
         ];
 
