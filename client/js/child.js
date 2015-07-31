@@ -46,6 +46,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         }
     })
 
+<<<<<<< HEAD
         .factory('Diagnosis', function() {
 
         var diagnoses = [
@@ -61,6 +62,8 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         }
     })
 
+=======
+>>>>>>> parent of 2d81a8d... adding diagnosis POST
 
     // Services
     .factory('Child', function ($http, $rootScope) {
@@ -90,8 +93,11 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Child, Gender, User, Status) {
 
   $scope.genders = Gender.all();  
+<<<<<<< HEAD
   $scope.diagnoses = Diagnosis.all();  
 
+=======
+>>>>>>> parent of 2d81a8d... adding diagnosis POST
   $scope.child = {};
 
         $scope.submit = function () {
