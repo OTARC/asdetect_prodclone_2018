@@ -42,8 +42,7 @@ function addChild(req, res, next) {
                 })
                 .fail(function(err) {
                     return next(err);
-                });
-        })
+                })
         .catch(next);
 
 };
@@ -53,3 +52,4 @@ function addChild(req, res, next) {
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
+exports.addChild= addChild;
