@@ -36,8 +36,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
         var genders = [
             { text: 'Male', value: 'Male' },
-            { text: 'Female', value: 'Female' }
-          
+            { text: 'Female', value: 'Female' }     
         ];
 
         return {

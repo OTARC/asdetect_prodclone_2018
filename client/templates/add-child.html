@@ -31,6 +31,7 @@
                 <ion-radio name="gender" ng-repeat="gender in genders"
                            ng-value="gender.value"
                            ng-model="child.gender">
+                           {{gender.text}}
                     
                 </ion-radio>
                 
@@ -39,7 +40,8 @@
         </div>
 
         <div ng-if="panel===2">
-       <p>This is panel 2 </p>
+
+  
         </div>
 
     </ion-content>
