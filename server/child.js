@@ -31,7 +31,7 @@ function getById(req, res, next) {
 function addChild(req, res, next) {
     var externalUserId = req.externalUserId,
     birthdate = req.body.birthdate,
-    childsinitials=req.body.childsinitials;
+    childsinitials=req.body.childsinitials,
     gender=req.body.gender;
      
 
