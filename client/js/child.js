@@ -49,8 +49,10 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         .factory('Diag', function() {
 
         var diagnoses = [
-            { text: 'D1', value: 'D1' },
-            { text: 'D2', value: 'D2' }     
+            { text: 'PDD', value: 'PDD' },
+            { text: 'Aspergers', value: 'Aspergers' },
+            { text: 'Autism Spectrum', value: 'Austism Spectrum' }
+
         ];
 
         return {

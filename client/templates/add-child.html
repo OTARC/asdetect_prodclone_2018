@@ -16,6 +16,9 @@
         <div ng-if="panel===1">
            
             <form class="list list-inset" style="clear: both;margin-top: 0">
+                <div class="item item-divider">
+                Personal
+                </div>
                 <label class="item item-input">
                     <span class="input-label">Initials</span>
                     <input type="text" ng-model="child.childsinitials"/>
@@ -34,19 +37,28 @@
                            {{gender.text}}
                     
                 </ion-radio>
-                 <ion-radio name="diagnosis"  ng-repeat="diagnosis in diagnoses"
-                           ng-value="diagnosis.value"
-                           ng-model="child.diagnosis">
-                           {{gender.text}}
-                    
-                </ion-radio>
+                 
                 
                 
             </form>
         </div>
 
         <div ng-if="panel===2">
-        <p>PANEL 2</p>
+        <form class="list list-inset" style="clear: both;margin-top: 0">
+               
+                <div class="item item-divider">
+                Past History
+                </div>
+            
+                 <ion-radio name="diagnosis"  ng-repeat="diagnosis in diagnoses"
+                           ng-value="diagnosis.value"
+                           ng-model="child.diagnosis">
+                           {{diagnosis.text}}
+                    
+                </ion-radio>
+                
+                
+            </form>
 
   
         </div>
