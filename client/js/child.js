@@ -46,6 +46,20 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         }
     })
 
+        .factory('Diag', function() {
+
+        var diagnoses = [
+            { text: 'D1', value: 'D1' },
+            { text: 'D2', value: 'D2' }     
+        ];
+
+        return {
+            all: function() {
+                return diagnoses;
+            }
+        }
+    })
+
         
 
 
@@ -76,7 +90,8 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
     .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Child, Gender, User, Status) {
 
-  $scope.genders = Gender.all();  
+$scope.genders = Gender.all();  
+$scope.diagnoses = Diag.all();  
 
 
   $scope.child = {};
