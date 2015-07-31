@@ -31,6 +31,23 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
     })
 
+
+    .factory('Gender', function() {
+
+        var genders = [
+            { text: 'Male', value: 'Male' },
+            { text: 'Female', value: 'Female' }
+          
+        ];
+
+        return {
+            all: function() {
+                return genders;
+            }
+        }
+    })
+
+
     // Services
     .factory('Child', function ($http, $rootScope) {
         return {
@@ -56,9 +73,9 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     })
 
 
-    .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Child, User, Status) {
+    .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Child, Gender, User, Status) {
 
-        
+  $scope.genders = Gender.all();  
   $scope.child = {};
 
         $scope.submit = function () {
