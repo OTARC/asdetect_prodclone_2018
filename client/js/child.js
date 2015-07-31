@@ -46,20 +46,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         }
     })
 
-        .factory('Diagnosis', function() {
-
-        var diagnoses = [
-            { text: 'Austism Spectrum Disorder', value: 'Austism Spectrum Disorder' },
-           { text: 'Autism', value: 'Autism' },     
-            { text: 'PDD', value: 'PDD' }     
-        ];
-
-        return {
-            all: function() {
-                return diagnoses;
-            }
-        }
-    })
+        
 
 
     // Services
@@ -91,7 +78,6 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
   $scope.genders = Gender.all();  
 
-  $scope.diagnoses = Diagnosis.all();  
 
   $scope.child = {};
 
