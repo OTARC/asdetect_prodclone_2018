@@ -32,13 +32,12 @@ function addChild(req, res, next) {
     var externalUserId = req.externalUserId,
     birthdate = req.body.birthdate,
     childsinitials=req.body.childsinitials,
-    diagnosis=req.body.diagnosis,
     gender=req.body.gender;
      
 
     console.log(JSON.stringify(req.body));
 
-            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c) VALUES ($1, $2, $3, $4, $5)', [externalUserId, childsinitials,birthdate,gender,diagnosis], true)
+            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c) VALUES ($1, $2, $3, $4)', [externalUserId, childsinitials,birthdate,gender], true)
                 .then(function () {
                     return res.send('ok');
                 })

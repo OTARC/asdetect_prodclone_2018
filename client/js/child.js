@@ -47,26 +47,6 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     })
 
 
-    .factory('Diagnosis', function() {
-
-        var diagnoses = [
-        { text: 'Autism Spectrum Disorder', value: 'Autism Spectrum Disorder' },
-        { text: 'Apergers Disorder/Syndrome', value: 'Female' }, 
-        { text: 'High Functioning Autism', value: 'High Functioning Autism' }, 
-        { text: 'PDD-NOS', value: 'PDD-NOS' },
-        { text: 'Global Developmental Delay', value: 'Global Developmental Delay' },
-        { text: 'Language Disorder', value: 'Language Disorder' },
-        { text: 'Possible ASD', value: 'Possible ASD' }
-        ];
-
-        return {
-            all: function() {
-                return diagnoses;
-            }
-        }
-    })
-
-
     // Services
     .factory('Child', function ($http, $rootScope) {
         return {
@@ -95,7 +75,6 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Child, Gender, User, Status) {
 
   $scope.genders = Gender.all();  
-  $scope.diagnoses = Diagnosis.all();  
   $scope.child = {};
 
         $scope.submit = function () {
