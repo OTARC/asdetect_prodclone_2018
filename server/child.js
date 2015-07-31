@@ -31,21 +31,13 @@ function getById(req, res, next) {
 function addChild(req, res, next) {
     var externalUserId = req.externalUserId,
     birthdate = req.body.birthdate,
-    childsinitials=req.body.childsinitials,
-<<<<<<< HEAD
-     diagnosis=req.body.diagnosis,
-=======
->>>>>>> parent of 2d81a8d... adding diagnosis POST
-    gender=req.body.gender;
-     
+    childsinitials=req.body.childsinitials,diagnosis=req.body.diagnosis,
+gender=req.body.gender;    
 
     console.log(JSON.stringify(req.body));
-
-<<<<<<< HEAD
-            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c) VALUES ($1, $2, $3, $4,$5)', [externalUserId, childsinitials,birthdate,gender,diagnosis], true)
-=======
+        
             db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c) VALUES ($1, $2, $3, $4)', [externalUserId, childsinitials,birthdate,gender], true)
->>>>>>> parent of 2d81a8d... adding diagnosis POST
+
                 .then(function () {
                     return res.send('ok');
                 })
