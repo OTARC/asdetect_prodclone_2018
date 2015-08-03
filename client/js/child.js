@@ -25,6 +25,16 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
                 }
             })
 
+             .state('app.add-child', {
+                url: "/add-child",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/add-child.html",
+                        controller: "ChildAddCtrl"
+                    }
+                }
+            })
+
 
                .state('app.child-detail', {
                 url: "/child/:childId",
@@ -111,6 +121,24 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             $scope.diagnoses = Diag.all();  
 
         });
+
+        $scope.submit = function () {
+            Child.create($scope.child).success(function() {
+                $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
+            });
+
+       }
+    })
+
+
+            .controller('ChildAddCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
+        
+        
+            
+            $scope.child = {};
+            $scope.genders = Gender.all();  
+            $scope.diagnoses = Diag.all();  
+
 
         $scope.submit = function () {
             Child.create($scope.child).success(function() {
