@@ -104,7 +104,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
                 $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
             });
 
-       
+       }
     })
 
 
