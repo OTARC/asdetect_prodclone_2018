@@ -1,0 +1,68 @@
+<ion-view title="Edit Child" class="card-bg">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="submit()">Save</button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" has-padding="true">
+
+        <div class="padding" style="padding-bottom: 0">
+            <div class="button-bar">
+                <a class="button button-small" ng-click="panel=1">Info</a>
+                <a class="button button-small" ng-click="panel=2">Preferences</a>
+            </div>
+        </div>
+
+        <div ng-if="panel===1">
+           
+            <form class="list list-inset" style="clear: both;margin-top: 0">
+                <div class="item item-divider">
+                Personal
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Initials</span>
+                    <input type="text" ng-model="child.childsinitials"/>
+                </label>
+               
+                 <label class="item item-input">
+                    <span class="input-label">Birthdate</span>
+                    <input type="date" ng-model="child.birthdate" />
+                </label>
+                <div class="item item-divider">
+                Gender
+                </div>
+                <ion-radio name="gender"  ng-repeat="gender in genders"
+                           ng-value="gender.value"
+                           ng-model="child.gender">
+                           {{gender.text}}
+                    
+                </ion-radio>
+                 
+                
+                
+            </form>
+        </div>
+
+        <div ng-if="panel===2">
+        <form class="list list-inset" style="clear: both;margin-top: 0">
+               
+                <div class="item item-divider">
+                Past History
+                </div>
+            
+                 <ion-radio name="diagnosis"  ng-repeat="diagnosis in diagnoses"
+                           ng-value="diagnosis.value"
+                           ng-model="child.diagnosis">
+                           {{diagnosis.text}}
+                    
+                </ion-radio>
+                
+                
+            </form>
+
+  
+        </div>
+
+    </ion-content>
+
+</ion-view>

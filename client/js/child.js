@@ -15,6 +15,16 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
                 }
             })
 
+             .state('app.edit-child', {
+                url: "/edit-child/:childId",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/edit-child.html",
+                        controller: "ChildEditCtrl"
+                    }
+                }
+            })
+
 
                .state('app.child-detail', {
                 url: "/child/:childId",
@@ -95,6 +105,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
       .controller('ChildEditCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
         
         Child.get($stateParams.childId).success(function(child) {
+            
             $scope.child = child;
             $scope.genders = Gender.all();  
             $scope.diagnoses = Diag.all();  
