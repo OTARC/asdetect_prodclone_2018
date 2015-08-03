@@ -16,8 +16,18 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             })
 
 
-               .state('app.add-child', {
-                url: "/add-child",
+               .state('app.child-detail', {
+                url: "/child/:childId",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/child-detail.html",
+                        controller: "ChildDetailCtrl"
+                    }
+                }
+            })
+
+                .state('app.add-child', {
+                url: "/child-detail",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/add-child.html",
@@ -108,6 +118,19 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     })
 
 
+
+   .controller('ChildDetailCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
+
+$scope.genders = Gender.all();  
+$scope.diagnoses = Diag.all();  
+
+$scope.child = {};
+
+Child.get($stateParams.childId).success(function(child) {
+            $scope.child = product;
+        });
+   
+    });
 
 
     .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {

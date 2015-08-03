@@ -16,11 +16,14 @@
         <div ng-repeat="child in children" class="list card">
             <a ui-sref="app.child-detail({childId: child.id})">
                 <div class="item">
+                    <a ui-sref="app.child-detail({childId: child.id})">
                     <h2>{{child.id}}</h2>
                     
                     
                 </div>
                 <div class="item item-body">
+
+
                     
                     <p>{{child.childsinitials}}</p>
                     <p>{{child.gender}}</p>
@@ -29,8 +32,8 @@
                 </div>
             </a>
         </div>
-
+ 
 
     </ion-content>
 
-</ion-view>
+</ion-view> 
