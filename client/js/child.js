@@ -91,7 +91,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
 
       .controller('ChildEditCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
-        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+        
         Child.get($stateParams.childId).success(function(child) {
             $scope.child = child;
             $scope.genders = Gender.all();  
