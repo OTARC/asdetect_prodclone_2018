@@ -100,7 +100,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     })
 
 
-      .controller('ChildEditCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
+      .controller('ChildEditCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
         
         Child.get($stateParams.childId).success(function(child) {
             $scope.child = child;
@@ -119,18 +119,20 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
 
 
-   .controller('ChildDetailCtrl', function ($scope, $window, $stateParams,$ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
+      .controller('ChildDetailCtrl', function ($scope, $window, $rootScope, $stateParams, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
 
-$scope.genders = Gender.all();  
-$scope.diagnoses = Diag.all();  
+        $scope.genders = Gender.all();  
+        $scope.diagnoses = Diag.all();  
 
-$scope.child = {};
+        $scope.child = {};
 
-Child.get($stateParams.childId).success(function(child) {
+        Child.get($stateParams.childId).success(function(child) {
             $scope.child = child;
         });
-   
+
     })
+
+
 
 
  .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
