@@ -48,7 +48,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             login: function (user) {
                 return $http.post($rootScope.server.url + '/login', user)
                     .success(function (data) {
-                        console.log(data);
+                        console.log('login successful ===========>'+data);
                         $rootScope.user = data.user;
                         $window.localStorage.user = JSON.stringify(data.user);
                         $window.localStorage.token = data.token;
