@@ -127,13 +127,13 @@ $scope.diagnoses = Diag.all();
 $scope.child = {};
 
 Child.get($stateParams.childId).success(function(child) {
-            $scope.child = product;
+            $scope.child = child;
         });
    
-    });
+    })
 
 
-    .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
+ .controller('ChildCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
 
 $scope.genders = Gender.all();  
 $scope.diagnoses = Diag.all();  
@@ -147,6 +147,6 @@ $scope.diagnoses = Diag.all();
             });
         };
    
-    });
+    })
 
 
