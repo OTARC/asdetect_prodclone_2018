@@ -78,8 +78,6 @@ app.post('/s3signing', auth.validateToken, s3signing.sign);
 
 // REST to ASDETECT 
 app.get('/child', auth.validateToken,child.getAll);
-app.get('/child/:id', auth.validateToken,child.getById);
-
 app.post('/child', auth.validateToken,child.addChild);
 
 
