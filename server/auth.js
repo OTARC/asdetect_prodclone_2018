@@ -135,6 +135,8 @@ function signup(req, res, next) {
 
     var user = req.body;
 
+    console.log(user);
+
     if (!validator.isEmail(user.email)) {
         return res.send(400, "Invalid email address");
     }
