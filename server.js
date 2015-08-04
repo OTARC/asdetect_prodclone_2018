@@ -22,6 +22,7 @@ var express = require('express'),
     activities = require('./server/activities'),
     //ASDECTECT
     child=require('./server/child');
+    child=require('./server/consulation');
 
     app = express();
 
