@@ -81,6 +81,11 @@ app.get('/child', auth.validateToken,child.getAll);
 app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
 
+app.get('/consultation', auth.validateToken,consultation.getAll);
+
+
+
+
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
