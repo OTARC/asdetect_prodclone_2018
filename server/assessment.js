@@ -9,9 +9,7 @@ function findById(id) {
 
 function getAll(req, res, next) { 
     var externalUserId = req.externalUserId;
-    db.query("select id,sfid,name, consultation_date__c,record_type__c,mch_child_asdetect__r__externalchildid__c, mch_child_asdetect__c ,at_risk__c from salesforce.consultation_asdetect__c");
-       
-from salesforce.consultation_asdetect__c;
+    db.query('select id,sfid,name, consultation_date__c,record_type__c,mch_child_asdetect__r__externalchildid__c, mch_child_asdetect__c ,at_risk__c from salesforce.consultation_asdetect__c');  
         .then(function (assessment) {
             return res.send(JSON.stringify(assessment));
         })
