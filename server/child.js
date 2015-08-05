@@ -19,7 +19,7 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     
-    console.log(JSON.stringify(req.params));
+    console.log('logging req: '+JSON.stringify(req.body));
     var id = req.params.id;
     findById(id)
         .then(function (child) {
