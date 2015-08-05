@@ -30,7 +30,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
     //Controllers
     .controller('AssessmentListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, User) {
-        Child.all().success(function(assessment) {
+        Assessment.all().success(function(assessment) {
             $scope.assessment = assessment;
         });
 
