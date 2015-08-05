@@ -18,6 +18,7 @@ function getAll(req, res, next) {
 
 
 function getById(req, res, next) {
+    console.log('req: '+req);
     var id = req.params.id;
     findById(id)
         .then(function (child) {
