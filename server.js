@@ -82,7 +82,7 @@ app.get('/child', auth.validateToken,child.getAll);
 app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
 
-app.get('/assessment', assessment.getAll);
+app.get('/assessment', auth.validateToken, assessment.getAll);
 
 
 
