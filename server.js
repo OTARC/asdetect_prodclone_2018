@@ -22,7 +22,7 @@ var express = require('express'),
     activities = require('./server/activities'),
     //ASDECTECT
     child=require('./server/child');
-    consultation=require('./server/consultation');
+    assessment=require('./server/assessment');
 
     app = express();
 
@@ -82,7 +82,7 @@ app.get('/child', auth.validateToken,child.getAll);
 app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
 
-app.get('/consultation', auth.validateToken,consultation.getAll);
+app.get('/assessment', assessment.getAll);
 
 
 
