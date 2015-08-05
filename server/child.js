@@ -1,5 +1,6 @@
 var db = require('./pghelper'),
-    winston = require('winston');
+    winston = require('winston'),
+    util=require('util');
 
 
 function findById(id) {
