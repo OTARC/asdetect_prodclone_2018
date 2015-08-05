@@ -6,6 +6,7 @@ var express = require('express'),
     path = require('path'),
     winston = require('winston'),
     sqlinit = require('./server/sqlinit'),
+    util = require('util'),
 
     // App modules
     offers = require('./server/offers'),
