@@ -1,4 +1,4 @@
-angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
+angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
 
     // Routes
     .config(function ($stateProvider) {
