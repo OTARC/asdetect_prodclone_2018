@@ -20,7 +20,7 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     
-    console.log('logging req: '+util.inspect(req.body));
+    console.log('logging req: '+util.inspect(req));
 
     var id = req.params.id;
     findById(id)
