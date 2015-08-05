@@ -25,6 +25,7 @@ var express = require('express'),
     child=require('./server/child');
     assessment=require('./server/assessment');
 
+
     app = express();
 
 app.set('port', process.env.PORT || 5000);
@@ -84,8 +85,7 @@ app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
 
 app.get('/assessment', auth.validateToken, assessment.getAll);
-
-
+app.get('/assessment/:id', auth.validateToken, assessment.getById);
 
 
 
