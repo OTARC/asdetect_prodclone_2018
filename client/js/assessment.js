@@ -65,13 +65,13 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
 
     .controller('12MAssessmentCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, Observation, User) {
         
+        console.log('reached 12MAssessmentCtrl');
         $scope.observations = Observation.all();
-        $
-
+      
         $scope.panel = 1;
 
         $scope.update = function () {
-            User.update($scope.user).success(function() {
+            //User.update($scope.user).success(function() {
                 Status.show('Your profile has been saved.');
             })
         };
