@@ -73,12 +73,10 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
         $scope.update = function () {
             //User.update($scope.user).success(function() {
                 Status.show('Your profile has been saved.');
-            })
-        };
+            };
+        
 
-        Assessment.all().success(function(assessment) {
-            $scope.assessment = assessment;
-        });
+    
 
        
     })
