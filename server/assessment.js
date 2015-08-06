@@ -31,7 +31,7 @@ function getById(req, res, next) {
 
 
 // add 12 month assessment
-function add12mAssessment(req, res, next) {
+function create12mAssessment(req, res, next) {
     var externalUserId = req.externalUserId,
     externalchildid=req.body.externalchildid,
     consultationdate = req.body.consultationdate,
@@ -65,3 +65,4 @@ function add12mAssessment(req, res, next) {
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
+exports.create12mAssessment=create12mAssessment;
