@@ -34,6 +34,38 @@
                            ng-model="assessment.does_child_make_eye_contact_with_you__c">
                     {{ ob2.text }}
                 </ion-radio>
+                 <div class="item item-divider">
+                    Waves Bye Bye
+                </div>
+                <ion-radio name = "eyecontact" ng-repeat="ob3 in observations"
+                           ng-value="ob3.value"
+                           ng-model="assessment.waves_bye_bye__c">
+                    {{ ob2.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Imitation
+                </div>
+                <ion-radio name = "wavesbb" ng-repeat="ob4 in observations"
+                           ng-value="ob4.value"
+                           ng-model="assessment.imitation__c">
+                    {{ ob3.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Responds to Name
+                </div>
+                <ion-radio name = "imitation" ng-repeat="ob5 in observations"
+                           ng-value="ob5.value"
+                           ng-model="assessment.responds_to_name_c">
+                    {{ ob4.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Social Smile
+                </div>
+                <ion-radio name = "eyecontact" ng-repeat="ob6 in observations"
+                           ng-value="ob6.value"
+                           ng-model="assessment.social_smile__c">
+                    {{ ob2.text }}
+                </ion-radio>
 
                 
                 
