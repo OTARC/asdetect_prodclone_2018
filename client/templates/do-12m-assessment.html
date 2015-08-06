@@ -41,7 +41,7 @@
                 <ion-radio name = "waves" ng-repeat="ob3 in observations"
                            ng-value="ob3.value"
                            ng-model="assessment.waves_bye_bye__c">
-                    {{ ob2.text }}
+                    {{ ob3.text }}
                 </ion-radio>
                  <div class="item item-divider">
                     Imitation
@@ -49,7 +49,7 @@
                 <ion-radio name = "imitation" ng-repeat="ob4 in observations"
                            ng-value="ob4.value"
                            ng-model="assessment.imitation__c">
-                    {{ ob3.text }}
+                    {{ ob4.text }}
                 </ion-radio>
                  <div class="item item-divider">
                     Responds to Name
@@ -57,7 +57,7 @@
                 <ion-radio name = "responds" ng-repeat="ob5 in observations"
                            ng-value="ob5.value"
                            ng-model="assessment.responds_to_name_c">
-                    {{ ob4.text }}
+                    {{ ob5.text }}
                 </ion-radio>
                  <div class="item item-divider">
                     Social Smile
@@ -65,7 +65,39 @@
                 <ion-radio name = "socialsmile" ng-repeat="ob6 in observations"
                            ng-value="ob6.value"
                            ng-model="assessment.social_smile__c">
-                    {{ ob2.text }}
+                    {{ ob6.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    Conversational Babble
+                </div>
+                <ion-radio name = "babble" ng-repeat="ob7 in observations"
+                           ng-value="ob7.value"
+                           ng-model="assessment.conversational_babble__c">
+                    {{ ob7.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    1-3 Words
+                </div>
+                <ion-radio name = "onetothreewords" ng-repeat="ob8 in observations"
+                           ng-value="ob8.value"
+                           ng-model="assessment.says_1_3_clear_words__c">
+                    {{ ob8.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    Inderstands/Obeys Simple Instructions
+                </div>
+                <ion-radio name = "undertands" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.understands_obeys_simple_instructions__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                    <div class="item item-divider">
+                    Attends to Sounds
+                </div>
+                <ion-radio name = "undertands" ng-repeat="ob10 in observations"
+                           ng-value="ob10.value"
+                           ng-model="assessment.attending_to_sounds__c">
+                    {{ ob10.text }}
                 </ion-radio>
 
                 
