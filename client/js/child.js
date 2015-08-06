@@ -94,6 +94,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
                 return $http.get($rootScope.server.url + '/child');
             },
             get: function(childId) {
+                console.log('in Child.get');
                 return $http.get($rootScope.server.url + '/child/' + childId);
             },
             create: function(childItem) {
