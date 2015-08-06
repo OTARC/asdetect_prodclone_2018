@@ -74,7 +74,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
         Child.get($stateParams.childId).success(function(child) {
             $scope.child = child;
-            console.log('in 12M --'+ JSON.stringify(child) +'--')
+            console.log('in 12M --'+ JSON.stringify(child) +'--');
             $scope.assessment.externalchildid=child.externalchildid;
         });
 
