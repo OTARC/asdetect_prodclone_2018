@@ -46,13 +46,27 @@ function create12mAssessment(req, res, next) {
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
 
-    //todo move to configuration
+    //todo move the 12M record type to configuration
     var recordtypeid='012j0000000mFHuAAM';
 
+    //calculate at risk - TODO make this more robust
+
+    var externalatrisk__c=0;
+    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (responds_to_name__c=='Atypical'? 1:0)   );
+    
+    if (no_of_atypical_key_items>=3) {
+        externalatrisk__c='Yes';
+    } 
+    else {
+        externalatrisk__c='No';
+    }
+console.log('Calculated external at risk:' + externalatrisk__c);
+
+    
 
     console.log(JSON.stringify(req.body));
         
-            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)', [recordtypeid,consultation_date__c,externalchildid,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c], true)
+            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [recordtypeid,consultation_date__c,externalchildid,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c], true)
                 .then(function () {
                     return res.send('ok');
                 })
