@@ -45,12 +45,13 @@ function create12mAssessment(req, res, next) {
     says_1_3_clear_words__c=req.body.says_1_3_clear_words__c, 
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
- 
+
+    var recordtypeid='012j0000000mFHuAAM';
+
 
     console.log(JSON.stringify(req.body));
         
-            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1, $2, $3, $4,$5,$6)', [externalUserId, childsinitials,birthdate,gender,diagnosis,externalchildid], true)
-
+            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c], true)
                 .then(function () {
                     return res.send('ok');
                 })

@@ -34,6 +34,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         return {
             all: function() {
                 return $http.get($rootScope.server.url + '/assessment');
+            },
+            create: function(assessmentItem) {
+                return $http.post($rootScope.server.url + '/assessment/12m',assessmentItem);
             }
         };
     })
@@ -80,13 +83,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         });
 
 
- 
-
-
-
         $scope.update = function () {
-            //User.update($scope.user).success(function() {
-                Status.show('Your profile has been saved.');
+            Assessment.create($scope.assessment).success(function() {
+                S$ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
             };
         
 
