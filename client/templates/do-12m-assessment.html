@@ -20,19 +20,19 @@
                 <div class="item item-divider">
                     Pointing
                 </div>
-                <ion-radio name = "pointing" ng-repeat="ob in observations"
-                           ng-value="ob.value"
+                <ion-radio name = "pointing" ng-repeat="ob1 in observations"
+                           ng-value="ob1.value"
                            ng-model="assessment.pointing__c">
-                    {{ ob.text }}
+                    {{ ob1.text }}
                 </ion-radio>
 
                 <div class="item item-divider">
                     Eye Contact
                 </div>
-                <ion-radio name = "pointing" ng-repeat="ob in observations"
-                           ng-value="ob.value"
+                <ion-radio name = "eyecontact" ng-repeat="ob2 in observations"
+                           ng-value="ob2.value"
                            ng-model="assessment.does_child_make_eye_contact_with_you__c">
-                    {{ ob.text }}
+                    {{ ob2.text }}
                 </ion-radio>
 
                 
