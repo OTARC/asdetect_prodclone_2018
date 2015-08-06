@@ -23,6 +23,12 @@ module.exports = {
         bucket: process.env.S3_BUCKET_NAME,
         awsKey: process.env.AWS_KEY,
         secret: process.env.AWS_SECRET
+    },
+
+
+    asdetect: {
+        recordType12M:'012j0000000mFHuAAM'
+
     }
 
 };

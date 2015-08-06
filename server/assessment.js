@@ -1,4 +1,5 @@
 var db = require('./pghelper'),
+ config = require('./config'),
     winston = require('winston');
 
 
@@ -46,8 +47,9 @@ function create12mAssessment(req, res, next) {
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
 
-    //todo move the 12M record type to configuration
-    var recordtypeid='012j0000000mFHuAAM';
+    
+    //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
+    var recordtypeid=config.asdetect.recordType12M;
 
     //calculate at risk - TODO make this more robust
 
