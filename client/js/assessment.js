@@ -63,7 +63,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
     })
 
 
-    .controller('12MAssessmentCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, Assessment, Observation, User) {
+    .controller('12MAssessmentCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Assessment, Observation, User) {
         
         console.log('reached 12MAssessmentCtrl');
         $scope.assessment={}
