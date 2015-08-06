@@ -60,7 +60,7 @@ function create12mAssessment(req, res, next) {
     else {
         externalatrisk__c='No';
     }
-console.log('Calculated external at risk:' + externalatrisk__c);
+    console.log('Calculated external at risk:' + externalatrisk__c);
 
     
 

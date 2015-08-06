@@ -45,7 +45,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
         var observations = [
             { text: 'Typical', value: 'Typical' },
-            { text: 'Atypical', value: 'ATypical' }
+            { text: 'Atypical', value: 'Atypical' }
           
         ];
 
