@@ -46,6 +46,7 @@ function create12mAssessment(req, res, next) {
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
 
+    //todo move to configuration
     var recordtypeid='012j0000000mFHuAAM';
 
 
