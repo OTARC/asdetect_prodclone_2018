@@ -34,7 +34,7 @@ function getById(req, res, next) {
 function create12mAssessment(req, res, next) {
     var externalUserId = req.externalUserId,
     externalchildid=req.body.externalchildid,
-    consultationdate = req.body.consultationdate,
+    consultation_date__c = req.body.consultation_date__c,
     pointing__c=req.body.pointing__c,
     does_child_make_eye_contact_with_you__c=req.body.does_child_make_eye_contact_with_you__c,
     waves_bye_bye__c=req.body.waves_bye_bye__c,

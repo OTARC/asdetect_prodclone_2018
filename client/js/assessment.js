@@ -1,4 +1,4 @@
-angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
+angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.activity', 'nibs.wallet'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -16,7 +16,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
             })  
 
             .state('app.12Massessment', {
-                url: "/do12mAssessment",
+                url: "/do12mAssessment/:childId",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/do-12m-assessment.html",
@@ -66,9 +66,21 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
     .controller('12MAssessmentCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, Observation, User) {
         
         console.log('reached 12MAssessmentCtrl');
+        $scope.assessment={}
+        $scope.child = {};
         $scope.observations = Observation.all();
-      
         $scope.panel = 1;
+        
+
+        Child.get($stateParams.childId).success(function(child) {
+            $scope.child = child;
+            $scope.assessment.externalchildid=child.externalchildid;
+        });
+
+
+ 
+
+
 
         $scope.update = function () {
             //User.update($scope.user).success(function() {

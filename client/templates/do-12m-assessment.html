@@ -14,6 +14,7 @@
 
         <div ng-if="panel===1">
          
+HELLO {{assessment.externalchilid}}
 
             <form class="list list-inset" style="clear: both;margin-top: 0">
                 
@@ -84,7 +85,7 @@
                     {{ ob8.text }}
                 </ion-radio>
                   <div class="item item-divider">
-                    Inderstands/Obeys Simple Instructions
+                    Understands/Obeys Simple Instructions
                 </div>
                 <ion-radio name = "undertands" ng-repeat="ob9 in observations"
                            ng-value="ob9.value"
@@ -94,7 +95,7 @@
                     <div class="item item-divider">
                     Attends to Sounds
                 </div>
-                <ion-radio name = "undertands" ng-repeat="ob10 in observations"
+                <ion-radio name = "attends" ng-repeat="ob10 in observations"
                            ng-value="ob10.value"
                            ng-model="assessment.attending_to_sounds__c">
                     {{ ob10.text }}
