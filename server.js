@@ -86,7 +86,7 @@ app.post('/child', auth.validateToken,child.addChild);
 
 app.get('/assessment', auth.validateToken, assessment.getAll);
 app.get('/assessment/:id', auth.validateToken, assessment.getById);
-
+app.post('/assessment/12m',auth.validateToken,assessment.add12mAssessment);
 
 
 app.listen(app.get('port'), function () {

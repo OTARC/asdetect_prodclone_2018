@@ -13,7 +13,17 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
                         controller: "AssessmentListCtrl"
                     }
                 }
-            })           
+            })  
+
+            .state('app.12Massessment', {
+                url: "/do12mAssessment",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/do-12m-assessment.html",
+                        controller: "12MAssessmentCtrl"
+                    }
+                }
+            })            
 
     })
 
@@ -28,6 +38,21 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
         };
     })
 
+ .factory('Observation', function() {
+
+        var observations = [
+            { text: 'Typical', value: 'Typical' },
+            { text: 'Atypical', value: 'ATypical' }
+          
+        ];
+
+        return {
+            all: function() {
+                return observations;
+            }
+        }
+    })
+
     //Controllers
     .controller('AssessmentListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, User) {
         Assessment.all().success(function(assessment) {
@@ -36,6 +61,28 @@ angular.module('nibs.assessment', ['openfb', 'nibs.status', 'nibs.activity', 'ni
 
        
     })
+
+
+    .controller('12MAssessmentCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, Observation, User) {
+        
+        $scope.observations = Observation.all();
+        $
+
+        $scope.panel = 1;
+
+        $scope.update = function () {
+            User.update($scope.user).success(function() {
+                Status.show('Your profile has been saved.');
+            })
+        };
+
+        Assessment.all().success(function(assessment) {
+            $scope.assessment = assessment;
+        });
+
+       
+    })
+
 
 
 

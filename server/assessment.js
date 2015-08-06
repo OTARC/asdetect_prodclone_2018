@@ -30,6 +30,38 @@ function getById(req, res, next) {
 };
 
 
+// add 12 month assessment
+function add12mAssessment(req, res, next) {
+    var externalUserId = req.externalUserId,
+    externalchildid=req.body.externalchildid,
+    consultationdate = req.body.consultationdate,
+    pointing__c=req.body.pointing__c,
+    does_child_make_eye_contact_with_you__c=req.body.does_child_make_eye_contact_with_you__c,
+    waves_bye_bye__c=req.body.waves_bye_bye__c,
+    imitation__c=req.body.imitation__c, 
+    responds_to_name__c=req.body.responds_to_name__c,
+    social_smile__c=req.body.social_smile__c, 
+    conversational_babble__c=req.body.conversational_babble__c,
+    says_1_3_clear_words__c=req.body.says_1_3_clear_words__c, 
+    understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
+    attending_to_sounds__c=req.body.attending_to_sounds__c;
+ 
+
+    console.log(JSON.stringify(req.body));
+        
+            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1, $2, $3, $4,$5,$6)', [externalUserId, childsinitials,birthdate,gender,diagnosis,externalchildid], true)
+
+                .then(function () {
+                    return res.send('ok');
+                })
+                .fail(function(err) {
+                    return next(err);
+                })
+        .catch(next);
+
+};
+
+
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;

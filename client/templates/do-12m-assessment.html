@@ -1,0 +1,46 @@
+<ion-view title="12 Month Assessment" class="card-bg">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="update()">Submit</button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" has-padding="true">
+
+        <div class="padding" style="padding-bottom: 0">
+            <div class="button-bar">
+                <a class="button button-small" ng-click="panel=1">Info</a>               
+            </div>
+        </div>
+
+        <div ng-if="panel===1">
+         
+
+            <form class="list list-inset" style="clear: both;margin-top: 0">
+                
+                <div class="item item-divider">
+                    Pointing
+                </div>
+                <ion-radio name = "pointing" ng-repeat="ob in observations"
+                           ng-value="ob.value"
+                           ng-model="assessment.pointing__c">
+                    {{ ob.text }}
+                </ion-radio>
+
+                <div class="item item-divider">
+                    Eye Contact
+                </div>
+                <ion-radio name = "pointing" ng-repeat="ob in observations"
+                           ng-value="ob.value"
+                           ng-model="assessment.does_child_make_eye_contact_with_you__c">
+                    {{ ob.text }}
+                </ion-radio>
+
+                
+                
+                
+            </form>
+        </div>
+
+        
+
+    </ion-content>
