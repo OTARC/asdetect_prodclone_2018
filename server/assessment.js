@@ -70,7 +70,7 @@ function create12mAssessment(req, res, next) {
             db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) returning externalatrisk__c', [recordtypeid,consultation_date__c,externalchildid,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c], true)
                 .then(function (insresult) {
                     console.log(JSON.stringify(insresult));
-                    return(JSON.stringify(insresult));
+                    return res.send(JSON.stringify(insresult));
                     //return res.send('ok');
                 })
                 .fail(function(err) {
