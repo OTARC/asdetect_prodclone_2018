@@ -251,8 +251,8 @@ a {
 }
 
 .bar-status {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #ff0000;
+    background-color: #ff0000;
     background-image: none;
     color: #fff;
 }
