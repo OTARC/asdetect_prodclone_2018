@@ -251,15 +251,15 @@ a {
 }
 
 .bar-status {
-    border-color: #fe5815;
-    background-color: #fe5815;
+    border-color: #D34426;
+    background-color: #D34426;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #fe5815;
-    background-color: #fe5815;
+    border-color: #D34426;
+    background-color: #D34426;
     background-image: none;
     color: #fff;
 }
@@ -387,7 +387,7 @@ a {
 }
 
 .status1-bg {
-    background: #fe5815;
+    background: #D34426;
 }
 
 .status2-bg {
