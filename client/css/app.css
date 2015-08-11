@@ -251,15 +251,15 @@ a {
 }
 
 .bar-status {
-    border-color: #ff0000;
-    background-color: #ff0000;
+    border-color: #fe5815;
+    background-color: #fe5815;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #fe5815;
+    background-color: #fe5815;
     background-image: none;
     color: #fff;
 }
@@ -290,7 +290,7 @@ a {
 .button-status1,
 .button-status1:hover,
 .button-status1:active {
-    background-color: #73732E;
+    background-color: #fe5815;
     color: #fff;
 }
 
@@ -387,7 +387,7 @@ a {
 }
 
 .status1-bg {
-    background: #73732E;
+    background: #fe5815;
 }
 
 .status2-bg {

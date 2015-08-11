@@ -21,7 +21,6 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     var id = req.params.id;
     var externalUserId = req.externalUserId;
-
     findById(externalUserId,id)
         .then(function (assessment) {
             console.log(JSON.stringify(assessment));
@@ -77,7 +76,6 @@ function create12mAssessment(req, res, next) {
         .catch(next);
 
 };
-
 
 exports.findById = findById;
 exports.getAll = getAll;
