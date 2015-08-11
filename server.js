@@ -9,18 +9,19 @@ var express = require('express'),
     util = require('util'),
 
     // App modules
-    offers = require('./server/offers'),
-    products = require('./server/products'),
+    //offers = require('./server/offers'),
+    //products = require('./server/products'),
     users = require('./server/users'),
     cases = require('./server/cases'),
-    wallet = require('./server/wallet'),
-    wishlist = require('./server/wishlist'),
-    stores = require('./server/stores'),
-    pictures = require('./server/pictures'),
+    //wallet = require('./server/wallet'),
+    //wishlist = require('./server/wishlist'),
+    //stores = require('./server/stores'),
+    //pictures = require('./server/pictures'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
-    s3signing = require('./server/s3signing'),
-    activities = require('./server/activities'),
+    //s3signing = require('./server/s3signing'),
+    //activities = require('./server/activities'),
+    
     //ASDECTECT
     child=require('./server/child');
     assessment=require('./server/assessment');
@@ -79,14 +80,12 @@ app.post('/cases', auth.validateToken, cases.createCase);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
-// REST to ASDETECT 
+// ASDETECT REST
 app.get('/child', auth.validateToken,child.getAll);
 app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
-
 app.get('/assessment', auth.validateToken, assessment.getAll);
 app.get('/assessment/:id', auth.validateToken, assessment.getById);
-
 app.post('/assessment/12m',auth.validateToken,assessment.create12mAssessment);
 
 
