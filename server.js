@@ -19,7 +19,7 @@ var express = require('express'),
     //pictures = require('./server/pictures'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
-    //s3signing = require('./server/s3signing'),
+    s3signing = require('./server/s3signing'),
     //activities = require('./server/activities'),
     
     //ASDECTECT
