@@ -53,27 +53,27 @@ app.post('/fblogin', facebook.login);
 app.get('/users/me', auth.validateToken, users.getProfile);
 app.put('/users/me', auth.validateToken, users.updateProfile);
 
-app.get('/offers', auth.validateToken, offers.getAll);
-app.get('/offers/:id', offers.getById);
-app.get('/products', auth.validateToken, products.getAll);
-app.get('/products/:id', auth.validateToken, products.getById);
-app.get('/stores', stores.getAll);
+//app.get('/offers', auth.validateToken, offers.getAll);
+//app.get('/offers/:id', offers.getById);
+//app.get('/products', auth.validateToken, products.getAll);
+//app.get('/products/:id', auth.validateToken, products.getById);
+//app.get('/stores', stores.getAll);
 
-app.get('/wallet', auth.validateToken, wallet.getItems);
-app.post('/wallet', auth.validateToken, wallet.addItem);
-app.delete('/wallet/:id', auth.validateToken, wallet.deleteItem);
+//app.get('/wallet', auth.validateToken, wallet.getItems);
+//app.post('/wallet', auth.validateToken, wallet.addItem);
+//app.delete('/wallet/:id', auth.validateToken, wallet.deleteItem);
 
-app.get('/wishlist', auth.validateToken, wishlist.getItems);
-app.post('/wishlist', auth.validateToken, wishlist.addItem);
-app.delete('/wishlist/:id', auth.validateToken, wishlist.deleteItem);
+//app.get('/wishlist', auth.validateToken, wishlist.getItems);
+//app.post('/wishlist', auth.validateToken, wishlist.addItem);
+//app.delete('/wishlist/:id', auth.validateToken, wishlist.deleteItem);
 
-app.get('/pictures', auth.validateToken, pictures.getItems);
-app.post('/pictures', auth.validateToken, pictures.addItem);
-app.delete('/pictures', auth.validateToken, pictures.deleteItems);
+//app.get('/pictures', auth.validateToken, pictures.getItems);
+//app.post('/pictures', auth.validateToken, pictures.addItem);
+//app.delete('/pictures', auth.validateToken, pictures.deleteItems);
 
-app.get('/activities', auth.validateToken, activities.getItems);
-app.post('/activities', auth.validateToken, activities.addItem);
-app.delete('/activities', auth.validateToken, activities.deleteAll);
+//app.get('/activities', auth.validateToken, activities.getItems);
+//app.post('/activities', auth.validateToken, activities.addItem);
+//app.delete('/activities', auth.validateToken, activities.deleteAll);
 
 app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
