@@ -46,7 +46,7 @@
                 </div>
                 <ion-radio name = "pref" ng-repeat="preference in preferences"
                            ng-value="preference.value"
-                           ng-model="user.preference">
+                           ng-model="user.preference__c">
                     {{ preference.text }}
                 </ion-radio>
                 <div class="item item-divider">
@@ -54,7 +54,7 @@
                 </div>
                 <ion-radio name="size" ng-repeat="size in sizes"
                            ng-value="size.value"
-                           ng-model="user.size">
+                           ng-model="user.size__c">
                     {{ size.text }}
                 </ion-radio>
             </form>

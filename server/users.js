@@ -43,7 +43,7 @@ function updateProfile(req, res, next) {
     console.log('updating: ' + JSON.stringify(user));
 
     db.query('update salesforce.asdetect_contact__c SET firstName__c=$1, lastName__c=$2, Preference__c=$3,size__c=$4  WHERE id=$5',
-            [user.firstname, user.lastname, user.preference,user.size, userId])
+            [user.firstname__c, user.lastname__c, user.preference__c,user.size__c, userId])
         .then(function () {
             res.send(user);
         })
