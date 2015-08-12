@@ -76,21 +76,21 @@ function login(req, res, next) {
 
     // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
     // these users don't have passwords
-    if (!creds.password || !validator.isLength(creds.password, 1)) {
+    if (!creds.password__c || !validator.isLength(creds.password__c, 1)) {
         return res.send(401, invalidCredentials);
     }
 
-    db.query('SELECT id, firstName__c as firstName, lastName__c as lastName, email__c as email, loyaltyid__c as externalUserId, password__c AS password FROM salesforce.asdetect_contact__c WHERE email__c=$1', [creds.email], true)
+    db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM salesforce.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
         .then(function (user) {
             if (!user) {
                 return res.send(401, invalidCredentials);
             }
-            comparePassword(creds.password, user.password, function (err, match) {
+            comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {
                     createAccessToken(user)
                         .then(function(token) {
-                            return res.send({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token});
+                            return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
                         })
                         .catch(function(err) {
                             return next(err);    
@@ -137,25 +137,25 @@ function signup(req, res, next) {
 
     console.log(user);
 
-    if (!validator.isEmail(user.email)) {
+    if (!validator.isEmail(user.email__c)) {
         return res.send(400, "Invalid email address");
     }
-    if (!validator.isLength(user.firstName, 1) || !validator.isAlphanumeric(user.firstName)) {
+    if (!validator.isLength(user.firstname__c, 1) || !validator.isAlphanumeric(user.firstname__c)) {
         return res.send(400, "First name must be at least one character");
     }
-    if (!validator.isLength(user.lastName, 1) || !validator.isAlphanumeric(user.lastName)) {
+    if (!validator.isLength(user.lastname__c, 1) || !validator.isAlphanumeric(user.lastname__c)) {
         return res.send(400, "Last name must be at least one character");
     }
-    if (!validator.isLength(user.password, 4)) {
+    if (!validator.isLength(user.password__c, 4)) {
         return res.send(400, "Password must be at least 4 characters");
     }
 
-    db.query('SELECT id FROM salesforce.asdetect_contact__C WHERE email__c=$1', [user.email], true)
+    db.query('SELECT id FROM salesforce.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
                 return next(new Error('Email address already registered'));
             id__c}
-            encryptPassword(user.password, function (err, hash) {
+            encryptPassword(user.password__c, function (err, hash) {
                 if (err) return next(err);
                 createUser(user, hash)
                     .then(function () {
@@ -179,8 +179,8 @@ function createUser(user, password) {
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
 
-    db.query('INSERT INTO salesforce.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstName__c as firstName, lastName__c as lastName, email__c as email, loyaltyid__c as externalUserId',
-        [user.email, password, user.firstName, user.lastName, 'Australia', externalUserId], true)
+    db.query('INSERT INTO salesforce.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
+        [user.email__c, password__c, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
