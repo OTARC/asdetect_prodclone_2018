@@ -78,7 +78,7 @@ app.put('/users/me', auth.validateToken, users.updateProfile);
 app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
 
-//app.post('/s3signing', auth.validateToken, s3signing.sign);
+app.post('/s3signing', auth.validateToken, s3signing.sign);
 
 // ASDETECT REST
 app.get('/child', auth.validateToken,child.getAll);
