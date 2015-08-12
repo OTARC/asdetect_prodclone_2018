@@ -53,7 +53,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $window.localStorage.user = JSON.stringify(data.user);
                         $window.localStorage.token = data.token;
 
-                        console.log('Subscribing for Push as ' + data.user.email);
+                        console.log('Subscribing for Push as ' + data.user.email__c);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
                                 function() {
@@ -183,7 +183,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         $scope.user = {};
 
         $scope.signup = function () {
-            if ($scope.user.password !== $scope.user.password2) {
+            if ($scope.user.password__c !== $scope.user.password2__c) {
                 $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
                 return;
             }
