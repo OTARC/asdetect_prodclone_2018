@@ -21,9 +21,10 @@ says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_
 \d salesforce.mch_child_asdetect__c;
 \d salesforce.asdetect_contact__c;
 \dt salesforce.*;
+\d tokens;
 
-
-
+// tokens ans users
+select t.token,t.created,c.email__c from tokens t,salesforce.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
 
 
 
