@@ -180,8 +180,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         console.log('Logged out');
     })
     .error(function (err) {
-        console.log(JSON.stringify(err));
-        $ionicPopup.alert({title: 'Oops', content: err});
+        console.log(JSON.stringify(err));     
     });
 
     
