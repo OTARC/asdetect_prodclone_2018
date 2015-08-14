@@ -15,15 +15,15 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     return true;
   };
 
-  client.query('SELECT count(*) FROM tokens', function(err, result) {
+  client.query('SELECT count(*) as t FROM tokens', function(err, result) {
     if(handleError(err, client, done)) return;
 
-    if (result.rows.length > 0) {
+    if (result.rows[0].t > 0) {
       sendgrid.send({
           to: 'mburnside@salesforce.com',
-          from: 'app@email.com',
-          subject: 'There are tokens',
-          text: 'You have items to do'
+          from: 'asdetect@email.com',
+          subject: 'Currently '+result.rows[0].t +' Postgres tokens.',
+          text: 'Automated email from sendgrid.'
         }, function(err, json) {
           if (err) {
             console.error(err);
