@@ -94,13 +94,11 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             logout: function () {
                 //$rootScope.user = undefined;
                 //var promise = $http.post($rootScope.server.url + '/logout');
-                console.log('in Auth.logout function');
+                
                 return $http.post($rootScope.server.url + '/logout')
                         .success(function (data) {
+                        console.log('successfully called logout');
                         
-                        //$rootScope.user = undefined;         
-                        //$window.localStorage.removeItem('user');
-                        //$window.localStorage.removeItem('token');
                     });
                 
             },
@@ -174,18 +172,19 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
     })
 
-.controller('LogoutCtrl', function ($rootScope, $window, Auth) {
-    console.log('In LogoutCtrl');
+.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth) {
+    console.log('LogoutCtrl');    
     
-    console.log('calling Auth.logout() ');
-    Auth.logout();
+    Auth.logout()
+    .success(function (data) {
+        console.log('Logged out');
+    })
+    .error(function (err) {
+        console.log(JSON.stringify(err));
+        $ionicPopup.alert({title: 'Oops', content: err});
+    });
 
-
-    //$rootScope.user = null;
-    //$window.localStorage.removeItem('user');
-    //$window.localStorage.removeItem('token');
-
-
+    
 })
 
     .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
