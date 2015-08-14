@@ -92,11 +92,16 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     });
             },
             logout: function () {
-                $rootScope.user = undefined;
-                var promise = $http.post($rootScope.server.url + '/logout');
-                $window.localStorage.removeItem('user');
-                $window.localStorage.removeItem('token');
-                return promise;
+                //$rootScope.user = undefined;
+                //var promise = $http.post($rootScope.server.url + '/logout');
+                return $http.post($rootScope.server.url + '/logout')
+                        .success(function (data) {
+                        
+                        $rootScope.user = undefined;         
+                        $window.localStorage.removeItem('user');
+                        $window.localStorage.removeItem('token');
+                    });
+                
             },
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
@@ -170,9 +175,12 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
 .controller('LogoutCtrl', function ($rootScope, $window, Auth) {
     console.log('In LogoutCtrl');
-    $rootScope.user = null;
-    $window.localStorage.removeItem('user');
-    $window.localStorage.removeItem('token');
+    Auth.logout();
+
+
+    //$rootScope.user = null;
+    //$window.localStorage.removeItem('user');
+    //$window.localStorage.removeItem('token');
 
 
 })
