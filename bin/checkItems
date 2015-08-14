@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var pg = require('pg');
 
 var sendgrid  = require('sendgrid')(
   process.env.SENDGRID_USERNAME,
