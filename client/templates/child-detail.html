@@ -4,17 +4,15 @@
  <ion-nav-buttons side="right">
          <a ui-sref="app.edit-child({childId: child.id})">Edit</a>
     </ion-nav-buttons>
-     <ion-nav-buttons side="left">
-         <a ui-sref="app.12Massessment({childId: child.id})">12M</a>
-    </ion-nav-buttons>
+    
         <div class="list card">
             <div class="item">
-                <h2>{{child.id }}</h2>
+                <h2>ID: {{child.id }}</h2>
                 <p>Child details text!</p>
             </div>
             <div class="item item-body">
-                
-                <p>{{child.childs_initials__c}}</p>
+                 <a ui-sref="app.12Massessment({childId: child.id})">Do Test</a>
+                    <p>{{child.childs_initials__c}}</p>
                     <p>{{child.gender__c}}</p>
                     <p>{{child.birthdate__c}}</p>
                     <p>{{child.child_currently_at_risk__c}}</p>
