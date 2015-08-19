@@ -23,7 +23,7 @@ angular.module('nibs.interaction', [])
             all: function() {
                 return $http.get($rootScope.server.url + '/interactions');
             },
-            create: function(activity) {
+            create: function(interaction) {
                 return $http.post($rootScope.server.url + '/interactions/', interaction);
             },
             deleteAll: function() {
