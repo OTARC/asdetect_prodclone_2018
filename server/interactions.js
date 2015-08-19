@@ -19,6 +19,7 @@ function addItem(req, res, next) {
             db.query('INSERT INTO salesforce.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
                     [userId, interaction.type__c, interaction.description__c], true)
                 .then(function() {
+                    res.send('ok');
                     //res.send({originalBalance: balance, points: interaction.points, newBalance: balance + interaction.points, originalStatus: getStatus(balance), newStatus: getStatus(balance + interaction.points)});
                 console.log('adding interactions: here would be a good place to return something...');
                 })
