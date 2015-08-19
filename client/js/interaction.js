@@ -24,7 +24,7 @@ angular.module('nibs.interaction', [])
                 return $http.get($rootScope.server.url + '/interactions');
             },
             create: function(activity) {
-                return $http.post($rootScope.server.url + '/interactions/', activity);
+                return $http.post($rootScope.server.url + '/interactions/', interaction);
             },
             deleteAll: function() {
                 return $http.delete($rootScope.server.url + '/interactions');
@@ -33,7 +33,7 @@ angular.module('nibs.interaction', [])
     })
 
     //Controllers
-    .controller('InteractionCtrl', function ($scope, $state, Activity) {
+    .controller('InteractionCtrl', function ($scope, $state, Interaction) {
         Activity.all().success(function(interactions) {
             $scope.interactions = interactions
         });

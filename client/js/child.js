@@ -1,4 +1,4 @@
-angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity'])
+angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nib.interaction'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -145,6 +145,13 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity'])
             Child.create($scope.child).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
             });
+
+             Interaction.create({type: "Child Added", decription__c:"Description   "})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
 
        }
     })
