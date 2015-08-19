@@ -39,7 +39,7 @@ angular.module('nibs.interaction', [])
         });
 
         $scope.doRefresh = function() {
-            Activity.all().success(function(interactions) {
+            Interaction.all().success(function(interactions) {
                 $scope.interactions = interactions;
                 $scope.$broadcast('scroll.refreshComplete');
             });

@@ -1,0 +1,28 @@
+<ion-view title="Recent Interactions" hide-back-button="true" class="card-bg recent-activity">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-repeat="interaction in interactions" class="list" style="margin: 0; margin-bottom: -1px">
+            <a class="item item-thumbnail-left" href="#">
+                
+                <h3>{{interaction.name}}</h3>
+                <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.type__c}}</p>
+                  <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.description__c}}</p>
+               
+            </a>
+        </div>
+
+    </ion-content>
+
+    <p ng-if="!loading && interactions.length === 0" class="centered-message">You have no recent interaction</p>
+
+</ion-view>
