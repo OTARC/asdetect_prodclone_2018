@@ -66,7 +66,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
     })
 
 
-    .controller('12MAssessmentCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Status, Child, Assessment, Observation, User) {
+    .controller('12MAssessmentCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Status, Child, Assessment, Observation, User, Interaction) {
         
         console.log('reached 12MAssessmentCtrl');
         $scope.assessment={}
@@ -88,6 +88,14 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             Assessment.create($scope.assessment).success(function(data) {
                 $ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
             })};
+
+             Interaction.create({type__c: "Created a 12M Assessment for Child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular test module"})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
+
 
         
     
