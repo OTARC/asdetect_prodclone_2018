@@ -35,7 +35,7 @@ angular.module('nibs.interaction', [])
     //Controllers
     .controller('InteractionCtrl', function ($scope, $state, Interaction) {
         Interaction.all().success(function(interactions) {
-            $scope.interactions = interactions
+            $scope.interactions = interactions;
         });
 
         $scope.doRefresh = function() {

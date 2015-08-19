@@ -12,12 +12,13 @@ var db = require('./pghelper'),
 function addItem(req, res, next) {
     var userId = req.externalUserId,
         interaction = req.body;
+        
 
     console.log('Adding interaction: ' + JSON.stringify(interaction));
 
 
-            db.query('INSERT INTO salesforce.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
-                    [userId, interaction.type__c, interaction.description__c], true)
+            db.query('INSERT INTO salesforce.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,mch_child_asdetect__r__externalchildid__c) VALUES ($1, $2, $3,$4)',
+                    [userId, interaction.type__c, interaction.description__c,interaction.externalchildid__c], true)
                 .then(function() {
                     res.send('ok');
                     //res.send({originalBalance: balance, points: interaction.points, newBalance: balance + interaction.points, originalStatus: getStatus(balance), newStatus: getStatus(balance + interaction.points)});
