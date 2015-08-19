@@ -146,7 +146,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
                 $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
             });
 
-             Interaction.create({type: "Child Added", decription__c:"Description   "})
+             Interaction.create({type__c: "Child Added", description__c:"from Angular module."})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
