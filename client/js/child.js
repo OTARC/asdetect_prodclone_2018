@@ -132,7 +132,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
     })
 
 
-            .controller('ChildAddCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
+            .controller('ChildAddCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status, Interaction) {
         
         
             
@@ -158,7 +158,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
 
 
-      .controller('ChildDetailCtrl', function ($scope, $window, $rootScope, $stateParams, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status) {
+      .controller('ChildDetailCtrl', function ($scope, $window, $rootScope, $stateParams, $ionicPopup, S3Uploader, Diag, Child, Gender, User, Status, Interaction) {
 
         
         $scope.child = {};
