@@ -42,32 +42,40 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     /*
      * REST Resources
      */
-    .factory('Auth', function ($http, $window, $rootScope) {
+    .factory('Auth', function ($http, $window, ,Interaction) {
 
         return {
             login: function (user) {
                 return $http.post($rootScope.server.url + '/login', user)
-                    .success(function (data) {
-                        
-                        $rootScope.user = data.user;
-                        $window.localStorage.user = JSON.stringify(data.user);
-                        $window.localStorage.token = data.token;
+                .success(function (data) {
 
-                        console.log('Subscribing for Push as ' + data.user.email__c);
-                        if (typeof(ETPush) != "undefined") {
-                            ETPush.setSubscriberKey(
-                                function() {
-                                    console.log('setSubscriberKey: success');
-                                },
-                                function(error) {
-                                    alert('Error setting Push Notification subscriber');
-                                },
-                                data.user.email
-                            );
-                        }
+                    $rootScope.user = data.user;
+                    $window.localStorage.user = JSON.stringify(data.user);
+                    $window.localStorage.token = data.token;
 
+                    console.log('Subscribing for Push as ' + data.user.email__c);
+
+                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+                    .success(function(status) {
+                        console.log('Interaction recorded.');
                     });
-            },
+
+
+
+                    if (typeof(ETPush) != "undefined") {
+                        ETPush.setSubscriberKey(
+                            function() {
+                                console.log('setSubscriberKey: success');
+                            },
+                            function(error) {
+                                alert('Error setting Push Notification subscriber');
+                            },
+                            data.user.email
+                            );
+                    }
+
+                });
+},
             fblogin: function (fbUser) {
                 console.log(JSON.stringify(fbUser));
                 return $http.post($rootScope.server.url + '/fblogin', {user:fbUser, token: $window.localStorage['fbtoken']})
@@ -98,6 +106,12 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 return $http.post($rootScope.server.url + '/logout')
                         .success(function (data) {
                         console.log('successfully called logout');
+
+Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+            .success(function(status) {
+                console.log('Interaction recorded.');
+            });
+
                         
                     });
                 
