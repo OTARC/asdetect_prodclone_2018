@@ -42,7 +42,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     /*
      * ASdetect REST Resources
      */
-    .factory('Auth', function ($http, $window, ,Interaction) {
+    .factory('Auth', function ($http, $window) {
 
         return {
             login: function (user) {
@@ -54,13 +54,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     $window.localStorage.token = data.token;
 
                     console.log('Subscribing for Push as ' + data.user.email__c);
-
-                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-                    .success(function(status) {
-                        console.log('Interaction recorded.');
-                    });
-
-
 
                     if (typeof(ETPush) != "undefined") {
                         ETPush.setSubscriberKey(
@@ -107,10 +100,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         .success(function (data) {
                         console.log('successfully called logout');
 
-Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-            .success(function(status) {
-                console.log('Interaction recorded.');
-            });
+
 
                         
                     });
