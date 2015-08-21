@@ -105,8 +105,13 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
     //Controllers
     .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, User, Interaction) {
+        
         Child.all().success(function(children) {
             $scope.children = children;
+
+console.log('in child list ctrl');
+
+
         });
 
         
@@ -172,6 +177,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
         Child.get($stateParams.childId).success(function(child) {
             
             $scope.child = child;
+
 
         });
 
