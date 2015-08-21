@@ -108,15 +108,13 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
         Child.all().success(function(children) {
             $scope.children = children;
         });
-Interaction.create({type__c: "Listed Children", description__c:"Called from Angular module nibs.child",externalchildid__c:""})
-            .success(function(status) {
-                console.log('Interaction recorded.');
-            });
+
+        
        
     })
 
 
-      .controller('ChildEditCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status) {
+      .controller('ChildEditCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Child, Diag, Gender,User, Status, Interaction) {
         
         Child.get($stateParams.childId).success(function(child) {
             
@@ -147,8 +145,6 @@ Interaction.create({type__c: "Listed Children", description__c:"Called from Angu
         $scope.submit = function () {
             Child.create($scope.child).success(function() {
 
-
-
              Interaction.create({type__c: "Added a child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
                 .success(function(status) {
                     console.log('Interaction recorded.');
@@ -174,18 +170,10 @@ Interaction.create({type__c: "Listed Children", description__c:"Called from Angu
         $scope.child = {};
 
         Child.get($stateParams.childId).success(function(child) {
-            console.log("about to call interaction");
+            
             $scope.child = child;
-Interaction.create({type__c: "Viewed child details:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
-                .success(function(status) {
-                    console.log('Interaction recorded.');
-                });
-
-
-
 
         });
-
 
 
 
