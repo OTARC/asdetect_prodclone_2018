@@ -6,12 +6,13 @@ var db = require('./pghelper'),
 function findById(id) {
     // Retrieve offer either by Salesforce id or Postgress id
     //TODO tighten this up to show only a child of this user (refer getAll)
-    return db.query('select id,sfId,childs_initials__c,birthdate__c,gender__c ,child_currently_at_risk__c ,child__c ,externalchildid__c  from salesforce.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    //
+    return db.query('select id,sfId,childs_initials__c,birthdate__c,gender__c ,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c  from salesforce.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
 };
 
 function getAll(req, res, next) { 
     var externalUserId = req.externalUserId;
-    db.query("select id,sfId,childs_initials__c,birthdate__c,gender__c,child_currently_at_risk__c ,child__c ,externalchildid__c from salesforce.mch_child_Asdetect__c where asdetect_contact__c__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
+    db.query("select id,sfId,childs_initials__c,birthdate__c,gender__c,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c from salesforce.mch_child_Asdetect__c where asdetect_contact__c__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
         .then(function (child) {
             return res.send(JSON.stringify(child));
         })
