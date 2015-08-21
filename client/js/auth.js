@@ -1,4 +1,4 @@
-angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
+angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
     /*
      * Routes
@@ -42,7 +42,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
     /*
      * REST Resources
      */
-    .factory('Auth', function ($http, $window) {
+    .factory('Auth', function ($http, $window, ,Interaction) {
 
         return {
             login: function (user) {
@@ -54,6 +54,11 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
                     $window.localStorage.token = data.token;
 
                     console.log('Subscribing for Push as ' + data.user.email__c);
+
+                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+                    .success(function(status) {
+                        console.log('Interaction recorded.');
+                    });
 
 
 
@@ -102,7 +107,10 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
                         .success(function (data) {
                         console.log('successfully called logout');
 
-
+Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+            .success(function(status) {
+                console.log('Interaction recorded.');
+            });
 
                         
                     });
@@ -117,7 +125,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
     /*
      * Controllers
      */
-    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, Interaction, OpenFB) {
+    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
 
         $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
             scope: $scope,
@@ -178,8 +186,9 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
 
     })
 
-.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth, Interaction) {
+.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth) {
     console.log('LogoutCtrl');    
+    
     Auth.logout()
     .success(function (data) {
         console.log('Logged out');
