@@ -174,6 +174,7 @@ Interaction.create({type__c: "Listed Children", description__c:"Called from Angu
         $scope.child = {};
 
         Child.get($stateParams.childId).success(function(child) {
+            console.log("about to call interaction");
             $scope.child = child;
 Interaction.create({type__c: "Viewed child details:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
                 .success(function(status) {
