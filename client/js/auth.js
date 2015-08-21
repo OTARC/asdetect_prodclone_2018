@@ -1,4 +1,4 @@
-angular.module('nibs.auth', ['openfb', 'nibs.config'])
+angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
 
     /*
      * Routes
@@ -42,7 +42,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     /*
      * REST Resources
      */
-    .factory('Auth', function ($http, $window, Interaction) {
+    .factory('Auth', function ($http, $window) {
 
         return {
             login: function (user) {
@@ -54,11 +54,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     $window.localStorage.token = data.token;
 
                     console.log('Subscribing for Push as ' + data.user.email__c);
-
-                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-                    .success(function(status) {
-                        console.log('Interaction recorded.');
-                    });
 
 
 
@@ -107,10 +102,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         .success(function (data) {
                         console.log('successfully called logout');
 
-Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-            .success(function(status) {
-                console.log('Interaction recorded.');
-            });
+
 
                         
                     });
@@ -125,7 +117,7 @@ Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular
     /*
      * Controllers
      */
-    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
+    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, Interaction, OpenFB) {
 
         $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
             scope: $scope,
@@ -150,6 +142,16 @@ Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular
 
             Auth.login($scope.user)
                 .success(function (data) {
+
+
+                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+                    .success(function(status) {
+                        console.log('Interaction recorded.');
+                    });
+
+
+
+
                     $state.go("app.profile");
                 })
                 .error(function (err) {
@@ -186,10 +188,12 @@ Interaction.create({type__c: "Logged out  ", description__c:"Called from Angular
 
     })
 
-.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth) {
+.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth, Interaction) {
     console.log('LogoutCtrl');    
-    
-    Auth.logout()
+    Interaction.create({type__c: "Logging out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
+            .success(function(status) {
+                console.log('Interaction recorded.');
+            });    Auth.logout()
     .success(function (data) {
         console.log('Logged out');
     })
