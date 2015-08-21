@@ -153,8 +153,8 @@ function signup(req, res, next) {
     db.query('SELECT id FROM salesforce.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
-                return next(new Error('Email address already registered'));
-            id__c}
+                return res.send(400, "Email address is alreadt registered");
+            }
             encryptPassword(user.password__c, function (err, hash) {
                 if (err) return next(err);
                 createUser(user, hash)
