@@ -22,7 +22,7 @@ function addItem(req, res, next) {
                 .then(function() {
                     res.send('ok');
                     //res.send({originalBalance: balance, points: interaction.points, newBalance: balance + interaction.points, originalStatus: getStatus(balance), newStatus: getStatus(balance + interaction.points)});
-                console.log('adding interactions: here would be a good place to return something...');
+                console.log('adding interaction: here would be a good place to return something...');
                 })
                 .catch(next);
        
