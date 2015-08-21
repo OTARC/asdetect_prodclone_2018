@@ -109,9 +109,6 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
         Child.all().success(function(children) {
             $scope.children = children;
 
-console.log('in child list ctrl');
-
-
         });
 
         
