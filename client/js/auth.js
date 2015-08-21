@@ -186,20 +186,23 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     
 })
 
-    .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
+.controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
 
-        $scope.user = {};
+    $scope.user = {};
 
-        $scope.signup = function () {
-            if ($scope.user.password__c !== $scope.user.password2__c) {
-                $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
-                return;
-            }
-            Auth.signup($scope.user)
-                .success(function (data) {
-                    $state.go("app.login");
-                });
-        };
+    $scope.signup = function () {
+        if ($scope.user.password__c !== $scope.user.password2__c) {
+            $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
+            return;
+        }
+        Auth.signup($scope.user)
+        .success(function (data) {
+            $state.go("app.login");
+        })
+        .error(function (err) {
+            $ionicPopup.alert({title: 'Oops', content: err});
+        })
+    };
 
         $scope.facebookLogin = function () {
 
