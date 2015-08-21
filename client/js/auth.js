@@ -40,35 +40,33 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     })
 
     /*
-     * ASdetect REST Resources
+     * REST Resources
      */
     .factory('Auth', function ($http, $window, $rootScope) {
 
         return {
             login: function (user) {
                 return $http.post($rootScope.server.url + '/login', user)
-                .success(function (data) {
+                    .success(function (data) {
+                        $rootScope.user = data.user;
+                        $window.localStorage.user = JSON.stringify(data.user);
+                        $window.localStorage.token = data.token;
 
-                    $rootScope.user = data.user;
-                    $window.localStorage.user = JSON.stringify(data.user);
-                    $window.localStorage.token = data.token;
-
-                    console.log('Subscribing for Push as ' + data.user.email__c);
-
-                    if (typeof(ETPush) != "undefined") {
-                        ETPush.setSubscriberKey(
-                            function() {
-                                console.log('setSubscriberKey: success');
-                            },
-                            function(error) {
-                                alert('Error setting Push Notification subscriber');
-                            },
-                            data.user.email
+                        console.log('Subscribing for Push as ' + data.user.email);
+                        if (typeof(ETPush) != "undefined") {
+                            ETPush.setSubscriberKey(
+                                function() {
+                                    console.log('setSubscriberKey: success');
+                                },
+                                function(error) {
+                                    alert('Error setting Push Notification subscriber');
+                                },
+                                data.user.email
                             );
-                    }
+                        }
 
-                });
-},
+                    });
+            },
             fblogin: function (fbUser) {
                 console.log(JSON.stringify(fbUser));
                 return $http.post($rootScope.server.url + '/fblogin', {user:fbUser, token: $window.localStorage['fbtoken']})
@@ -93,18 +91,11 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     });
             },
             logout: function () {
-                //$rootScope.user = undefined;
-                //var promise = $http.post($rootScope.server.url + '/logout');
-                
-                return $http.post($rootScope.server.url + '/logout')
-                        .success(function (data) {
-                        console.log('successfully called logout');
-
-
-
-                        
-                    });
-                
+                $rootScope.user = undefined;
+                var promise = $http.post($rootScope.server.url + '/logout');
+                $window.localStorage.removeItem('user');
+                $window.localStorage.removeItem('token');
+                return promise;
             },
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
@@ -149,7 +140,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $scope.facebookLogin = function () {
 
-            OpenFB.login('email,read_stream,publish_stream').then(
+            OpenFB.login('email, publish_actions').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
                         .success(function (fbUser) {
@@ -176,41 +167,32 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
     })
 
-.controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth) {
-    console.log('LogoutCtrl');    
-    
-    Auth.logout()
-    .success(function (data) {
-        console.log('Logged out');
+    .controller('LogoutCtrl', function ($rootScope, $window) {
+        console.log("Logout");
+        $rootScope.user = null;
+        $window.localStorage.removeItem('user');
+        $window.localStorage.removeItem('token');
+
     })
-    .error(function (err) {
-        console.log(JSON.stringify(err));     
-    });
 
-    
-})
+    .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
 
-.controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
+        $scope.user = {};
 
-    $scope.user = {};
-
-    $scope.signup = function () {
-        if ($scope.user.password__c !== $scope.user.password2__c) {
-            $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
-            return;
-        }
-        Auth.signup($scope.user)
-        .success(function (data) {
-            $state.go("app.login");
-        })
-        .error(function (err) {
-            $ionicPopup.alert({title: 'Oops', content: err});
-        })
-    };
+        $scope.signup = function () {
+            if ($scope.user.password !== $scope.user.password2) {
+                $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
+                return;
+            }
+            Auth.signup($scope.user)
+                .success(function (data) {
+                    $state.go("app.login");
+                });
+        };
 
         $scope.facebookLogin = function () {
 
-            OpenFB.login('email,read_stream,publish_stream').then(
+            OpenFB.login('email, publish_actions').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
                         .success(function (fbUser) {
