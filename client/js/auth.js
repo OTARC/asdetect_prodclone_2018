@@ -42,7 +42,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     /*
      * ASdetect REST Resources
      */
-    .factory('Auth', function ($http, $window) {
+    .factory('Auth', function ($http, $window, $rootScope) {
 
         return {
             login: function (user) {
