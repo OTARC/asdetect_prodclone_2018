@@ -104,11 +104,14 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
     })
 
     //Controllers
-    .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, User) {
+    .controller('ChildListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Child, User, Interaction) {
         Child.all().success(function(children) {
             $scope.children = children;
         });
-
+Interaction.create({type__c: "Listed Children", description__c:"Called from Angular module nibs.child",externalchildid__c:""})
+            .success(function(status) {
+                console.log('Interaction recorded.');
+            });
        
     })
 
@@ -143,13 +146,20 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
         $scope.submit = function () {
             Child.create($scope.child).success(function() {
-                $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
-            });
 
-             Interaction.create({type__c: "Added a child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular test module",externalchildid__c:$scope.child.externalchildid__c})
+
+
+             Interaction.create({type__c: "Added a child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+
+                $ionicPopup.alert({title: 'Thank You', content: 'Child record created.'});
+
+
+
+            });
+
 
 
 
@@ -165,7 +175,18 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
         Child.get($stateParams.childId).success(function(child) {
             $scope.child = child;
+Interaction.create({type__c: "Viewed child details:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
+
+
         });
+
+
+
 
     })
 

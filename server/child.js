@@ -4,7 +4,7 @@ var db = require('./pghelper'),
 
 
 function findById(id) {
-    // Retrieve offer either by Salesforce id or Postgress id
+    // Retrieve offer either by Salesforce id or Postgres id
     //TODO tighten this up to show only a child of this user (refer getAll)
     //
     return db.query('select id,sfId,childs_initials__c,birthdate__c,gender__c ,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c  from salesforce.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);

@@ -142,16 +142,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
 
             Auth.login($scope.user)
                 .success(function (data) {
-
-
-                    Interaction.create({type__c: "Logged in  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-                    .success(function(status) {
-                        console.log('Interaction recorded.');
-                    });
-
-
-
-
                     $state.go("app.profile");
                 })
                 .error(function (err) {
@@ -190,10 +180,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config','nibs.interaction'])
 
 .controller('LogoutCtrl', function ($rootScope, $window, $ionicViewService, $ionicPopup, Auth, Interaction) {
     console.log('LogoutCtrl');    
-    Interaction.create({type__c: "Logging out  ", description__c:"Called from Angular module nibs.auth",externalchildid__c:""})
-            .success(function(status) {
-                console.log('Interaction recorded.');
-            });    Auth.logout()
+    Auth.logout()
     .success(function (data) {
         console.log('Logged out');
     })
