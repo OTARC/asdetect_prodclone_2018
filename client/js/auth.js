@@ -106,7 +106,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     /*
      * Controllers
      */
-    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
+    .controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, Interaction, OpenFB) {
 
         $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
             scope: $scope,
