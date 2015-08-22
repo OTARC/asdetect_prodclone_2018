@@ -131,6 +131,17 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
             Auth.login($scope.user)
                 .success(function (data) {
+
+
+
+             Interaction.create({type__c: "Logged in", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
+
+
                     $state.go("app.profile");
                 })
                 .error(function (err) {
