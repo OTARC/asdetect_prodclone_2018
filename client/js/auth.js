@@ -192,16 +192,13 @@ return $http.post($rootScope.server.url + '/logout')
 .controller('LogoutCtrl', function ($scope, $rootScope, $window, Auth, Interaction) {
 
 
- Auth.logout()
- .success(function (data) {
-
-
-
    Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
    .success(function(status) {
     console.log('Interaction recorded.');
 });
 
+ Auth.logout()
+ .success(function (data) {
 
    $rootScope.user = null;
    $window.localStorage.removeItem('user');
