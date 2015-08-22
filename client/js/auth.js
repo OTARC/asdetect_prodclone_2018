@@ -91,11 +91,22 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
                     });
             },
             logout: function () {
-                $rootScope.user = undefined;
-                var promise = $http.post($rootScope.server.url + '/logout');
-                $window.localStorage.removeItem('user');
-                $window.localStorage.removeItem('token');
-                return promise;
+                
+return $http.post($rootScope.server.url + '/logout', user)
+                    .success(function (data) {
+                        
+                        console.log('logged out');
+                       
+
+                    });
+
+
+
+                //$rootScope.user = undefined;
+                //var promise = $http.post($rootScope.server.url + '/logout');
+                //$window.localStorage.removeItem('user');
+                //$window.localStorage.removeItem('token');
+                //return promise;
             },
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
@@ -178,13 +189,33 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
 
     })
 
-    .controller('LogoutCtrl', function ($rootScope, $window) {
-        console.log("Logout");
-        $rootScope.user = null;
-        $window.localStorage.removeItem('user');
-        $window.localStorage.removeItem('token');
+.controller('LogoutCtrl', function ($rootScope, $window) {
 
-    })
+
+ Auth.logout($scope.user)
+ .success(function (data) {
+
+
+
+   Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+   .success(function(status) {
+    console.log('Interaction recorded.');
+});
+
+
+   $rootScope.user = null;
+   $window.localStorage.removeItem('user');
+   $window.localStorage.removeItem('token');
+
+
+})
+ .error(function (err) {
+    console.log('Error logging out');
+});
+
+
+
+})
 
     .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
 
