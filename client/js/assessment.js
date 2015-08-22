@@ -87,12 +87,17 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         $scope.update = function () {
             Assessment.create($scope.assessment).success(function(data) {
                 $ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
-            })};
 
-             Interaction.create({type__c: "Created a 12M Assessment for Child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular test module",externalchildid__c:$scope.assessment.externalchildid__c})
+ Interaction.create({type__c: "Created a 12M Assessment for Child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular test module",externalchildid__c:$scope.assessment.externalchildid__c})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+
+
+                
+            })};
+
+            
 
 
 
