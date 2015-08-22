@@ -92,7 +92,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
             },
             logout: function () {
                 
-return $http.post($rootScope.server.url + '/logout', user)
+return $http.post($rootScope.server.url + '/logout')
                     .success(function (data) {
                         
                         console.log('logged out');
@@ -192,7 +192,7 @@ return $http.post($rootScope.server.url + '/logout', user)
 .controller('LogoutCtrl', function ($scope, $rootScope, $window, Auth, Interaction) {
 
 
- Auth.logout($scope.user)
+ Auth.logout()
  .success(function (data) {
 
 
