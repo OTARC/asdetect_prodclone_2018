@@ -189,7 +189,7 @@ return $http.post($rootScope.server.url + '/logout', user)
 
     })
 
-.controller('LogoutCtrl', function ($rootScope, $window) {
+.controller('LogoutCtrl', function ($rootScope, $window, Interaction) {
 
 
  Auth.logout($scope.user)
