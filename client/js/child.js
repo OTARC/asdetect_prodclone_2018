@@ -146,8 +146,9 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
         $scope.submit = function () {
             Child.create($scope.child).success(function() {
-
-             Interaction.create({type__c: "Added a child:  " + $scope.child.childs_initials__c, description__c:"Called from Angular nibs.child",externalchildid__c:$scope.child.externalchildid__c})
+var initials=$scope.child.childs_initials__c;
+                var extid=$scope.child.externalchildid__c;
+             Interaction.create({type__c: "Added a child:  " + initials, description__c:"Called from Angular child module",externalchildid__c:initials})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
