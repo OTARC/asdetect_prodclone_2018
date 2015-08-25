@@ -100,11 +100,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
             })};
 
-            
-
-
-
-
+      
         
     
 })
