@@ -47,7 +47,8 @@ function addChild(req, res, next) {
             db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1, $2, $3, $4,$5,$6)', [externalUserId, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
 
                 .then(function () {
-                    return res.send('ok');
+                    return res.send({'externalchildid__c':externalchildid__c});
+                    //return res.send('ok');
                 })
                 .fail(function(err) {
                     return next(err);
