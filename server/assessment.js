@@ -58,9 +58,14 @@ function create12mAssessment(req, res, next) {
         (imitation__c==null)||
         (responds_to_name__c==null)||
         (social_smile__c==null) ||
-        (conversational_babble__c==null)
-        
-        
+        (conversational_babble__c==null)||
+    
+        (says_1_3_clear_words__c==null)||
+        (understands_obeys_simple_instructions__c==null)||
+        (attending_to_sounds__c==null)
+
+
+
         
         ) {
         return res.send(400, missingAssessmentInformation);
