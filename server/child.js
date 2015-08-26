@@ -1,6 +1,6 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-    missingChildInformation ='Missing Child Information',
+    missingChildInformation ='One or more missing mandatory fields for Child: birthdate__c, gender__c, childs_initials__c ',
     util=require('util');
 
 
