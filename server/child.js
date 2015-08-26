@@ -41,7 +41,7 @@ function addChild(req, res, next) {
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c;  
 
-    if ((birthdate__c==null) || (birthdate__c=='') || (childs_initials__c==null) ||(childs_initials__c=='')||(gender__c==null)||(gender__c=='')) {
+    if ((birthdate__c==null) || (childs_initials__c==null) ||(gender__c==null))) {
         return res.send(400, missingChildInformation);
     }
 
