@@ -53,7 +53,10 @@ function create12mAssessment(req, res, next) {
 //basic error checking
 
     if ((consultation_date__c==null) || 
-        (pointing__c==null)
+        (pointing__c==null)||(does_child_make_eye_contact_with_you__c==null)  || 
+        (waves_bye_bye__c==null) || 
+        (imitation__c==null)
+        
         
         ) {
         return res.send(400, missingAssessmentInformation);
