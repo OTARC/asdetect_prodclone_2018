@@ -1,5 +1,6 @@
 var db = require('./pghelper'),
  config = require('./config'),
+ missingAssessmentInformation='One or more mandatory fields on Assessment is missing.',
  winston = require('winston');
 
 
@@ -46,6 +47,25 @@ function create12mAssessment(req, res, next) {
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
     
+//basic error checking
+
+    if ((consultation_date__c==null) || 
+        (externalchildid__c==null)|| 
+        (pointing__c==null) ||
+        (does_child_make_eye_contact_with_you__c==null)  || 
+        (waves_bye_bye__c==null) || 
+        (imitation__c==null) ||
+        (responds_to_name__c==null)||
+        (social_smile__c==null) ||
+        (conversational_babble__c==null) ||
+        (says_1_3_clear_words__c==null)||
+        (understands_obeys_simple_instructions__c==null)||
+        (attending_to_sounds__c==null)
+        ) {
+        return res.send(400, missingAssessmentInformation);
+}
+
+
     //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
     var recordtypeid=config.asdetect.recordType12M;
 
