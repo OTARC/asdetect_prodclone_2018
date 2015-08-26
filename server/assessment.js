@@ -1,6 +1,6 @@
 var db = require('./pghelper'),
  config = require('./config'),
-    winston = require('winston');
+ winston = require('winston');
 
 
 function findById(externalUserId,id) {
@@ -45,7 +45,6 @@ function create12mAssessment(req, res, next) {
     says_1_3_clear_words__c=req.body.says_1_3_clear_words__c, 
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
-
     
     //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
     var recordtypeid=config.asdetect.recordType12M;

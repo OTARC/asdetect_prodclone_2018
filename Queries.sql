@@ -9,7 +9,15 @@ select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.rec
 from salesforce.consultation_asdetect__c c,salesforce.mch_child_asdetect__c m where
 c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.asdetect_contact__c__loyaltyid__c!= '';
 
+select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c, c.mch_child_asdetect__c ,c.at_risk__c,c.age_at_time_of_assessment_years_months__c
+from salesforce.consultation_asdetect__c c,salesforce.mch_child_asdetect__c m where
+c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.externalchildid__c='idqsxzc7';
 
+
+select * from salesforce.mch_child_asdetect__c where externalchildid__c='idqsxzc7';
+
+
+select externalchildid__c from mch_child_asdetect__c;
 
 insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, 
 waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,

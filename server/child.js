@@ -1,5 +1,6 @@
 var db = require('./pghelper'),
     winston = require('winston'),
+    missingChildInformation ='Missing Child Information',
     util=require('util');
 
 
@@ -38,7 +39,11 @@ function addChild(req, res, next) {
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,
     diagnosis__c=req.body.diagnosis__c,
-    gender__c=req.body.gender__c;    
+    gender__c=req.body.gender__c;  
+
+    if ((birthdate__c==null) || (childs_initials__c==null) ||(gender__c==null)) {
+        return res.send(400, missingChildInformation);
+    }
 
     externalchildid__c = (+new Date()).toString(36); // TODO: more robust UID logic
 
