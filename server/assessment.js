@@ -47,6 +47,9 @@ function create12mAssessment(req, res, next) {
     understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
     attending_to_sounds__c=req.body.attending_to_sounds__c;
     
+console.log(JSON.stringify(req));
+
+
 //basic error checking
 
     if ((consultation_date__c==null) || 
