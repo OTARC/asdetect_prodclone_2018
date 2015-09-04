@@ -1,0 +1,156 @@
+<ion-view title="12 Month Assessment" class="card-bg">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="update()">Submit</button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" has-padding="true">
+
+        <div class="padding" style="padding-bottom: 0">
+            <div class="button-bar">
+                <a class="button button-small" ng-click="panel=1">Info</a>               
+            </div>
+        </div>
+
+        <div ng-if="panel===1">
+         
+
+
+            <form class="list list-inset" style="clear: both;margin-top: 0">
+
+            <label class="item item-input">
+                    <span class="input-label">Consultation Date</span>
+                    <input type="date" ng-model="assessment.consultation_date__c" />
+            </label>
+                
+                <div class="item item-divider">
+                    Pointing
+                </div>
+                <ion-radio name = "pointing" ng-repeat="ob1 in observations"
+                           ng-value="ob1.value"
+                           ng-model="assessment.pointing__c">
+                    {{ ob1.text }}
+                </ion-radio>
+
+                <div class="item item-divider">
+                    Eye Contact
+                </div>         
+                <ion-radio name = "eyecontact" ng-repeat="ob2 in observations"
+                           ng-value="ob2.value"
+                           ng-model="assessment.does_child_make_eye_contact_with_you__c">
+                    {{ ob2.text }}
+                </ion-radio>
+                
+                 <div class="item item-divider">
+                    Waves Bye Bye
+                </div>
+                <ion-radio name = "waves" ng-repeat="ob3 in observations"
+                           ng-value="ob3.value"
+                           ng-model="assessment.waves_bye_bye__c">
+                    {{ ob3.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Imitation
+                </div>
+                <ion-radio name = "imitation" ng-repeat="ob4 in observations"
+                           ng-value="ob4.value"
+                           ng-model="assessment.imitation__c">
+                    {{ ob4.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Responds to Name
+                </div>
+                <ion-radio name = "responds" ng-repeat="ob5 in observations"
+                           ng-value="ob5.value"
+                           ng-model="assessment.responds_to_name__c">
+                    {{ ob5.text }}
+                </ion-radio>
+                 <div class="item item-divider">
+                    Social Smile
+                </div>
+                <ion-radio name = "socialsmile" ng-repeat="ob6 in observations"
+                           ng-value="ob6.value"
+                           ng-model="assessment.social_smile__c">
+                    {{ ob6.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    Conversational Babble
+                </div>
+                  <div class="item item-divider">
+                    Understands/Obeys Simple Instructions
+                </div>
+                <ion-radio name = "undertands" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.understands_obeys_simple_instructions__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                <div class="item item-divider">
+                    Sharing
+                </div>
+                <ion-radio name = "sharing" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.sharing__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    Pretend Play
+                </div>
+                <ion-radio name = "pretendplay" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.pretend_play__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                  <div class="item item-divider">
+                    Follows Point
+                </div>
+                <ion-radio name = "followspoint" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.follows_point__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                /ion-radio>
+                  <div class="item item-divider">
+                    Uses5-10Words
+                </div>
+                <ion-radio name = "uses510words" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.uses_5_10_words__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                     <div class="item item-divider">
+                    Understands Words
+                </div>
+                <ion-radio name = "understandswords" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.understands_words__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                       <div class="item item-divider">
+                    Points to Facial Features
+                </div>
+                <ion-radio name = "pointstofacialf" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.points_to_facial_features__c">
+                    {{ ob9.text }}
+                </ion-radio>
+                        <div class="item item-divider">
+                    Loss of Skills
+                </div>
+                <ion-radio name = "lossofskills" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.ploss_of_skills__c">
+                    {{ ob9.text }}
+                </ion-radio>
+
+                    
+              
+
+                
+                
+                
+            </form>
+        </div>
+
+        
+
+    </ion-content>

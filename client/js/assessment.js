@@ -23,6 +23,16 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                         controller: "12MAssessmentCtrl"
                     }
                 }
+            }) 
+
+             .state('app.18Massessment', {
+                url: "/do18mAssessment/:childId",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/do-18m-assessment.html",
+                        controller: "18MAssessmentCtrl"
+                    }
+                }
             })            
 
     })
@@ -87,6 +97,45 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         $scope.update = function () {
             Assessment.create($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
+                console.log('scope.child is:'+JSON.stringify($scope.child));
+                var initials=$scope.child.childs_initials__c;
+                var extid=$scope.child.externalchildid__c;
+
+                Interaction.create({type__c: 'Created a 12M Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
+
+            })};
+
+      
+        
+    
+})
+
+  .controller('18MAssessmentCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Status, Child, Assessment, Observation, User, Interaction) {
+        
+        console.log('reached 18MAssessmentCtrl');
+        $scope.assessment={}
+        $scope.child = {};
+        $scope.observations = Observation.all();
+        $scope.panel = 1;
+        
+
+        Child.get($stateParams.childId).success(function(child) {
+            $scope.child = child;
+            console.log('in 18M --'+ JSON.stringify(child) +'--');
+            $scope.assessment.externalchildid__c=child.externalchildid__c;
+            console.log('scope.assessment='+JSON.stringify($scope.assessment));
+        
+        });
+
+
+        $scope.update = function () {
+            Assessment.create($scope.assessment).success(function() {
+                $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
