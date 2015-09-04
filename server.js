@@ -88,6 +88,7 @@ app.post('/child', auth.validateToken,child.addChild);
 app.get('/assessment', auth.validateToken, assessment.getAll);
 app.get('/assessment/:id', auth.validateToken, assessment.getById);
 app.post('/assessment/12m',auth.validateToken,assessment.create12mAssessment);
+app.post('/assessment/18m',auth.validateToken,assessment.create18mAssessment);
 app.get('/interactions', auth.validateToken, interactions.getItems);
 app.post('/interactions', auth.validateToken, interactions.addItem);
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);

@@ -40,6 +40,8 @@ select t.token,t.created,c.email__c,now()-created as tokenAge from tokens t,sale
 //delete old tokens
 DELETE FROM tokens WHERE created < now() - interval '10  minute'; 
 
+select * FROM tokens WHERE created < now() - interval '10  minute'; 
+
  sfid                                      | character varying(18)       | 
  _hc_err                                   | text                        | 
  name                                      | character varying(80)       | 
