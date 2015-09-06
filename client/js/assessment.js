@@ -45,8 +45,11 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             all: function() {
                 return $http.get($rootScope.server.url + '/assessment');
             },
-            create: function(assessmentItem) {
+            create12m: function(assessmentItem) {
                 return $http.post($rootScope.server.url + '/assessment/12m',assessmentItem);
+            },
+            create18m: function(assessmentItem) {
+                return $http.post($rootScope.server.url + '/assessment/18m',assessmentItem);
             }
         };
     })
@@ -95,7 +98,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
         $scope.update = function () {
-            Assessment.create($scope.assessment).success(function() {
+            Assessment.create12m($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 var initials=$scope.child.childs_initials__c;
@@ -134,7 +137,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
         $scope.update18m = function () {
-            Assessment.create($scope.assessment).success(function() {
+            Assessment.create18m($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 var initials=$scope.child.childs_initials__c;
