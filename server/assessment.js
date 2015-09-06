@@ -138,7 +138,7 @@ function create18mAssessment(req, res, next) {
         (loss_of_skills__c==null)
         
         ) {
-        //return res.send(400, missingAssessmentInformation);
+        return res.send(400, missingAssessmentInformation);
 }
 
 

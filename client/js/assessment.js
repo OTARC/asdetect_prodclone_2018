@@ -133,7 +133,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         });
 
 
-        $scope.update = function () {
+        $scope.update18m = function () {
             Assessment.create($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
