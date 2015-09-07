@@ -1,0 +1,239 @@
+<ion-view title="35Y Assessment" class="card-bg">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="update35y()">Submit</button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" has-padding="true">
+
+        <div class="padding" style="padding-bottom: 0">
+            <div class="button-bar">
+                <a class="button button-small" ng-click="panel=1">Info</a>               
+            </div>
+        </div>
+
+        <div ng-if="panel===1">
+         
+
+
+            <form class="list list-inset" style="clear: both;margin-top: 0">
+
+            <label class="item item-input">
+                    <span class="input-label">Consultation Date</span>
+                    <input type="date" ng-model="assessment.consultation_date__c" />
+            </label>
+                
+                <div class="item item-divider">
+                    Pointing
+                </div>
+                <ion-radio name = "pointing" ng-repeat="ob1 in observations"
+                           ng-value="ob1.value"
+                           ng-model="assessment.pointing__c">
+                    {{ ob1.text }}
+                </ion-radio>
+
+                <div class="item item-divider">
+                    Eye Contact
+                </div>         
+                <ion-radio name = "eyecontact" ng-repeat="ob2 in observations"
+                           ng-value="ob2.value"
+                           ng-model="assessment.does_child_make_eye_contact_with_you__c">
+                    {{ ob2.text }}
+                </ion-radio>
+                
+                
+                
+                 <div class="item item-divider">
+                    Responds to Name
+                </div>
+                <ion-radio name = "responds" ng-repeat="ob3 in observations"
+                           ng-value="ob3.value"
+                           ng-model="assessment.responds_to_name__c">
+                    {{ ob3.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Social Smile
+                </div>
+                <ion-radio name = "socialsmile" ng-repeat="ob4 in observations"
+                           ng-value="ob4.value"
+                           ng-model="assessment.social_smile__c">
+                    {{ ob4.text }}
+                </ion-radio>
+
+                  
+                
+                <div class="item item-divider">
+                    Showing
+                </div>
+                <ion-radio name = "showing" ng-repeat="ob5 in observations"
+                           ng-value="ob5.value"
+                           ng-model="assessment.showing__c">
+                    {{ ob5.text }}
+                </ion-radio>
+
+                  <div class="item item-divider">
+                    Pretend Play
+                </div>
+                <ion-radio name = "pretendplay" ng-repeat="ob6 in observations"
+                           ng-value="ob6.value"
+                           ng-model="assessment.pretend_play__c">
+                    {{ ob6.text }}
+                </ion-radio>
+
+
+                  <div class="item item-divider">
+                    Follows Point
+                </div>
+                <ion-radio name = "followspoint" ng-repeat="ob7 in observations"
+                           ng-value="ob7.value"
+                           ng-model="assessment.follows_point__c">
+                    {{ ob7.text }}
+                </ion-radio>
+
+                
+                
+                <div class="item item-divider">
+                    Loss of Skills
+                </div>
+                <ion-radio name = "lossofskills" ng-repeat="ob8 in observations"
+                           ng-value="ob8.value"
+                           ng-model="assessment.loss_of_skills__c">
+                    {{ ob8.text }}
+                </ion-radio>
+
+
+                <div class="item item-divider">
+                    follows two unrelated commands
+                </div>
+                <ion-radio name = "follows_two_unrelated_commands__c" ng-repeat="ob9 in observations"
+                           ng-value="ob9.value"
+                           ng-model="assessment.follows_two_unrelated_commands__c">
+                    {{ ob9.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Odd speech
+                </div>
+                <ion-radio name = "odd_or_unusual_speech__c" ng-repeat="ob10 in observations"
+                           ng-value="ob10.value"
+                           ng-model="assessment.odd_or_unusual_speech__c">
+                    {{ ob10.text }}
+                </ion-radio>
+
+                  <div class="item item-divider">
+                    Sensory
+                </div>
+                <ion-radio name = "sensory_behaviours_and_interests__c" ng-repeat="ob11 in observations"
+                           ng-value="ob11.value"
+                           ng-model="assessment.sensory_behaviours_and_interests__c">
+                    {{ ob11.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Recip Social
+                </div>
+                <ion-radio name = "reciprocal_social_interaction__c" ng-repeat="ob12 in observations"
+                           ng-value="ob12.value"
+                           ng-model="assessment.reciprocal_social_interaction__c">
+                    {{ ob12.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Gestures
+                </div>
+                <ion-radio name = "gestures__c" ng-repeat="ob13 in observations"
+                           ng-value="ob13.value"
+                           ng-model="assessment.gestures__c">
+                    {{ ob13.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Sharing Interest
+                </div>
+                <ion-radio name = "sharing_interest__c" ng-repeat="ob14 in observations"
+                           ng-value="ob14.value"
+                           ng-model="assessment.sharing_interest__c">
+                    {{ ob14.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    5-6 word  Sentences
+                </div>
+                <ion-radio name = "uses_5_6_word_sentences__c" ng-repeat="ob15 in observations"
+                           ng-value="ob15.value"
+                           ng-model="assessment.uses_5_6_word_sentences__c">
+                    {{ ob15.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Conversation
+                </div>
+                <ion-radio name = "conversation__c" ng-repeat="ob16 in observations"
+                           ng-value="ob16.value"
+                           ng-model="assessment.conversation__c">
+                    {{ ob16.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                   Hand as Tool
+                </div>
+                <ion-radio name = "hand_as_a_tool__c" ng-repeat="ob17 in observations"
+                           ng-value="ob17.value"
+                           ng-model="assessment.hand_as_a_tool__c">
+                    {{ ob17.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Echolalia
+                </div>
+                <ion-radio name = "immediate_echolalia__c" ng-repeat="ob18 in observations"
+                           ng-value="ob18.value"
+                           ng-model="assessment.immediate_echolalia__c">
+                    {{ ob18.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Pronoun
+                </div>
+                <ion-radio name = "pronoun_reversals__c" ng-repeat="ob19 in observations"
+                           ng-value="ob19.value"
+                           ng-model="assessment.pronoun_reversals__c">
+                    {{ ob19.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Rep Speech
+                </div>
+                <ion-radio name = "repetitive_speech__c" ng-repeat="ob20 in observations"
+                           ng-value="ob20.value"
+                           ng-model="assessment.repetitive_speech__c">
+                    {{ ob20.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                   Motor
+                </div>
+                <ion-radio name = "motor_stereotypes__c" ng-repeat="ob21 in observations"
+                           ng-value="ob21.value"
+                           ng-model="assessment.motor_stereotypes__c">
+                    {{ ob21.text }}
+                </ion-radio>
+
+                 <div class="item item-divider">
+                    Rep Behaviours
+                </div>
+                <ion-radio name = "rep_rest_behaviours_and_interests__c" ng-repeat="ob22 in observations"
+                           ng-value="ob22.value"
+                           ng-model="assessment.rep_rest_behaviours_and_interests__c">
+                    {{ ob22.text }}
+                </ion-radio>
+
+               
+
+            </form>
+        </div>
+
+        
+
+    </ion-content>
