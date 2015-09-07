@@ -255,4 +255,4 @@ exports.getAll = getAll;
 exports.getById = getById;
 exports.create12mAssessment=create12mAssessment;
 exports.create18mAssessment=create18mAssessment;
-exports.create18mAssessment=create24mAssessment;
+exports.create24mAssessment=create24mAssessment;
