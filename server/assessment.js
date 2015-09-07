@@ -213,7 +213,7 @@ function create24mAssessment(req, res, next) {
         (uses_20_50_words__c==null)||
         (two_word_utterances__c==null)||
         (parallel_play__c==null)||
-        interest_in_other_children__c==null)
+        (interest_in_other_children__c==null)
         
         ) {
         return res.send(400, missingAssessmentInformation);
