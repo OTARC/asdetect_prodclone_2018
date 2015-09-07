@@ -250,9 +250,102 @@ function create24mAssessment(req, res, next) {
 
 
 
+function create35yAssessment(req, res, next) {
+    var externalUserId = req.externalUserId,
+    externalchildid__c=req.body.externalchildid__c,
+    consultation_date__c = req.body.consultation_date__c,
+    
+    pointing__c=req.body.pointing__c,
+    does_child_make_eye_contact_with_you__c=req.body.does_child_make_eye_contact_with_you__c, 
+    responds_to_name__c=req.body.responds_to_name__c,
+    social_smile__c=req.body.social_smile__c,    
+    showing__c=req.body.showing__c,
+    pretend_play__c=req.body.pretend_play__c,
+    follows_point__c=req.body.follows_point__c,
+    loss_of_skills__c=req.body.loss_of_skills__c,
+    follows_two_unrelated_commands__c=req.body.follows_two_unrelated_commands__c,
+    odd_or_unusual_speech__c=req.body.odd_or_unusual_speech__c,
+    sensory_behaviours_and_interests__c=req.body.sensory_behaviours_and_interests__c,
+    reciprocal_social_interaction__c=req.body.reciprocal_social_interaction__c,
+    gestures__c=req.body.gestures__c,
+    sharing_interest__c=req.body.sharing_interest__c,
+    uses_5_6_word_sentences__c=req.body.uses_5_6_word_sentences__c,
+    conversation__c=req.body.conversation__c,
+    hand_as_a_tool__c=req.body.hand_as_a_tool__c,
+    immediate_echolalia__c=req.body.immediate_echolalia__c,
+    pronoun_reversals__c=req.body.pronoun_reversals__c,
+    repetitive_speech__c=req.body.repetitive_speech__c,
+    motor_stereotypes__c =req.body.motor_stereotypes__c,
+    rep_rest_behaviours_and_interests__c=req.body.rep_rest_behaviours_and_interests__c;
+
+ 
+
+//basic error checking
+
+if ((consultation_date__c==null) || 
+    (pointing__c==null)||
+    (does_child_make_eye_contact_with_you__c==null)  || 
+    (waves_bye_bye__c==null) || 
+
+    (responds_to_name__c==null)||
+    (social_smile__c==null) ||  
+
+    (showing__c==null)||
+    (pretend_play__c==null)||
+    (follows_point__c==null)||
+    (loss_of_skills__c==null)||
+    (follows_two_unrelated_commands__c==null)||
+    (odd_or_unusual_speech__c==null)||
+    (sensory_behaviours_and_interests__c==null)||
+    (reciprocal_social_interaction__c==null)||
+    (gestures__c=null)||
+    (sharing_interest__c==null)||
+    (uses_5_6_word_sentences__c==null)||
+    (conversation__c==null)||
+    (hand_as_a_tool__c==null)||
+    (immediate_echolalia__c==null)||
+    (pronoun_reversals__c==null)||
+    (repetitive_speech__c==null)||
+    (motor_stereotypes__c==null)||
+    (rep_rest_behaviours_and_interests__c==null)
+
+    ) {
+    return res.send(400, missingAssessmentInformation);
+}
+
+
+    //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
+    var recordtypeid=config.asdetect.recordType35Y;
+
+    //calculate at risk - TODO make this more robust
+    var externalatrisk__c='No';
+    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (showing__c=='Atypical'? 1:0)  + (pretend_play__c=='Atypical'? 1:0)   + (follows_two_unrelated_commands__c=='Atypical'? 1:0) + (odd_or_unusual_speech__c=='Atypical'? 1:0) + (sensory_behaviours_and_interests__c=='Atypical'? 1:0) +(reciprocal_social_interaction__c=='Atypical'? 1:0)  );
+    
+    if ((no_of_atypical_key_items>=3) ||(does_child_make_eye_contact_with_you__c=='Atypical')) {
+        externalatrisk__c='Yes';
+    } 
+    else {
+        externalatrisk__c='No';
+    }
+    console.log('Calculated external at risk (dont forget! for 35Y eyecontact is an override:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+
+    console.log(JSON.stringify(req.body));
+        
+            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c], true)
+                .then(function () {                   
+                    return res.send('ok');
+                })
+                .fail(function(err) {
+                    return next(err);
+                })
+        .catch(next);
+
+};
+
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
 exports.create12mAssessment=create12mAssessment;
 exports.create18mAssessment=create18mAssessment;
 exports.create24mAssessment=create24mAssessment;
+exports.create35yAssessment=create35yAssessment;
