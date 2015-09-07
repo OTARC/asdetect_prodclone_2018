@@ -194,7 +194,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
         $scope.update24m = function () {
             Assessment.create24m($scope.assessment).success(function() {
-                $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
+                $ionicPopup.alert({title: 'Thank You', content: '24M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
