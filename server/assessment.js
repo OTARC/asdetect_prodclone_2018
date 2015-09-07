@@ -285,7 +285,7 @@ function create35yAssessment(req, res, next) {
 if ((consultation_date__c==null) || 
     (pointing__c==null)||
     (does_child_make_eye_contact_with_you__c==null)  || 
-    (waves_bye_bye__c==null) || 
+   
 
     (responds_to_name__c==null)||
     (social_smile__c==null) ||  
