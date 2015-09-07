@@ -37,7 +37,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
               .state('app.24Massessment', {
-                url: "/do18mAssessment/:childId",
+                url: "/do24mAssessment/:childId",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/do-24m-assessment.html",
