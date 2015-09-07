@@ -71,7 +71,7 @@ function create12mAssessment(req, res, next) {
     var recordtypeid=config.asdetect.recordType12M;
 
     //calculate at risk - TODO make this more robust
-    var externalatrisk__c=0;
+    var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (responds_to_name__c=='Atypical'? 1:0)   );
     
     if (no_of_atypical_key_items>=3) {
@@ -171,6 +171,83 @@ function create18mAssessment(req, res, next) {
 };
 
 
+function create24mAssessment(req, res, next) {
+    var externalUserId = req.externalUserId,
+    externalchildid__c=req.body.externalchildid__c,
+    consultation_date__c = req.body.consultation_date__c,
+    pointing__c=req.body.pointing__c,
+    does_child_make_eye_contact_with_you__c=req.body.does_child_make_eye_contact_with_you__c,
+    waves_bye_bye__c=req.body.waves_bye_bye__c,
+    imitation__c=req.body.imitation__c, 
+    responds_to_name__c=req.body.responds_to_name__c,
+    social_smile__c=req.body.social_smile__c, 
+    understands_obeys_simple_instructions__c=req.body.understands_obeys_simple_instructions__c, 
+    showing__c=req.body.showing__c,
+    pretend_play__c=req.body.pretend_play__c,
+    follows_point__c=req.body.follows_point__c,
+    loss_of_skills__c=req.body.loss_of_skills__c,
+    uses_20_50_words__c=req.body.uses_20_50_words__c,
+    two_word_utterances__c=req.body.two_word_utterances__c,
+    parallel_play__c=req.body.parallel_play__c,
+    interest_in_other_children__c=req.body.interest_in_other_children__c;
+
+
+
+
+    
+
+//basic error checking
+
+    if ((consultation_date__c==null) || 
+        (pointing__c==null)||
+        (does_child_make_eye_contact_with_you__c==null)  || 
+        (waves_bye_bye__c==null) || 
+        (imitation__c==null)||
+        (responds_to_name__c==null)||
+        (social_smile__c==null) ||  
+        (understands_obeys_simple_instructions__c==null)||
+        (showing__c==null)||
+        (pretend_play__c==null)||
+        (follows_point__c==null)||
+        (loss_of_skills__c==null)||
+        (uses_20_50_words__c==null)||
+        (two_word_utterances__c==null)||
+        (parallel_play__c==null)||
+        interest_in_other_children__c==null)
+        
+        ) {
+        return res.send(400, missingAssessmentInformation);
+}
+
+
+    //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
+    var recordtypeid=config.asdetect.recordType24M;
+
+    //calculate at risk - TODO make this more robust
+    var externalatrisk__c='No';
+    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
+    
+   if (no_of_atypical_key_items>=3) {
+        externalatrisk__c='Yes';
+    } 
+   else {
+        externalatrisk__c='No';
+    }
+    console.log('Calculated external at risk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+
+    console.log(JSON.stringify(req.body));
+        
+            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c], true)
+                .then(function () {                   
+                    return res.send('ok');
+                })
+                .fail(function(err) {
+                    return next(err);
+                })
+        .catch(next);
+
+};
+
 
 
 exports.findById = findById;
@@ -178,3 +255,4 @@ exports.getAll = getAll;
 exports.getById = getById;
 exports.create12mAssessment=create12mAssessment;
 exports.create18mAssessment=create18mAssessment;
+exports.create18mAssessment=create24mAssessment;

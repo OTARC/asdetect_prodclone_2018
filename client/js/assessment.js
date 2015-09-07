@@ -50,6 +50,12 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             },
             create18m: function(assessmentItem) {
                 return $http.post($rootScope.server.url + '/assessment/18m',assessmentItem);
+            },
+            create24m: function(assessmentItem) {
+                return $http.post($rootScope.server.url + '/assessment/24m',assessmentItem);
+            },
+            create35y: function(assessmentItem) {
+                return $http.post($rootScope.server.url + '/assessment/35y',assessmentItem);
             }
         };
     })
@@ -156,6 +162,51 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         
     
 })
+
+  .controller('24MAssessmentCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, $ionicModal, Status, Child, Assessment, Observation, User, Interaction) {
+        
+        console.log('reached 24MAssessmentCtrl');
+        $scope.assessment={}
+        $scope.child = {};
+        $scope.observations = Observation.all();
+        $scope.panel = 1;
+        
+
+        Child.get($stateParams.childId).success(function(child) {
+            $scope.child = child;
+            console.log('in 24M --'+ JSON.stringify(child) +'--');
+            $scope.assessment.externalchildid__c=child.externalchildid__c;
+            console.log('scope.assessment='+JSON.stringify($scope.assessment));
+        
+        });
+
+
+        $scope.update24m = function () {
+            Assessment.create24m($scope.assessment).success(function() {
+                $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
+                console.log('scope.child is:'+JSON.stringify($scope.child));
+                var initials=$scope.child.childs_initials__c;
+                var extid=$scope.child.externalchildid__c;
+
+                Interaction.create({type__c: 'Created a 18M Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                .success(function(status) {
+                    console.log('Interaction recorded.');
+                });
+
+
+
+            })};
+
+      
+        
+    
+})
+
+
+
+
+
+
 
 
 
