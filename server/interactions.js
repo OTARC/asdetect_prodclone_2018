@@ -40,7 +40,7 @@ function getItems(req, res, next) {
     var externalUserId = req.externalUserId;
     console.log('external user id:' + externalUserId);
 
-    db.query("SELECT asdetect_contact__r__loyaltyid__c AS userId, type__c , description__c, name, createdDate FROM salesforce.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1 LIMIT 20", [externalUserId])
+    db.query("SELECT asdetect_contact__r__loyaltyid__c AS userId, type__c , description__c, name, createdDate FROM salesforce.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1 order by createdDate desc LIMIT 30", [externalUserId])
         .then(function (interactions) {
             console.log(JSON.stringify(interactions));
             return res.send(JSON.stringify(interactions));
