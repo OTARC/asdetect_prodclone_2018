@@ -12,26 +12,26 @@
     </div>
     <div class="item item-body">
          <a ui-sref="app.12Yassessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<11 || child.total_months_old__c>=16" class="class="button button-small" >Do 12M assessment</button>
+            <button ng-disabled="child.total_months_old__c<11 || child.total_months_old__c>=16" class="class="button button-small" >12M assessment</button>
         </a>
         
         <a ui-sref="app.18Massessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<16 || child.total_months_old__c>=22" class="class="button button-small" >Do 18M Assessment</button>
+            <button ng-disabled="child.total_months_old__c<16 || child.total_months_old__c>=22" class="class="button button-small" >18M Assessment</button>
         </a>
         
         <a ui-sref="app.24Massessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<22 || child.total_months_old__c>=31" class="class="button button-small" >Do 24M Assessment</button>
+            <button ng-disabled="child.total_months_old__c<22 || child.total_months_old__c>=31" class="class="button button-small" >24M Assessment</button>
         </a>
         
 
         <a ui-sref="app.35Yassessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<31" class="button button-small" >Do 35Y Assessment</button>
+            <button ng-disabled="child.total_months_old__c<31" class="button button-small" >35Y Assessment</button>
         </a>
 
         <p>Initials: {{child.childs_initials__c}}</p>
         <p>Gender: {{child.gender__c}}</p>
         <p>Birthdate: {{child.birthdate__c}}</p>
-         <p>Mths old: {{child.total_months_old__c}}</p>
+        <p>Mths old: {{child.total_months_old__c}}</p>
         <p>At risk?: {{child.child_currently_at_risk__c}}</p>
         <p>ExternalID: {{child.externalchildid__c}}</p>
         <p>_HC_LASTOP: {{child._hc_lastop}}</p>
