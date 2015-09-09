@@ -50,19 +50,19 @@ function create12mAssessment(req, res, next) {
 
 //basic error checking
 
-    if ((consultation_date__c==null) || 
-        (pointing__c==null)||(does_child_make_eye_contact_with_you__c==null)  || 
-        (waves_bye_bye__c==null) || 
-        (imitation__c==null)||
-        (responds_to_name__c==null)||
-        (social_smile__c==null) ||
-        (conversational_babble__c==null)||
-        (says_1_3_clear_words__c==null)||
-        (understands_obeys_simple_instructions__c==null)||
-        (attending_to_sounds__c==null)
-        
-        ) {
-        return res.send(400, missingAssessmentInformation);
+if ((consultation_date__c==null) || 
+    (pointing__c==null)||(does_child_make_eye_contact_with_you__c==null)  || 
+    (waves_bye_bye__c==null) || 
+    (imitation__c==null)||
+    (responds_to_name__c==null)||
+    (social_smile__c==null) ||
+    (conversational_babble__c==null)||
+    (says_1_3_clear_words__c==null)||
+    (understands_obeys_simple_instructions__c==null)||
+    (attending_to_sounds__c==null)
+
+    ) {
+    return res.send(400, missingAssessmentInformation);
 }
 
 
@@ -73,6 +73,7 @@ function create12mAssessment(req, res, next) {
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (responds_to_name__c=='Atypical'? 1:0)   );
     
+    // at risk means 3 or more key items
     if (no_of_atypical_key_items>=3) {
         externalatrisk__c='Yes';
     } 
@@ -80,19 +81,19 @@ function create12mAssessment(req, res, next) {
         externalatrisk__c='No';
     }
     console.log('Calculated external at risk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-
-    
-
     console.log(JSON.stringify(req.body));
-        
-            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c], true)
-                .then(function () {                   
-                    return res.send('ok');
-                })
-                .fail(function(err) {
-                    return next(err);
-                })
-        .catch(next);
+
+    // insert into Postgres
+    db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c], true)
+    .then(function () {                   
+        return res.send('ok');
+    })
+
+    .fail(function(err) {
+        return next(err);
+    })
+
+    .catch(next);
 
 };
 
@@ -120,24 +121,24 @@ function create18mAssessment(req, res, next) {
 
 //basic error checking
 
-    if ((consultation_date__c==null) || 
-        (pointing__c==null)||
-        (does_child_make_eye_contact_with_you__c==null)  || 
-        (waves_bye_bye__c==null) || 
-        (imitation__c==null)||
-        (responds_to_name__c==null)||
-        (social_smile__c==null) ||  
-        (understands_obeys_simple_instructions__c==null)||
-        (showing__c==null)||
-        (pretend_play__c==null)||
-        (follows_point__c==null)||
-        (uses_5_10_words__c==null)||
-        (understands_words__c==null)||
-        (points_to_facial_features__c==null)||
-        (loss_of_skills__c==null)
-        
-        ) {
-        return res.send(400, missingAssessmentInformation);
+if ((consultation_date__c==null) || 
+    (pointing__c==null)||
+    (does_child_make_eye_contact_with_you__c==null)  || 
+    (waves_bye_bye__c==null) || 
+    (imitation__c==null)||
+    (responds_to_name__c==null)||
+    (social_smile__c==null) ||  
+    (understands_obeys_simple_instructions__c==null)||
+    (showing__c==null)||
+    (pretend_play__c==null)||
+    (follows_point__c==null)||
+    (uses_5_10_words__c==null)||
+    (understands_words__c==null)||
+    (points_to_facial_features__c==null)||
+    (loss_of_skills__c==null)
+
+    ) {
+    return res.send(400, missingAssessmentInformation);
 }
 
 
@@ -148,24 +149,24 @@ function create18mAssessment(req, res, next) {
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
-   if (no_of_atypical_key_items>=3) {
+    if (no_of_atypical_key_items>=3) {
         externalatrisk__c='Yes';
     } 
-   else {
+    else {
         externalatrisk__c='No';
     }
     console.log('Calculated external at risk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-
     console.log(JSON.stringify(req.body));
-        
-            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c], true)
-                .then(function () {                   
-                    return res.send('ok');
-                })
-                .fail(function(err) {
-                    return next(err);
-                })
-        .catch(next);
+
+//insert into Postgres
+    db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c], true)
+    .then(function () {                   
+        return res.send('ok');
+    })
+    .fail(function(err) {
+        return next(err);
+    })
+    .catch(next);
 
 };
 
@@ -191,31 +192,27 @@ function create24mAssessment(req, res, next) {
     interest_in_other_children__c=req.body.interest_in_other_children__c;
 
 
-
-
-    
-
 //basic error checking
 
-    if ((consultation_date__c==null) || 
-        (pointing__c==null)||
-        (does_child_make_eye_contact_with_you__c==null)  || 
-        (waves_bye_bye__c==null) || 
-        (imitation__c==null)||
-        (responds_to_name__c==null)||
-        (social_smile__c==null) ||  
-        (understands_obeys_simple_instructions__c==null)||
-        (showing__c==null)||
-        (pretend_play__c==null)||
-        (follows_point__c==null)||
-        (loss_of_skills__c==null)||
-        (uses_20_50_words__c==null)||
-        (two_word_utterances__c==null)||
-        (parallel_play__c==null)||
-        (interest_in_other_children__c==null)
-        
-        ) {
-        return res.send(400, missingAssessmentInformation);
+if ((consultation_date__c==null) || 
+    (pointing__c==null)||
+    (does_child_make_eye_contact_with_you__c==null)  || 
+    (waves_bye_bye__c==null) || 
+    (imitation__c==null)||
+    (responds_to_name__c==null)||
+    (social_smile__c==null) ||  
+    (understands_obeys_simple_instructions__c==null)||
+    (showing__c==null)||
+    (pretend_play__c==null)||
+    (follows_point__c==null)||
+    (loss_of_skills__c==null)||
+    (uses_20_50_words__c==null)||
+    (two_word_utterances__c==null)||
+    (parallel_play__c==null)||
+    (interest_in_other_children__c==null)
+
+    ) {
+    return res.send(400, missingAssessmentInformation);
 }
 
 
@@ -226,24 +223,24 @@ function create24mAssessment(req, res, next) {
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
-   if (no_of_atypical_key_items>=3) {
+    if (no_of_atypical_key_items>=3) {
         externalatrisk__c='Yes';
     } 
-   else {
+    else {
         externalatrisk__c='No';
     }
+    
     console.log('Calculated external at risk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-
     console.log(JSON.stringify(req.body));
-        
-            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c], true)
-                .then(function () {                   
-                    return res.send('ok');
-                })
-                .fail(function(err) {
-                    return next(err);
-                })
-        .catch(next);
+
+    db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c], true)
+    .then(function () {                   
+        return res.send('ok');
+    })
+    .fail(function(err) {
+        return next(err);
+    })
+    .catch(next);
 
 };
 
@@ -252,8 +249,7 @@ function create24mAssessment(req, res, next) {
 function create35yAssessment(req, res, next) {
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
-    consultation_date__c = req.body.consultation_date__c,
-    
+    consultation_date__c = req.body.consultation_date__c,   
     pointing__c=req.body.pointing__c,
     does_child_make_eye_contact_with_you__c=req.body.does_child_make_eye_contact_with_you__c, 
     responds_to_name__c=req.body.responds_to_name__c,
@@ -277,18 +273,15 @@ function create35yAssessment(req, res, next) {
     motor_stereotypes__c =req.body.motor_stereotypes__c,
     rep_rest_behaviours_and_interests__c=req.body.rep_rest_behaviours_and_interests__c;
 
- 
+
 
 //basic error checking
 
 if ((consultation_date__c==null) || 
     (pointing__c==null)||
     (does_child_make_eye_contact_with_you__c==null)  || 
-   
-
     (responds_to_name__c==null)||
     (social_smile__c==null) ||  
-
     (showing__c==null)||
     (pretend_play__c==null)||
     (follows_point__c==null)||
@@ -326,20 +319,20 @@ if ((consultation_date__c==null) ||
     else {
         externalatrisk__c='No';
     }
+    
     console.log('Calculated external at risk (dont forget! for 35Y eyecontact is an override:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-
     console.log(JSON.stringify(req.body));
         
-            db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c], true)
-                .then(function () {                   
-                    return res.send('ok');
-                })
-                .fail(function(err) {
-                    return next(err);
-                })
+        db.query('insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c], true)
+        .then(function () {                   
+            return res.send('ok');
+        })
+        .fail(function(err) {
+            return next(err);
+        })
         .catch(next);
 
-};
+    };
 
 exports.findById = findById;
 exports.getAll = getAll;

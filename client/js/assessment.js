@@ -132,7 +132,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
-                Interaction.create({type__c: 'Created a 12M Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                Interaction.create({type__c: 'Create 12M Assessment', description__c:"Child-"+initials+" :Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
@@ -171,7 +171,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
-                Interaction.create({type__c: 'Created a 18M Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                Interaction.create({type__c: 'Create 24M Assessment', description__c:"Child-"+initials+" :Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
@@ -210,7 +210,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
-                Interaction.create({type__c: 'Created a 24M Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                Interaction.create({type__c: 'Create 24M Assessment', description__c:"Child-"+initials+" :Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
@@ -250,7 +250,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
-                Interaction.create({type__c: 'Created a 35Y Assessment for Child:  '+initials, description__c:"Called from Angular assessment module",externalchildid__c:extid})
+                Interaction.create({type__c: 'Create 35Y Assessment', description__c:"Child-"+initials+" :Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
