@@ -11,13 +11,27 @@
         <p>Child details</p>
     </div>
     <div class="item item-body">
+         <a ui-sref="app.12Yassessment({childId: child.id})">
+            <button class="class="button button-small" >Do 12M assessment</button>
+        </a>
+        
+        <a ui-sref="app.18Massessment({childId: child.id})">
+            <button class="class="button button-small" >Do 18M Assessment</button>
+        </a>
+        
+        <a ui-sref="app.24Massessment({childId: child.id})">
+            <button class="class="button button-small" >Do 24M Assessment</button>
+        </a>
+        
+
         <a ui-sref="app.35Yassessment({childId: child.id})">
-            <button class="class="button button-small" >Do Assessment</button>
+            <button class="class="button button-small" >Do 35Y Assessment</button>
         </a>
 
         <p>{{child.childs_initials__c}}</p>
         <p>{{child.gender__c}}</p>
         <p>{{child.birthdate__c}}</p>
+         <p>{{child.total_months_old__c}}</p>
         <p>{{child.child_currently_at_risk__c}}</p>
         <p>{{child.externalchildid__c}}</p>
         <p>_HC_LASTOP: {{child._hc_lastop}}</p>
