@@ -15,7 +15,7 @@ function getProfile(req, res, next) {
     activities.getPointBalance(externalUserId)
         .then(function (activity) {
             db.query(
-                    'SELECT id, firstname__c , lastname__c , email__c,createddate,preference__c ,size__c FROM salesforce.asdetect_contact__c WHERE id=$1',
+                    'SELECT id, firstname__c , lastname__c , email__c,createddate,preference__c ,size__c,_hc_lastop,_hc_err FROM salesforce.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
                     //dtermine what to do with Points later - perhaps we could introduce a membership concept??
