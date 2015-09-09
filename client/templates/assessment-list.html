@@ -14,28 +14,18 @@
 
 
         <div ng-repeat="a in assessment" class="list" style="margin: 0; margin-bottom: -1px">
+           
            <a class="item item-thumbnail-left" href="#">
                
-                    
                     <h3>{{a.id}} - {{a.childs_initials__c}}</h3>
                     
-                    
-                
-               
-
-
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.name}}<p>    
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.consultation_date__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.record_type__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.at_risk__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.age_at_time_of_assessment_years_months__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">HC: {{a._hc_lastop}}</p>
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a._hc.err}}</p>
-
-                   
-                    
-
-                
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a._hc.err}}</p>     
             </a>
         </div>
  
