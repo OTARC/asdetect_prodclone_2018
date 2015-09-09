@@ -16,7 +16,7 @@
         </a>
         
         <a ui-sref="app.18Massessment({childId: child.id})">
-            <button class="class="button button-small" >Do 18M Assessment</button>
+            <button ng-disabled="child.total_months_old__c==42" class="class="button button-small" >Do 18M Assessment</button>
         </a>
         
         <a ui-sref="app.24Massessment({childId: child.id})">
