@@ -14,10 +14,13 @@
         <div ng-repeat="interaction in interactions" class="list" style="margin: 0; margin-bottom: -1px">
             <a class="item item-thumbnail-left" href="#">
                 
-                <h3>{{interaction.name}}</h3>
+                <h3>{{interaction.id}} - {{interaction.name}}</h3>
+               
+                
                 <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.createdDate}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.type__c}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.description__c}}</p>
+                <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction.sfid}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">HC: {{interaction._hc_lastop}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">{{interaction._hc_err}}</p>
                
