@@ -19,12 +19,12 @@
                
                     <h3>{{a.id}} - {{a.childs_initials__c}}</h3>
                     
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.name}}<p>    
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.consultation_date__c}}</p>
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.record_type__c}}</p>
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.at_risk__c}}</p>
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">{{a.age_at_time_of_assessment_years_months__c}}</p>
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">HC: {{a._hc_lastop}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Assessment ID: {{a.name}}<p>    
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Assessment Date: {{a.consultation_date__c}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Assessment Type: {{a.record_type__c}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">At risk?: {{a.at_risk__c}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Age At Assessment (Y:M): {{a.age_at_time_of_assessment_years_months__c}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Heroku Connect Status: {{a._hc_lastop}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">{{a._hc.err}}</p>     
             </a>
         </div>
