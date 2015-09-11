@@ -8,13 +8,13 @@ function findById(id) {
     // Retrieve offer either by Salesforce id or Postgres id
     //TODO tighten this up to show only a child of this user (refer getAll)
     //
-    return db.query('select id,sfId,childs_initials__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from salesforce.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    return db.query('select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from salesforce.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
 };
 
 //get all children for a contact
 function getAll(req, res, next) { 
     var externalUserId = req.externalUserId;
-    db.query("select id,sfId,childs_initials__c,birthdate__c,total_months_old__c,gender__c,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from salesforce.mch_child_Asdetect__c where asdetect_contact__c__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
+    db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c,child_currently_at_risk__c ,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from salesforce.mch_child_Asdetect__c where asdetect_contact__c__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
         .then(function (child) {
             return res.send(JSON.stringify(child));
         })
@@ -44,7 +44,7 @@ function addChild(req, res, next) {
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c;  
 
-    if ((birthdate__c==null) || (childs_initials__c==null) ||(gender__c==null)) {
+    if ((birthdate__c==null) || (childs_initials__c==null) ||(child_s_first_name_c==null)||(gender__c==null)) {
         return res.send(400, missingChildInformation);
     }
 
