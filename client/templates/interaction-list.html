@@ -4,7 +4,7 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
 
-    <ion-content>
+     <ion-content has-header="true" padding="true">
 
         <ion-refresher
                 pulling-text="Pull to refresh..."
@@ -14,7 +14,7 @@
         <div ng-repeat="interaction in interactions" class="list" style="margin: 0; margin-bottom: -1px">
             <a class="item item-thumbnail-left" href="#">
                 
-                <h3>{{interaction.id}} - {{interaction.name}}</h3>              
+                <h2>{{interaction.id}} - {{interaction.name}}</h3>              
                 <p style="margin-bottom: 0px;padding-bottom:0px;">Created: {{interaction.createddate}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">Type: {{interaction.type__c}}</p>
                 <p style="margin-bottom: 0px;padding-bottom:0px;">Description: {{interaction.description__c}}</p>
@@ -27,6 +27,6 @@
 
     </ion-content>
 
-    <p ng-if="!loading && interactions.length === 0" class="centered-message">You have no recent interaction</p>
+  
 
 </ion-view>
