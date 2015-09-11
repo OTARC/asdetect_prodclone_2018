@@ -42,6 +42,9 @@
                            {{gender.text}}
                     
                 </ion-radio>
+                  <div class="item item-divider">
+                Previous Diagnosis
+                </div>
                   <ion-radio name="diagnosis"  ng-repeat="diagnosis in diagnoses"
                            ng-value="diagnosis.value"
                            ng-model="child.diagnosis__c">

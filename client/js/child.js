@@ -71,9 +71,11 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
         .factory('Diag', function() {
 
         var diagnoses = [
+          { text: 'None', value: 'None' },
             { text: 'PDD', value: 'PDD' },
             { text: 'Aspergers', value: 'Aspergers' },
-            { text: 'Autism Spectrum', value: 'Austism Spectrum' }
+            { text: 'Autism Spectrum', value: 'Austism Spectrum' },
+            { text: 'Other', value: 'Other' }
 
         ];
 
