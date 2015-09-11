@@ -7,38 +7,39 @@
 
 <div class="list card">
     <div class="item">
-        <h2>ID: {{child.id}}</h2>
-        <p>Child details</p>
-    </div>
-    <div class="item item-body">
-         <a ui-sref="app.12Massessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<11 || child.total_months_old__c>=16" class="button button-small" >12M assessment</button>
-        </a>
-        
-        <a ui-sref="app.18Massessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<16 || child.total_months_old__c>=22" class="button button-small" >18M Assessment</button>
-        </a>
-        
-        <a ui-sref="app.24Massessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<22 || child.total_months_old__c>=31" class="button button-small" >24M Assessment</button>
-        </a>
-        
+       <h2>{{child.child_s_first_name__c}} {{child.child_s_last_name__c}} ({{child.childs_nickname__c}})</h2>
 
-        <a ui-sref="app.35Yassessment({childId: child.id})">
-            <button ng-disabled="child.total_months_old__c<31" class="button button-small" >35Y Assessment</button>
-        </a>
+       <p>Child details</p>
+   </div>
+   <div class="item item-body">
+       <a ui-sref="app.12Massessment({childId: child.id})">
+        <button ng-disabled="child.total_months_old__c<11 || child.total_months_old__c>=16" class="button button-small" >12M assessment</button>
+    </a>
+    
+    <a ui-sref="app.18Massessment({childId: child.id})">
+        <button ng-disabled="child.total_months_old__c<16 || child.total_months_old__c>=22" class="button button-small" >18M Assessment</button>
+    </a>
+    
+    <a ui-sref="app.24Massessment({childId: child.id})">
+        <button ng-disabled="child.total_months_old__c<22 || child.total_months_old__c>=31" class="button button-small" >24M Assessment</button>
+    </a>
+    
 
-        <p>Initials: {{child.childs_initials__c}}</p>
-        <p>Gender: {{child.gender__c}}</p>
-        <p>Birthdate: {{child.birthdate__c}}</p>
-        <p>Mths Old: {{child.total_months_old__c}}</p>
-        <p>At Risk?: {{child.child_currently_at_risk__c}}</p>
-        <p>ExternalID: {{child.externalchildid__c}}</p>
-        <p>HC: {{child._hc_lastop}}</p>
-        <p>{{child._hc_err}}</p>
+    <a ui-sref="app.35Yassessment({childId: child.id})">
+        <button ng-disabled="child.total_months_old__c<31" class="button button-small" >35Y Assessment</button>
+    </a>
+    <p>ID: {{child.id}}</p>
+    <p>Initials: {{child.childs_initials__c}}</p>
+    <p>Gender: {{child.gender__c}}</p>
+    <p>Birthdate: {{child.birthdate__c}}</p>
+    <p>Mths Old: {{child.total_months_old__c}}</p>
+    <p>At Risk?: {{child.child_currently_at_risk__c}}</p>
+    <p>ExternalID: {{child.externalchildid__c}}</p>
+    <p>HC: {{child._hc_lastop}}</p>
+    <p>{{child._hc_err}}</p>
 
 
-    </div>
+</div>
 
 </div>
 
