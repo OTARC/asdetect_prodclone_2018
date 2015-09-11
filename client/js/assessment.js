@@ -171,7 +171,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
-                Interaction.create({type__c: 'Created 24M Assessment', description__c:"Child - "+initials+" : Angular assessment module",externalchildid__c:extid})
+                Interaction.create({type__c: 'Created 18M Assessment', description__c:"Child - "+initials+" : Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
