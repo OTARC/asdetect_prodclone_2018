@@ -42,7 +42,12 @@
                            {{gender.text}}
                     
                 </ion-radio>
-                 
+                  <ion-radio name="diagnosis"  ng-repeat="diagnosis in diagnoses"
+                           ng-value="diagnosis.value"
+                           ng-model="child.diagnosis__c">
+                           {{diagnosis.text}}
+                    
+                </ion-radio>
                 
                 
             </form>
