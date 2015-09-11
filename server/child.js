@@ -38,6 +38,9 @@ function addChild(req, res, next) {
     var externalUserId = req.externalUserId,
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,
+    child_s_firstname__c=req.body.child_s_firstname__c,
+    child_s_last_name__c=req.body.child_s_last_name__c,
+    childs_nickname__c=req.body.childs_nickname__c,
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c;  
 
@@ -49,7 +52,7 @@ function addChild(req, res, next) {
 
     console.log(JSON.stringify(req.body));
         
-            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1, $2, $3, $4,$5,$6)', [externalUserId, childs_initials__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
+            db.query('INSERT INTO salesforce.mch_child_asdetect__c (asdetect_contact__c__loyaltyid__c, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)', [externalUserId, childs_initials__c,child_s_firstname__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
 
                 .then(function () {
                     return res.send({'externalchildid__c':externalchildid__c});
