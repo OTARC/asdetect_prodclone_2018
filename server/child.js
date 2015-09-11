@@ -38,7 +38,7 @@ function addChild(req, res, next) {
     var externalUserId = req.externalUserId,
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,
-    child_s_firstname__c=req.body.child_s_firstname__c,
+    child_s_first_name__c=req.body.child_s_first_name__c,
     child_s_last_name__c=req.body.child_s_last_name__c,
     childs_nickname__c=req.body.childs_nickname__c,
     diagnosis__c=req.body.diagnosis__c,
