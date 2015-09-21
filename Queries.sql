@@ -3,14 +3,14 @@
 select id,sfid,name, consultation_date__c,record_type__c,mch_child_asdetect__r__externalchildid__c, mch_child_asdetect__c ,at_risk__c,pointing__c, does_child_make_eye_contact_with_you__c, 
 waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,
 says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c 
-from salesforce.consultation_asdetect__c;
+from asdetect.consultation_asdetect__c;
 
 select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c, c.mch_child_asdetect__c ,c.at_risk__c,c.age_at_time_of_assessment_years_months__c
-from salesforce.consultation_asdetect__c c,salesforce.mch_child_asdetect__c m where
+from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where
 c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.asdetect_contact__c__loyaltyid__c!= '';
 
 select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c, c.mch_child_asdetect__c ,c.at_risk__c,c.age_at_time_of_assessment_years_months__c
-from salesforce.consultation_asdetect__c c,salesforce.mch_child_asdetect__c m where
+from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where
 c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.externalchildid__c='idqsxzc7';
 
 
@@ -32,10 +32,10 @@ says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_
 \d tokens;
 
 // tokens ans users
-select t.token,t.created,c.email__c from tokens t,salesforce.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
+select t.token,t.created,c.email__c from tokens t,asdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
 
 //token age
-select t.token,t.created,c.email__c,now()-created as tokenAge from tokens t,salesforce.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
+select t.token,t.created,c.email__c,now()-created as tokenAge from tokens t,asdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
 
 //delete old tokens
 DELETE FROM tokens WHERE created < now() - interval '10  minute'; 
