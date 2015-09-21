@@ -17,7 +17,7 @@ function addItem(req, res, next) {
     console.log('Adding interaction: ' + JSON.stringify(interaction));
 
 
-            db.query('INSERT INTO salesforce.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,mch_child_asdetect__r__externalchildid__c) VALUES ($1, $2, $3,$4)',
+            db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,mch_child_asdetect__r__externalchildid__c) VALUES ($1, $2, $3,$4)',
                     [userId, interaction.type__c, interaction.description__c,interaction.externalchildid__c], true)
                 .then(function() {
                     res.send('ok');
@@ -40,7 +40,7 @@ function getItems(req, res, next) {
     var externalUserId = req.externalUserId;
     console.log('external user id:' + externalUserId);
 
-    db.query("SELECT id,sfid,name,asdetect_contact__r__loyaltyid__c AS userId, type__c , description__c, name, createddate,mch_child_asdetect__r__externalchildid__c as externalchildid__c, _hc_lastop,_hc_err FROM salesforce.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1 order by createdDate desc LIMIT 20", [externalUserId])
+    db.query("SELECT id,sfid,name,asdetect_contact__r__loyaltyid__c AS userId, type__c , description__c, name, createddate,mch_child_asdetect__r__externalchildid__c as externalchildid__c, _hc_lastop,_hc_err FROM asdetect.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1 order by createdDate desc LIMIT 20", [externalUserId])
         .then(function (interactions) {
             console.log(JSON.stringify(interactions));
             return res.send(JSON.stringify(interactions));
@@ -74,7 +74,7 @@ function deleteAll(req, res, next) {
  */
 function deleteItems(userId) {
     console.log('deleting interaction items for user ' + userId);
-    return db.query("DELETE FROM salesforce.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1", [userId]);
+    return db.query("DELETE FROM asdetect.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1", [userId]);
 }
 
 /**

@@ -27,10 +27,10 @@ module.exports = {
 
 
     asdetect: {
-        recordType12M:'012j0000000mFHuAAM',
-        recordType18M:'012j0000000mFHvAAM',
-        recordType24M:'012j0000000mFHwAAM',
-        recordType35Y:'012j0000000mFHxAAM'
+        recordType12M:'012K000000059H4IAI',
+        recordType18M:'012K000000059H5IAI',
+        recordType24M:'012K000000059H6IAI',
+        recordType35Y:'012K000000059H7IAI'
 
     }
 
