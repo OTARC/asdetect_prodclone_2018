@@ -80,7 +80,7 @@ function login(req, res, next) {
         return res.send(401, invalidCredentials);
     }
 
-    db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM salesforce.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
+    db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM asdetect.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
         .then(function (user) {
             if (!user) {
                 return res.send(401, invalidCredentials);
@@ -150,7 +150,7 @@ function signup(req, res, next) {
         return res.send(400, "Password must be at least 4 characters");
     }
 
-    db.query('SELECT id FROM salesforce.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
+    db.query('SELECT id FROM asdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
                 return res.send(400, "Email address is already registered");
@@ -179,7 +179,7 @@ function createUser(user, password) {
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
 
-    db.query('INSERT INTO salesforce.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
+    db.query('INSERT INTO asdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
         [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
