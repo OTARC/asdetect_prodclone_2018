@@ -1,6 +1,7 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-    missingChildInformation ='One or more missing mandatory fields for Child: birthdate__c, gender__c, childs_initials__c ',
+    uuid = require('node-uuid'),
+    missingChildInformation ='One or more missing mandatory fields for Child',
     util=require('util');
 
 
@@ -48,8 +49,9 @@ function addChild(req, res, next) {
         return res.send(400, missingChildInformation);
     }
 
-    externalchildid__c = (+new Date()).toString(36); // TODO: more robust UID logic
-
+    //externalchildid__c = (+new Date()).toString(36); // TODO: more robust UID logic
+    externalchildid__c=uuid.v4();
+    
     console.log(JSON.stringify(req.body));
         
             db.query('INSERT INTO asdetect.mch_child_asdetect__c (asdetect_contact__r__loyaltyid__c, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)', [externalUserId, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
