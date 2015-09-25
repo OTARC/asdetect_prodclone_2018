@@ -30,7 +30,7 @@
     "logfmt": "~0.21.0",
     "method-override": "~2.0.1",
     "nforce": "1.2.0",
-    "node-uuid": "~1.4.1",
+    "node-uuid": "^1.4.3",
     "pg": "~2.11.1",
     "q": "~1.0.1",
     "request": "~2.40.0",
