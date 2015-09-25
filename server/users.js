@@ -14,7 +14,7 @@ function getProfile(req, res, next) {
 
    
             db.query(
-                    'SELECT id, sfid, firstname__c , lastname__c , email__c,createddate,preference__c ,size__c,_hc_lastop,_hc_err FROM asdetect.asdetect_contact__c WHERE id=$1',
+                    'SELECT id, sfid, name, firstname__c , lastname__c , email__c,createddate,preference__c ,size__c,_hc_lastop,_hc_err FROM asdetect.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
                     //dtermine what to do with Points later - perhaps we could introduce a membership concept??
