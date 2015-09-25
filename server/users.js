@@ -12,21 +12,19 @@ function getProfile(req, res, next) {
     var userId = req.userId,
         externalUserId = req.externalUserId;
 
-    activities.getPointBalance(externalUserId)
-        .then(function (activity) {
+   
             db.query(
                     'SELECT id, firstname__c , lastname__c , email__c,createddate,preference__c ,size__c,_hc_lastop,_hc_err FROM asdetect.asdetect_contact__c WHERE id=$1',
                     [userId], true)
                 .then(function (user) {
                     //dtermine what to do with Points later - perhaps we could introduce a membership concept??
-                    user.points = activity.points;
-                    user.status = activities.getStatus(activity.points);
+                    user.points = 0;
+                    user.status = 1;
                     console.log(user);
                     res.send(JSON.stringify(user));
                 })
                 .catch(next);
-        })
-        .catch(next);
+       
 }
 
 /**
