@@ -61,6 +61,23 @@ function createAccessToken(user) {
     return deferred.promise;
 }
 
+
+
+function cleanupAccessTokens(user) {
+    winston.info('cleanupAccessTokens');
+
+    var deferred = Q.defer();
+    
+    db.query('DELETE from tokens where userId =$1', [user.id])
+        .then(function() {
+            console.log('cleaned up tokens');//deferred.resolve(token);
+        })
+        .catch(function(err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
+}
+
 /**
  * Regular login with application credentials
  * @param req
@@ -88,13 +105,17 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {
-                    createAccessToken(user)
+                      
+                      cleanupAccessTokens(user)
+                      .then(createAccessToken(user))
                         .then(function(token) {
                             return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
                         })
                         .catch(function(err) {
                             return next(err);    
                         });
+
+
                 } else {
                     // Passwords don't match
                     return res.send(401, invalidCredentials);
