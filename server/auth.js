@@ -63,7 +63,7 @@ function createAccessToken(user) {
 
 
 function cleanupAccessTokens(user) {
-    winston.info('createAccessToken');
+    winston.info('cleanupAccessTokens');
 
     var tokenlife=config.asdetect.tokenlife;
     
