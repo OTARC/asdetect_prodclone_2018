@@ -63,21 +63,6 @@ function createAccessToken(user) {
 
 
 
-function cleanupAccessTokens(user) {
-    winston.info('cleanupAccessTokens');
-
-    var deferred = Q.defer();
-    
-    db.query('DELETE from tokens where userId =$1', [user.id])
-        .then(function() {
-            console.log('cleaned up tokens');//deferred.resolve(token);
-        })
-        .catch(function(err) {
-            deferred.reject(err);
-        });
-    return deferred.promise;
-}
-
 /**
  * Regular login with application credentials
  * @param req
@@ -106,8 +91,7 @@ function login(req, res, next) {
                 if (err) return next(err);
                 if (match) {
                       
-                      cleanupAccessTokens(user)
-                      .then(createAccessToken(user))
+                      createAccessToken(user)
                         .then(function(token) {
                             return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
                         })
