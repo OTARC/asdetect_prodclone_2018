@@ -9,7 +9,7 @@ var db = require('./pghelper'),
  * @param next
  */
 function getProfile(req, res, next) {
-    winston.info'getProfile');
+    winston.info('getProfile');
 
     var userId = req.userId,
         externalUserId = req.externalUserId;
