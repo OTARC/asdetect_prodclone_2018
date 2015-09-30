@@ -199,6 +199,7 @@ function signup(req, res, next) {
  */
 function createUser(user, password) {
 
+    winaton.info('createUser');
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         
@@ -224,6 +225,8 @@ function createUser(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
+    winston.info('validateToken');
+    
     var token = req.headers['authorization'];
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
