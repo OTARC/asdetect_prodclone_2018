@@ -30,7 +30,8 @@ module.exports = {
         recordType12M:'012K000000059H4IAI',
         recordType18M:'012K000000059H5IAI',
         recordType24M:'012K000000059H6IAI',
-        recordType35Y:'012K000000059H7IAI'
+        recordType35Y:'012K000000059H7IAI',
+        tokenlife: '02:00:00'
 
     }
 

@@ -64,10 +64,12 @@ function createAccessToken(user) {
 
 function cleanupAccessTokens(user) {
     winston.info('createAccessToken');
+
+    var tokenlife=config.asdetect.tokenlife;
     
     var deferred = Q.defer();
     
-    db.query('delete from tokens where userId=$1 and now()-created > "2:00:00"', [user.id])
+    db.query('delete from tokens where userId=$1 and now()-created > $2', [user.id, tokenlife])
         .then(function() {
             //deferred.resolve(token);
         })
@@ -105,8 +107,7 @@ function login(req, res, next) {
             }
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
-                if (match) {
-
+                if (match) {                   
                      cleanupAccessTokens(user)
                      .then
                       createAccessToken(user)
