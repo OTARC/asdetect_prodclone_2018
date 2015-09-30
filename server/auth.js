@@ -62,6 +62,22 @@ function createAccessToken(user) {
 }
 
 
+function cleanupAccessTokens(user) {
+    winston.info('createAccessToken');
+    
+    var deferred = Q.defer();
+    
+    db.query('delete from tokens where userId=$1 and now()-created > "2:00:00"', [user.id])
+        .then(function() {
+            //deferred.resolve(token);
+        })
+        .catch(function(err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
+}
+
+
 
 /**
  * Regular login with application credentials
@@ -90,7 +106,9 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {
-                      
+
+                     cleanupAccessTokens(user)
+                     .then
                       createAccessToken(user)
                         .then(function(token) {
                             return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
