@@ -96,3 +96,4 @@ exports.getAll = getAll;
 exports.getById = getById;
 exports.addChild= addChild;
 exports.deleteChildrenAndTests=deleteChildrenAndTests;
+exports.deleteContactAndChildrenAndTests=deleteContactAndChildrenAndTests;
