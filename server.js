@@ -94,6 +94,7 @@ app.post('/assessment/35y',auth.validateToken,assessment.create35yAssessment);
 app.get('/interactions', auth.validateToken, interactions.getItems);
 app.post('/interactions', auth.validateToken, interactions.addItem);
 app.get('/deleteChildrenAndTests',auth.validateToken,child.deleteChildrenAndTests);
+app.get('/deleteContactAndChildrenAndTests',auth.validateToken,child.deleteContactAndChildrenAndTests);
 
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);
 

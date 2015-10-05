@@ -39,11 +39,27 @@ delete from asdetect.consultation_asdetect__c where id in (select t.id "testid" 
 
 delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.loyaltyid__c=$1);
+' LANGUAGE SQL ;    
 
+//delete all tokens except for the most recent
+create function delete_old_tokens() RETURNS VOID AS '
+delete from tokens where token in (select token from tokens t where created > (select min(created) from tokens where userId=t.userId group by userId having count(*)>1) );                                                                                                                               
 
-' LANGUAGE SQL ;                                                                                                                                     
+'LANGUAGE SQL;
 
+CREATE FUNCTION delete_contact_and_children_and_tests(text) RETURNS void AS ' 
 
+delete from asdetect.consultation_asdetect__c where id in (select t.id "testid"  from asdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
+	c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c and u.loyaltyid__c=$1);  
+
+delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
+and u.loyaltyid__c=$1);
+
+delete from asdetect.asdetect_contact__c where loyaltyid__c=$1;
+
+delete from tokens where externaluserid=$1;
+	
+' LANGUAGE SQL ; 
 
 select u.loyaltyid__c,u.firstname__c,u.lastname__c,c.id "childid",c.child_s_first_name__c,c.birthdate__c from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c;
 
