@@ -23,6 +23,17 @@ function getAll(req, res, next) {
 };
 
 
+//get all children for a contact
+function deleteChildrenAndTests(req, res, next) { 
+    var externalUserId = req.externalUserId;
+    console.log('!!!!!! DELETING CHILDREN AND TESTS');
+    db.query("select delete_children_and_tests($1)", [externalUserId])       
+        .then(function (result) {
+            return res.send(JSON.stringify(result));
+        })
+        .catch(next);
+};
+
 function getById(req, res, next) {
     console.log('logging req: '+ util.inspect(req));
     var id = req.params.id;
@@ -73,3 +84,4 @@ exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
 exports.addChild= addChild;
+exports.deleteChildrenAndTests=deleteChildrenAndTests;
