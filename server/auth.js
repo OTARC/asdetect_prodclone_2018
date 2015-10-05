@@ -199,7 +199,7 @@ function signup(req, res, next) {
  */
 function createUser(user, password) {
 
-    winaton.info('createUser');
+    winston.info('createUser');
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         
