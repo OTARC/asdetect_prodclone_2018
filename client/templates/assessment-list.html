@@ -21,7 +21,7 @@
                     <h2>{{a.child_s_first_name__c}} {{a.child_s_last_name__c}} ({{a.childs_nickname__c}})</h2>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">Id: {{a.id}}</p>   
                      <p style="margin-bottom: 0px;padding-bottom:0px;">SFDC Ref: {{a.name}}</p>    
-                     <p style="margin-bottom: 0px;padding-bottom:0px;">Date: {{a.consultation_date__c  | | date:'MMM dd yyyy'}}</p>
+                     <p style="margin-bottom: 0px;padding-bottom:0px;">Date: {{a.consultation_date__c  |  date:'MMM dd yyyy'}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">Type: {{a.record_type__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">At risk?: {{a.at_risk__c}}</p>
                      <p style="margin-bottom: 0px;padding-bottom:0px;">Age At Assessment (Y:M): {{a.age_at_time_of_assessment_years_months__c}}</p>
