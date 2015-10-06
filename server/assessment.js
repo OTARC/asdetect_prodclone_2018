@@ -50,16 +50,16 @@ function create12mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c==null) || 
-    (pointing__c==null)||(does_child_make_eye_contact_with_you__c==null)  || 
-    (waves_bye_bye__c==null) || 
-    (imitation__c==null)||
-    (responds_to_name__c==null)||
-    (social_smile__c==null) ||
-    (conversational_babble__c==null)||
-    (says_1_3_clear_words__c==null)||
-    (understands_obeys_simple_instructions__c==null)||
-    (attending_to_sounds__c==null)
+if ((consultation_date__c=="") || 
+    (pointing__c=="")||(does_child_make_eye_contact_with_you__c=="")  || 
+    (waves_bye_bye__c=="") || 
+    (imitation__c=="")||
+    (responds_to_name__c=="")||
+    (social_smile__c=="") ||
+    (conversational_babble__c=="")||
+    (says_1_3_clear_words__c=="")||
+    (understands_obeys_simple_instructions__c=="")||
+    (attending_to_sounds__c=="")
 
     ) {
     return res.send(400, missingAssessmentInformation);
@@ -121,21 +121,21 @@ function create18mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c==null) || 
-    (pointing__c==null)||
-    (does_child_make_eye_contact_with_you__c==null)  || 
-    (waves_bye_bye__c==null) || 
-    (imitation__c==null)||
-    (responds_to_name__c==null)||
-    (social_smile__c==null) ||  
-    (understands_obeys_simple_instructions__c==null)||
-    (showing__c==null)||
-    (pretend_play__c==null)||
-    (follows_point__c==null)||
-    (uses_5_10_words__c==null)||
-    (understands_words__c==null)||
-    (points_to_facial_features__c==null)||
-    (loss_of_skills__c==null)
+if ((consultation_date__c=="") || 
+    (pointing__c=="")||
+    (does_child_make_eye_contact_with_you__c=="")  || 
+    (waves_bye_bye__c=="") || 
+    (imitation__c=="")||
+    (responds_to_name__c=="")||
+    (social_smile__c=="") ||  
+    (understands_obeys_simple_instructions__c=="")||
+    (showing__c=="")||
+    (pretend_play__c=="")||
+    (follows_point__c=="")||
+    (uses_5_10_words__c=="")||
+    (understands_words__c=="")||
+    (points_to_facial_features__c=="")||
+    (loss_of_skills__c=="")
 
     ) {
     return res.send(400, missingAssessmentInformation);
@@ -194,22 +194,22 @@ function create24mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c==null) || 
-    (pointing__c==null)||
-    (does_child_make_eye_contact_with_you__c==null)  || 
-    (waves_bye_bye__c==null) || 
-    (imitation__c==null)||
-    (responds_to_name__c==null)||
-    (social_smile__c==null) ||  
-    (understands_obeys_simple_instructions__c==null)||
-    (showing__c==null)||
-    (pretend_play__c==null)||
-    (follows_point__c==null)||
-    (loss_of_skills__c==null)||
-    (uses_20_50_words__c==null)||
-    (two_word_utterances__c==null)||
-    (parallel_play__c==null)||
-    (interest_in_other_children__c==null)
+if ((consultation_date__c=="") || 
+    (pointing__c=="")||
+    (does_child_make_eye_contact_with_you__c=="")  || 
+    (waves_bye_bye__c=="") || 
+    (imitation__c=="")||
+    (responds_to_name__c=="")||
+    (social_smile__c=="") ||  
+    (understands_obeys_simple_instructions__c=="")||
+    (showing__c=="")||
+    (pretend_play__c=="")||
+    (follows_point__c=="")||
+    (loss_of_skills__c=="")||
+    (uses_20_50_words__c=="")||
+    (two_word_utterances__c=="")||
+    (parallel_play__c=="")||
+    (interest_in_other_children__c=="")
 
     ) {
     return res.send(400, missingAssessmentInformation);
@@ -277,29 +277,29 @@ function create35yAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c==null) || 
-    (pointing__c==null)||
-    (does_child_make_eye_contact_with_you__c==null)  || 
-    (responds_to_name__c==null)||
-    (social_smile__c==null) ||  
-    (showing__c==null)||
-    (pretend_play__c==null)||
-    (follows_point__c==null)||
-    (loss_of_skills__c==null)||
-    (follows_two_unrelated_commands__c==null)||
-    (odd_or_unusual_speech__c==null)||
-    (sensory_behaviours_and_interests__c==null)||
-    (reciprocal_social_interaction__c==null)||
-    (gestures__c=null)||
-    (sharing_interest__c==null)||
-    (uses_5_6_word_sentences__c==null)||
-    (conversation__c==null)||
-    (hand_as_a_tool__c==null)||
-    (immediate_echolalia__c==null)||
-    (pronoun_reversals__c==null)||
-    (repetitive_speech__c==null)||
-    (motor_stereotypes__c==null)||
-    (rep_rest_behaviours_and_interests__c==null)
+if ((consultation_date__c=="") || 
+    (pointing__c=="")||
+    (does_child_make_eye_contact_with_you__c=="")  || 
+    (responds_to_name__c=="")||
+    (social_smile__c=="") ||  
+    (showing__c=="")||
+    (pretend_play__c=="")||
+    (follows_point__c=="")||
+    (loss_of_skills__c=="")||
+    (follows_two_unrelated_commands__c=="")||
+    (odd_or_unusual_speech__c=="")||
+    (sensory_behaviours_and_interests__c=="")||
+    (reciprocal_social_interaction__c=="")||
+    (gestures__c="")||
+    (sharing_interest__c=="")||
+    (uses_5_6_word_sentences__c=="")||
+    (conversation__c=="")||
+    (hand_as_a_tool__c=="")||
+    (immediate_echolalia__c=="")||
+    (pronoun_reversals__c=="")||
+    (repetitive_speech__c=="")||
+    (motor_stereotypes__c=="")||
+    (rep_rest_behaviours_and_interests__c=="")
 
     ) {
     return res.send(400, missingAssessmentInformation);
