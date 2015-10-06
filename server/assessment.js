@@ -4,6 +4,7 @@ var db = require('./pghelper'),
  winston = require('winston');
 
 
+//helper function for input validation
 function isEmpty(val){
     return (val === undefined || val == null || val == "") ? true : false;
 }
@@ -295,7 +296,7 @@ if (isEmpty(consultation_date__c) ||
     isEmpty(odd_or_unusual_speech__c)||
     isEmpty(sensory_behaviours_and_interests__c)||
     isEmpty(reciprocal_social_interaction__c)||
-    isEmpty(gestures__c="")||
+    isEmpty(gestures__c)||
     isEmpty(sharing_interest__c)||
     isEmpty(uses_5_6_word_sentences__c)||
     isEmpty(conversation__c)||
