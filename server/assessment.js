@@ -210,7 +210,7 @@ if (isEmpty(consultation_date__c) ||
     isEmpty(showing__c)||
     isEmpty(pretend_play__c)||
     isEmpty(follows_point__c)||
-    isEmpty(loss_of_skills__c=)||
+    isEmpty(loss_of_skills__c)||
     isEmpty(uses_20_50_words__c)||
     isEmpty(two_word_utterances__c)||
     isEmpty(parallel_play__c)||
