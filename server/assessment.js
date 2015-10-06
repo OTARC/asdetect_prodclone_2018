@@ -126,21 +126,21 @@ function create18mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c=="") || 
-    (pointing__c=="")||
-    (does_child_make_eye_contact_with_you__c=="")  || 
-    (waves_bye_bye__c=="") || 
-    (imitation__c=="")||
-    (responds_to_name__c=="")||
-    (social_smile__c=="") ||  
-    (understands_obeys_simple_instructions__c=="")||
-    (showing__c=="")||
-    (pretend_play__c=="")||
-    (follows_point__c=="")||
-    (uses_5_10_words__c=="")||
-    (understands_words__c=="")||
-    (points_to_facial_features__c=="")||
-    (loss_of_skills__c=="")
+if (isEmpty(consultation_date__c) || 
+    isEmpty(pointing__c)||
+    isEmpty(does_child_make_eye_contact_with_you__c)  || 
+    isEmpty(waves_bye_bye__c) || 
+    isEmpty(imitation__c)||
+    isEmpty(responds_to_name__c)||
+    isEmpty(social_smile__c) ||  
+    isEmpty(understands_obeys_simple_instructions__c)||
+    isEmpty(showing__c)||
+    isEmpty(pretend_play__c)||
+    isEmpty(follows_point__c)||
+    isEmpty(uses_5_10_words__c)||
+    isEmpty(understands_words__c)||
+    isEmpty(points_to_facial_features__c)||
+    isEmpty(loss_of_skills__c)
 
     ) {
     return res.send(400, missingAssessmentInformation);
@@ -199,22 +199,22 @@ function create24mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c=="") || 
-    (pointing__c=="")||
-    (does_child_make_eye_contact_with_you__c=="")  || 
-    (waves_bye_bye__c=="") || 
-    (imitation__c=="")||
-    (responds_to_name__c=="")||
-    (social_smile__c=="") ||  
-    (understands_obeys_simple_instructions__c=="")||
-    (showing__c=="")||
-    (pretend_play__c=="")||
-    (follows_point__c=="")||
-    (loss_of_skills__c=="")||
-    (uses_20_50_words__c=="")||
-    (two_word_utterances__c=="")||
-    (parallel_play__c=="")||
-    (interest_in_other_children__c=="")
+if (isEmpty(consultation_date__c) || 
+    isEmpty(pointing__c)||
+    isEmpty(does_child_make_eye_contact_with_you__c)  || 
+    isEmpty(waves_bye_bye__c) || 
+    isEmpty(imitation__c)||
+    isEmpty(responds_to_name__c)||
+    isEmpty(social_smile__c) ||  
+    isEmpty(understands_obeys_simple_instructions__c)||
+    isEmpty(showing__c)||
+    isEmpty(pretend_play__c)||
+    isEmpty(follows_point__c)||
+    isEmpty(loss_of_skills__c=)||
+    isEmpty(uses_20_50_words__c)||
+    isEmpty(two_word_utterances__c)||
+    isEmpty(parallel_play__c)||
+    isEmpty(interest_in_other_children__c)
 
     ) {
     return res.send(400, missingAssessmentInformation);
@@ -282,29 +282,29 @@ function create35yAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c=="") || 
-    (pointing__c=="")||
-    (does_child_make_eye_contact_with_you__c=="")  || 
-    (responds_to_name__c=="")||
-    (social_smile__c=="") ||  
-    (showing__c=="")||
-    (pretend_play__c=="")||
-    (follows_point__c=="")||
-    (loss_of_skills__c=="")||
-    (follows_two_unrelated_commands__c=="")||
-    (odd_or_unusual_speech__c=="")||
-    (sensory_behaviours_and_interests__c=="")||
-    (reciprocal_social_interaction__c=="")||
-    (gestures__c="")||
-    (sharing_interest__c=="")||
-    (uses_5_6_word_sentences__c=="")||
-    (conversation__c=="")||
-    (hand_as_a_tool__c=="")||
-    (immediate_echolalia__c=="")||
-    (pronoun_reversals__c=="")||
-    (repetitive_speech__c=="")||
-    (motor_stereotypes__c=="")||
-    (rep_rest_behaviours_and_interests__c=="")
+if (isEmpty(consultation_date__c) || 
+    isEmpty(pointing__c)||
+    isEmpty(does_child_make_eye_contact_with_you__c)  || 
+    isEmpty(responds_to_name__c)||
+    isEmpty(social_smile__c) ||  
+    isEmpty(showing__c)||
+    isEmpty(pretend_play__c)||
+    isEmpty(follows_point__c)||
+    isEmpty(loss_of_skills__c)||
+    isEmpty(follows_two_unrelated_commands__c)||
+    isEmpty(odd_or_unusual_speech__c)||
+    isEmpty(sensory_behaviours_and_interests__c)||
+    isEmpty(reciprocal_social_interaction__c)||
+    isEmpty(gestures__c="")||
+    isEmpty(sharing_interest__c)||
+    isEmpty(uses_5_6_word_sentences__c)||
+    isEmpty(conversation__c)||
+    isEmpty(hand_as_a_tool__c)||
+    isEmpty(immediate_echolalia__c)||
+    isEmpty(pronoun_reversals__c)||
+    isEmpty(repetitive_speech__c)||
+    isEmpty(motor_stereotypes__c)||
+    isEmpty(rep_rest_behaviours_and_interests__c)
 
     ) {
     return res.send(400, missingAssessmentInformation);
