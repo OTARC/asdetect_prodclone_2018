@@ -5,6 +5,10 @@ var db = require('./pghelper'),
     util=require('util');
 
 
+function isEmpty(val){
+    return (val === undefined || val == null || val == "") ? true : false;
+}
+
 function findById(id) {
     // Retrieve offer either by Salesforce id or Postgres id
     //TODO tighten this up to show only a child of this user (refer getAll)
@@ -67,8 +71,9 @@ function addChild(req, res, next) {
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c;  
 
-    if ((birthdate__c==null) || (birthdate__c=="") || (childs_initials__c==null) || (childs_initials__c=="") || (child_s_first_name__c==null) || (child_s_first_name__c=="") || (gender__c==null) || (gender__c=="")) {
-        return res.send(400, missingChildInformation);
+    
+    if (isEmpty(birthdate__c)||isEmpty(childs_initials__c)||isEmpty(child_s_first_name__c)||isEmpty(gender__c)) {
+      return res.send(400, missingChildInformation);  
     }
 
     //externalchildid__c = (+new Date()).toString(36); // TODO: more robust UID logic

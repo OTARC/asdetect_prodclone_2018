@@ -4,6 +4,11 @@ var db = require('./pghelper'),
  winston = require('winston');
 
 
+function isEmpty(val){
+    return (val === undefined || val == null || val == "") ? true : false;
+}
+
+
 function findById(externalUserId,id) {
     // Retrieve offer either by Salesforce id or Postgress id
     return db.query('select c.id,c.sfid,c.name,m.childs_initials__c,m.child_s_first_name__c,m.child_s_last_name__c,m.childs_nickname__c,c.consultation_date__c,c.record_type__c ,c.mch_child_asdetect__r__externalchildid__c as externalchildid, c.mch_child_asdetect__c,c.at_risk__c,c.age_at_time_of_assessment_years_months__c,c._hc_lastop,c._hc_err from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.asdetect_contact__r__loyaltyid__c=$1 and ' + (isNaN(id) ? 'c.sfId' : 'c.id') + '=$2', [externalUserId,id], true);
