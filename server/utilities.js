@@ -1,10 +1,6 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-    uuid = require('node-uuid'),
-    missingChildInformation ='One or more missing mandatory fields for Child',
     util=require('util');
-
-
 
 
 function deleteChildrenAndTests(req, res, next) { 
