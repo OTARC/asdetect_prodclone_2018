@@ -55,18 +55,18 @@ function create12mAssessment(req, res, next) {
 
 //basic error checking
 
-if ((consultation_date__c=="") || 
-    (pointing__c=="")||(does_child_make_eye_contact_with_you__c=="")  || 
-    (waves_bye_bye__c=="") || 
-    (imitation__c=="")||
-    (responds_to_name__c=="")||
-    (social_smile__c=="") ||
-    (conversational_babble__c=="")||
-    (says_1_3_clear_words__c=="")||
-    (understands_obeys_simple_instructions__c=="")||
-    (attending_to_sounds__c=="")
-
-    ) {
+if (isEmpty(consultation_date__c) || 
+    isEmpty(pointing__c)|| 
+    isEmpty(does_child_make_eye_contact_with_you__c)|| 
+    isEmpty(waves_bye_bye__c) || 
+    isEmpty(imitation__c)||
+    isEmpty(responds_to_name__c)||
+    isEmpty(social_smile__c) ||
+    isEmpty(conversational_babble__c)||
+    isEmpty(says_1_3_clear_words__c)||
+    isEmpty(understands_obeys_simple_instructions__c)||
+    isEmpty(attending_to_sounds__c) ) 
+{
     return res.send(400, missingAssessmentInformation);
 }
 
