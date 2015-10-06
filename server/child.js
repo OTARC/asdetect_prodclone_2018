@@ -67,7 +67,7 @@ function addChild(req, res, next) {
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c;  
 
-    if ((birthdate__c==null) || (birthdate__c=="") || (childs_initials__c==null) || (childs_initials=="") || (child_s_first_name__c==null) || (child_s_first_name__c=="") || (gender__c==null) || (gender__c=="")) {
+    if ((birthdate__c==null) || (birthdate__c=="") || (childs_initials__c==null) || (childs_initials__c=="") || (child_s_first_name__c==null) || (child_s_first_name__c=="") || (gender__c==null) || (gender__c=="")) {
         return res.send(400, missingChildInformation);
     }
 
