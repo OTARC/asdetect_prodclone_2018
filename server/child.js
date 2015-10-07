@@ -43,6 +43,8 @@ function getById(req, res, next) {
 
 function addChild(req, res, next) {
     winston.info('child.addChild()');
+    winston.info(JSON.stringify(req.body));
+    
     var externalUserId = req.externalUserId,
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,
