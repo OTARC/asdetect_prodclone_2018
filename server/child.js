@@ -18,9 +18,11 @@ function findById(id) {
 
 //get all children for a contact
 function getAll(req, res, next) { 
+    winston.info('child.getAll()');
     var externalUserId = req.externalUserId;
     db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c,child_currently_at_risk__c ,child_ever_at_risk__c, asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from asdetect.mch_child_Asdetect__c where asdetect_contact__r__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
         .then(function (child) {
+            winston.info(JSON.stringify(child));
             return res.send(JSON.stringify(child));
         })
         .catch(next);
@@ -40,6 +42,7 @@ function getById(req, res, next) {
 
 
 function addChild(req, res, next) {
+    winston.info('child.addChild()');
     var externalUserId = req.externalUserId,
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,

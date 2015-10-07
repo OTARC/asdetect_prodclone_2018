@@ -51,35 +51,10 @@ app.post('/login', auth.login);
 app.post('/logout', auth.validateToken, auth.logout);
 app.post('/signup', auth.signup);
 app.post('/fblogin', facebook.login);
-
 app.get('/users/me', auth.validateToken, users.getProfile);
 app.put('/users/me', auth.validateToken, users.updateProfile);
-
-//app.get('/offers', auth.validateToken, offers.getAll);
-//app.get('/offers/:id', offers.getById);
-//app.get('/products', auth.validateToken, products.getAll);
-//app.get('/products/:id', auth.validateToken, products.getById);
-//app.get('/stores', stores.getAll);
-
-//app.get('/wallet', auth.validateToken, wallet.getItems);
-//app.post('/wallet', auth.validateToken, wallet.addItem);
-//app.delete('/wallet/:id', auth.validateToken, wallet.deleteItem);
-
-//app.get('/wishlist', auth.validateToken, wishlist.getItems);
-//app.post('/wishlist', auth.validateToken, wishlist.addItem);
-//app.delete('/wishlist/:id', auth.validateToken, wishlist.deleteItem);
-
-//app.get('/pictures', auth.validateToken, pictures.getItems);
-//app.post('/pictures', auth.validateToken, pictures.addItem);
-//app.delete('/pictures', auth.validateToken, pictures.deleteItems);
-
-//app.get('/activities', auth.validateToken, activities.getItems);
-//app.post('/activities', auth.validateToken, activities.addItem);
-//app.delete('/activities', auth.validateToken, activities.deleteAll);
-
 app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
-
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
 // ASDETECT REST
@@ -94,7 +69,6 @@ app.post('/assessment/24m',auth.validateToken,assessment.create24mAssessment);
 app.post('/assessment/35y',auth.validateToken,assessment.create35yAssessment);
 app.get('/interactions', auth.validateToken, interactions.getItems);
 app.post('/interactions', auth.validateToken, interactions.addItem);
-
 app.get('/deleteChildrenAndTests',auth.validateToken,utilities.deleteChildrenAndTests);
 app.get('/deleteContactAndChildrenAndTests',auth.validateToken,utilities.deleteContactAndChildrenAndTests);
 

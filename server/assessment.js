@@ -6,6 +6,7 @@ var db = require('./pghelper'),
 
 //helper function for input validation
 function isEmpty(val){
+    winston.info('assessment.isEmpty()');
     return (val === undefined || val == null || val == "") ? true : false;
 }
 
@@ -16,9 +17,11 @@ function findById(externalUserId,id) {
 };
 
 function getAll(req, res, next) { 
+    winston.info('assessment.getAll()');
     var externalUserId = req.externalUserId;
     db.query("select c.id,c.sfid,c.name, m.childs_initials__c,m.child_s_first_name__c,m.child_s_last_name__c,m.childs_nickname__c,c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c as externalchildid, c.mch_child_asdetect__c,c.at_risk__c,c.age_at_time_of_assessment_years_months__c,c._hc_lastop,c._hc_err from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.asdetect_contact__r__loyaltyid__c=$1",[externalUserId]) 
         .then(function (assessment) {
+            winston.info(JSON.stringify(assessment));
             return res.send(JSON.stringify(assessment));
         })
         .catch(next);
@@ -39,6 +42,7 @@ function getById(req, res, next) {
 
 // add 12 month assessment
 function create12mAssessment(req, res, next) {
+    winston.info('create12mAssessment');
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -105,6 +109,7 @@ if (isEmpty(consultation_date__c) ||
 
 // add 18 month assessment
 function create18mAssessment(req, res, next) {
+    winston.info('create18mAssessment');
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -178,6 +183,7 @@ if (isEmpty(consultation_date__c) ||
 
 
 function create24mAssessment(req, res, next) {
+    winston.info('create24mAssessment');
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -253,6 +259,7 @@ if (isEmpty(consultation_date__c) ||
 
 
 function create35yAssessment(req, res, next) {
+    winston.info('create35yAssessment');
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,   
