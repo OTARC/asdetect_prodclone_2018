@@ -80,6 +80,7 @@ if (isEmpty(consultation_date__c) ||
     var recordtypeid=config.asdetect.recordType12M;
 
     //calculate at risk - TODO make this more robust
+    winston.info('calculating external risk');
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (responds_to_name__c=='Atypical'? 1:0)   );
     
@@ -157,6 +158,7 @@ if (isEmpty(consultation_date__c) ||
     var recordtypeid=config.asdetect.recordType18M;
 
     //calculate at risk - TODO make this more robust
+    winston.info('calculating external risk');
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
@@ -232,6 +234,7 @@ if (isEmpty(consultation_date__c) ||
     var recordtypeid=config.asdetect.recordType24M;
 
     //calculate at risk - TODO make this more robust
+    winston.info('calculating external risk');
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
@@ -323,6 +326,7 @@ if (isEmpty(consultation_date__c) ||
     var recordtypeid=config.asdetect.recordType35Y;
 
     //calculate at risk - TODO make this more robust
+    winston.info('calculating external risk');
     var externalatrisk__c='No';
     var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (showing__c=='Atypical'? 1:0)  + (pretend_play__c=='Atypical'? 1:0)   + (follows_two_unrelated_commands__c=='Atypical'? 1:0) + (odd_or_unusual_speech__c=='Atypical'? 1:0) + (sensory_behaviours_and_interests__c=='Atypical'? 1:0) +(reciprocal_social_interaction__c=='Atypical'? 1:0)  );
     

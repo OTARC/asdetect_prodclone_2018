@@ -6,6 +6,7 @@ var db = require('./pghelper'),
 
 
 function isEmpty(val){
+    winston.info('child.isEmpty()');
     return (val === undefined || val == null || val == "") ? true : false;
 }
 
@@ -44,7 +45,6 @@ function getById(req, res, next) {
 function addChild(req, res, next) {
     winston.info('child.addChild()');
     winston.info(JSON.stringify(req.body));
-    
     var externalUserId = req.externalUserId,
     birthdate__c = req.body.birthdate__c,
     childs_initials__c=req.body.childs_initials__c,

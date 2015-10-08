@@ -40,7 +40,8 @@ function getItems(req, res, next) {
     var externalUserId = req.externalUserId;
     console.log('external user id:' + externalUserId);
 
-    db.query("SELECT id,sfid,name,asdetect_contact__r__loyaltyid__c AS userId, type__c , description__c, name, createddate,mch_child_asdetect__r__externalchildid__c as externalchildid__c, _hc_lastop,_hc_err FROM asdetect.asdetect_interaction__c WHERE asdetect_contact__r__loyaltyid__c=$1 order by createdDate desc LIMIT 20", [externalUserId])
+    db.query("SELECT i.id,i.sfid,i.name,i.asdetect_contact__r__loyaltyid__c AS userId, i.type__c , i.description__c, i.name, c.child_s_first_name__c,i.createddate,i.mch_child_asdetect__r__externalchildid__c as externalchildid__c, i._hc_lastop,i._hc_err FROM asdetect.asdetect_interaction__c i LEFT OUTER JOIN asdetect.mch_child_asdetect__c c ON (i.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c)
+ AND i.asdetect_contact__r__loyaltyid__c=$1 order by i.createdDate desc LIMIT 20", [externalUserId])
         .then(function (interactions) {
             console.log(JSON.stringify(interactions));
             return res.send(JSON.stringify(interactions));
