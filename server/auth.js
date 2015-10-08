@@ -128,6 +128,7 @@ function login(req, res, next) {
         .catch(next);
 };
 
+
 /**
  * Logout user
  * @param req
