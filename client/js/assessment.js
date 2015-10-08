@@ -257,7 +257,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
         $scope.update35y = function () {
             Assessment.create35y($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '35Y Child assessment created.'});
-                console.log('scope.child is:'+JSON.stringify($scope.child));
+              
+
+              console.log('scope.child is:'+JSON.stringify($scope.child));
                 /*
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
@@ -268,6 +270,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 });
 
 */
+
+
+
 
             })};
 
