@@ -148,12 +148,15 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
         $scope.submit = function () {
             Child.create($scope.child).success(function(data) {
+                
+                /*
                 var initials=$scope.child.childs_initials__c;
                 var extid=data.externalchildid__c;
              Interaction.create({type__c: "Add Child", description__c:"Child record added ("+initials+") :Angular child module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+                */
 
                 $ionicPopup.alert({title: 'Thank You', content: 'Child record added.'});
 

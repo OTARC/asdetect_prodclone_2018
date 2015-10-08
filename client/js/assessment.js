@@ -129,6 +129,8 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             Assessment.create12m($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '12M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
+                
+                /*
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
@@ -136,6 +138,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+*/
 
 
 
@@ -170,6 +173,8 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             Assessment.create18m($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
+                
+/*
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
 
@@ -177,6 +182,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+*/
 
 
 
@@ -209,13 +215,16 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
             Assessment.create24m($scope.assessment).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: '24M Child assessment created.'});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
+                
+                
+                /*
                 var initials=$scope.child.childs_initials__c;
                 var extid=$scope.child.externalchildid__c;
-
                 Interaction.create({type__c: 'Created 24M Assessment', description__c:"Child - "+initials+" : Angular assessment module",externalchildid__c:extid})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
+                */
 
 
 
