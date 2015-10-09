@@ -65,13 +65,13 @@ function createAccessToken(user) {
 }
 
 
-function logUserInteraction(user,itype,idescription) {
+function logUserInteraction(externaluserid,itype,idescription) {
     winston.info('logUserInteraction');
     var token = uuid.v4(),
     
     deferred = Q.defer();
     db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
-                    [user.externaluserid, 'Logged In', 'Node auth.js'], true)
+                    [externaluserid, 'Logged In', 'Node auth.js'], true)
     .then(function() {
             //deferred.resolve(token);
         })
@@ -128,7 +128,7 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user,'Logged In','Node.js auth','')    
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth','')    
                      .then             
                      cleanupAccessTokens(user)
                      .then
