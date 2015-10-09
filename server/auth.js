@@ -132,7 +132,7 @@ function login(req, res, next) {
 
                      cleanupAccessTokens(user)
 
-                     .then createAccessToken(user)
+                     .then (createAccessToken(user))
 
                      .then(function(token) {
                             return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
