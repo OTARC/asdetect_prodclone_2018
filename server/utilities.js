@@ -24,6 +24,17 @@ function deleteContactAndChildrenAndTests(req, res, next) {
         .catch(next);
 };
 
+function deleteOldTokens(req, res, next) { 
+    var externalUserId = req.externalUserId;
+    console.log('!!!!!! DELETING ALL OLD TOKENS !!!!!');
+    db.query("select delete_old_tokens()")       
+        .then(function (result) {
+            return res.send(JSON.stringify(result));
+        })
+        .catch(next);
+};
+
 
 exports.deleteChildrenAndTests=deleteChildrenAndTests;
 exports.deleteContactAndChildrenAndTests=deleteContactAndChildrenAndTests;
+exports deleteOldTokens=deleteOldTokens;
