@@ -113,6 +113,13 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
         });
 
+
+ $scope.doRefresh = function() {
+            Child.all().success(function(children) {
+                $scope.children = children;
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        };
         
        
     })
