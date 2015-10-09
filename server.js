@@ -71,7 +71,12 @@ app.get('/interactions', auth.validateToken, interactions.getItems);
 app.post('/interactions', auth.validateToken, interactions.addItem);
 
 app.get('/deleteChildrenAndTests',auth.validateToken,utilities.deleteChildrenAndTests);
+app.get('/deleteOldTokens',auth.validateToken,utilities.deleteOldTokens);
+
+
 app.get('/deleteContactAndChildrenAndTests',auth.validateToken,utilities.deleteContactAndChildrenAndTests);
+
+
 
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);
 
