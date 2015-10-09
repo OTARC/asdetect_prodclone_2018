@@ -143,15 +143,12 @@ return $http.post($rootScope.server.url + '/logout')
             Auth.login($scope.user)
                 .success(function (data) {
 
-
-
+            /*
              Interaction.create({type__c: "Logged in", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
-
-
-
+            */
 
                     $state.go("app.profile");
                 })
@@ -189,30 +186,27 @@ return $http.post($rootScope.server.url + '/logout')
 
     })
 
-.controller('LogoutCtrl', function ($scope, $rootScope, $window, Auth, Interaction) {
+    .controller('LogoutCtrl', function ($scope, $rootScope, $window, Auth, Interaction) {
+
+            /*
+               Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+               .success(function(status) {
+                console.log('Interaction recorded.');
+            });
+            */
+
+            Auth.logout()
+            .success(function (data) {
+               $rootScope.user = null;
+               $window.localStorage.removeItem('user');
+               $window.localStorage.removeItem('token');
+           })
+            .error(function (err) {
+                console.log('Error logging out');
+            });
 
 
-   Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
-   .success(function(status) {
-    console.log('Interaction recorded.');
-});
-
- Auth.logout()
- .success(function (data) {
-
-   $rootScope.user = null;
-   $window.localStorage.removeItem('user');
-   $window.localStorage.removeItem('token');
-
-
-})
- .error(function (err) {
-    console.log('Error logging out');
-});
-
-
-
-})
+     })
 
     .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
 
