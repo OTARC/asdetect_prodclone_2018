@@ -130,7 +130,7 @@ function login(req, res, next) {
                 if (match) {  
                      //logUserInteraction(user.externaluserid,'Logged In','Node.js auth')   
 
-                     .then (cleanupAccessTokens(user))
+                     cleanupAccessTokens(user)
 
                      .then (createAccessToken(user))
 
