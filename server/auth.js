@@ -128,12 +128,13 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth')    
-                     .then             
-                     cleanupAccessTokens(user)
-                     .then
-                      createAccessToken(user)
-                        .then(function(token) {
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth')   
+                      
+                     .then (cleanupAccessTokens(user))
+
+                     .then (createAccessToken(user))
+
+                     .then(function(token) {
                             return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
                         })
                         .catch(function(err) {
@@ -165,8 +166,7 @@ function logout(req, res, next) {
     winston.info('Logout token:' + token);
 
     logUserInteraction(req.externalUserId,'Logged Out','Node.js auth')
-    .then
-    db.query('DELETE FROM tokens WHERE token = $1', [token])
+    .then (db.query('DELETE FROM tokens WHERE token = $1', [token]))
         .then(function () {
             winston.info('Logout successful');
             res.send('OK');
