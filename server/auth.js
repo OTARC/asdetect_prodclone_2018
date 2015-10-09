@@ -128,7 +128,7 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth','')    
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth')    
                      .then             
                      cleanupAccessTokens(user)
                      .then
