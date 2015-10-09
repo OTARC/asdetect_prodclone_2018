@@ -51,13 +51,13 @@ function createAccessToken(user) {
     var token = uuid.v4(),
         deferred = Q.defer();
     
+    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
+                    [user.id, 'Logged In', 'Node auth.js'], true)
+    .then
     db.query('INSERT INTO tokens (userId, externalUserId, token) VALUES ($1, $2, $3)', [user.id, user.externaluserid, token])
         .then(function() {
             deferred.resolve(token);
         })
-
-        .then (db.query'INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
-                    [user.id, 'Logged In', 'Node auth.js'], true)
 
         .catch(function(err) {
             deferred.reject(err);
