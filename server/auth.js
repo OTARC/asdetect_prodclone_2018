@@ -49,16 +49,30 @@ function comparePassword(password, hash, callback) {
 function createAccessToken(user) {
     winston.info('createAccessToken');
     var token = uuid.v4(),
-        deferred = Q.defer();
     
-    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,mch_child_asdetect__r__externalchildid__c) VALUES ($1, $2, $3,$4)',
-                    [user.externaluserid, 'Logged In', 'Node auth.js',''], true)
-    .then
+    deferred = Q.defer();
+    
+    
     db.query('INSERT INTO tokens (userId, externalUserId, token) VALUES ($1, $2, $3)', [user.id, user.externaluserid, token])
         .then(function() {
             deferred.resolve(token);
         })
 
+        .catch(function(err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
+}
+
+
+function logUserInteraction(user,itype,idescription) {
+    winston.info('logUserInteraction');
+    var token = uuid.v4(),
+    
+    deferred = Q.defer();
+    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
+                    [user.externaluserid, 'Logged In', 'Node auth.js'], true)
+    .then
         .catch(function(err) {
             deferred.reject(err);
         });
@@ -111,7 +125,9 @@ function login(req, res, next) {
             }
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
-                if (match) {                   
+                if (match) {  
+                     logUserInteraction(user,'Logged In','Node.js auth','')    
+                     .then             
                      cleanupAccessTokens(user)
                      .then
                       createAccessToken(user)
@@ -142,7 +158,12 @@ function login(req, res, next) {
 function logout(req, res, next) {
     winston.info('logout');
     var token = req.headers['authorization'];
+    
+
     winston.info('Logout token:' + token);
+
+    logUserInteraction(req.externalUserId,'Logged Out','Node.js auth')
+    .then
     db.query('DELETE FROM tokens WHERE token = $1', [token])
         .then(function () {
             winston.info('Logout successful');
