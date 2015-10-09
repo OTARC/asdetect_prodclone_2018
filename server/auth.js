@@ -164,7 +164,7 @@ function logout(req, res, next) {
 
     winston.info('Logout token:' + token);
 
-    logUserInteraction(req.externalUserId,'XXXXX Logged Out','Node.js auth')
+    logUserInteraction(req.externalUserId,'Logged Out','Node.js auth')
     .then
     db.query('DELETE FROM tokens WHERE token = $1', [token])
         .then(function () {
