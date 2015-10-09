@@ -37,4 +37,4 @@ function deleteOldTokens(req, res, next) {
 
 exports.deleteChildrenAndTests=deleteChildrenAndTests;
 exports.deleteContactAndChildrenAndTests=deleteContactAndChildrenAndTests;
-exports deleteOldTokens=deleteOldTokens;
+exports.deleteOldTokens=deleteOldTokens;
