@@ -71,7 +71,7 @@ function logUserInteraction(externaluserid,itype,idescription) {
     
     deferred = Q.defer();
     db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
-                    [externaluserid, 'Logged In', 'Node auth.js'], true)
+                    [externaluserid, itype, idescription], true)
     .then(function() {
             //deferred.resolve(token);
         })
@@ -164,7 +164,7 @@ function logout(req, res, next) {
 
     winston.info('Logout token:' + token);
 
-    logUserInteraction(req.externalUserId,'Logged Out','Node.js auth')
+    logUserInteraction(req.externalUserId,'XXXXX Logged Out','Node.js auth')
     .then
     db.query('DELETE FROM tokens WHERE token = $1', [token])
         .then(function () {
