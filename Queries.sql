@@ -41,11 +41,14 @@ delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" fr
 and u.loyaltyid__c=$1);
 ' LANGUAGE SQL ;    
 
+drop function delete_old_tokens;
 //delete all tokens except for the most recent
-create function delete_old_tokens() RETURNS VOID AS '
+create function delete_old_tokens() RETURNS text AS $$
+	begin
 delete from tokens where token in (select token from tokens t where created > (select min(created) from tokens where userId=t.userId group by userId having count(*)>1) );                                                                                                                               
-
-'LANGUAGE SQL;
+return 'Tokens deleted';
+end
+$$ LANGUAGE PLPGSQL;
 
 CREATE FUNCTION delete_contact_and_children_and_tests(text) RETURNS void AS ' 
 

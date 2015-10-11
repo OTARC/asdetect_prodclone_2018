@@ -5,6 +5,7 @@ var bcrypt = require('bcrypt'),
     Q = require('q'),
     validator = require('validator'),
     winston = require('winston'),
+    var UAParser = require('ua-parser-js'),
     invalidCredentials = 'Invalid email or password';
 
 /**
@@ -67,8 +68,8 @@ function createAccessToken(user) {
 
 function logUserInteraction(externaluserid,itype,idescription) {
     winston.info('logUserInteraction');
-    var token = uuid.v4(),
-    
+
+    var token = uuid.v4(),  
     deferred = Q.defer();
     db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
                     [externaluserid, itype, idescription], true)
@@ -113,6 +114,10 @@ function login(req, res, next) {
 
     var creds = req.body;
     console.log(creds);
+    
+    var parser = new UAParser();
+    var ua = request.headers['user-agent'];
+    console.log(parser.setUA(ua).getResult());
 
     // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
     // these users don't have passwords
