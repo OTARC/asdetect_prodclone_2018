@@ -66,13 +66,13 @@ function createAccessToken(user) {
 }
 
 
-function logUserInteraction(externaluserid,itype,idescription) {
+function logUserInteraction(externaluserid,itype,idescription,ios) {
     winston.info('logUserInteraction');
 
     var token = uuid.v4(),  
     deferred = Q.defer();
-    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c) VALUES ($1, $2, $3)',
-                    [externaluserid, itype, idescription], true)
+    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3,$4)',
+                    [externaluserid, itype, idescription,ios], true)
     .then(function() {
             //deferred.resolve(token);
         })
@@ -133,7 +133,7 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth','')    
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth',ua.os.name)    
                      .then             
                      cleanupAccessTokens(user)
                      .then
@@ -169,7 +169,7 @@ function logout(req, res, next) {
 
     winston.info('Logout token:' + token);
 
-    logUserInteraction(req.externalUserId,'Logged Out','Node.js auth')
+    logUserInteraction(req.externalUserId,'Logged Out','Node.js auth','')
     .then
     db.query('DELETE FROM tokens WHERE token = $1', [token])
         .then(function () {
