@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt'),
     Q = require('q'),
     validator = require('validator'),
     winston = require('winston'),
-    var UAParser = require('ua-parser-js'),
+    UAParser = require('ua-parser-js'),
     invalidCredentials = 'Invalid email or password';
 
 /**
