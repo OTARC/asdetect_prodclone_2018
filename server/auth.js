@@ -71,7 +71,7 @@ function logUserInteraction(externaluserid,itype,idescription,ios) {
 
     var token = uuid.v4(),  
     deferred = Q.defer();
-    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3,$4)',
+    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3, $4)',
                     [externaluserid, itype, idescription,ios], true)
     .then(function() {
             //deferred.resolve(token);
@@ -118,6 +118,8 @@ function login(req, res, next) {
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
     console.log(parser.setUA(ua).getResult());
+    console.log(ua.os.name)
+
 
     // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
     // these users don't have passwords
@@ -133,7 +135,7 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth',ua.os.name)    
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth','Android')    
                      .then             
                      cleanupAccessTokens(user)
                      .then
