@@ -117,8 +117,8 @@ function login(req, res, next) {
 
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
-    console.log(parser.setUA(ua).getResult());
-    console.log(ua);
+    console.log(parser.setUA(ua).getResult().os.name);
+   
 
 
     // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
