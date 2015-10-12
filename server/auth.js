@@ -117,7 +117,7 @@ function login(req, res, next) {
 
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
-    console.log(parser.setUA(ua).getResult().os.name);
+    var os = parser.setUA(ua).getResult().os.name);
    
 
 
@@ -135,7 +135,7 @@ function login(req, res, next) {
             comparePassword(creds.password__c, user.password__c, function (err, match) {
                 if (err) return next(err);
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth','Android')    
+                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth',os)    
                      .then             
                      cleanupAccessTokens(user)
                      .then
