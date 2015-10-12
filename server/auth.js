@@ -117,7 +117,7 @@ function login(req, res, next) {
 
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
-    var os = parser.setUA(ua).getResult().os.name);
+    var os = parser.setUA(ua).getResult().os.name;
    
 
 
