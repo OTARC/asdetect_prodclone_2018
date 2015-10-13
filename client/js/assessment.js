@@ -127,7 +127,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
         $scope.update12m = function () {
             Assessment.create12m($scope.assessment).success(function(data) {
-                $ionicPopup.alert({title: '12M Assessment Created', content: 'At Risk? '+data.externalatrisk__c});
+                $ionicPopup.alert({title: '12M Assessment Created', content: 'Is Child At Risk? '+data.externalatrisk__c});
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 
                 /*
@@ -170,8 +170,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
         $scope.update18m = function () {
-            Assessment.create18m($scope.assessment).success(function() {
-                $ionicPopup.alert({title: 'Thank You', content: '18M Child assessment created.'});
+            Assessment.create18m($scope.assessment).success(function(data) {
+            $ionicPopup.alert({title: '18M Assessment Created', content: 'Is Child At Risk? '+data.externalatrisk__c});
+
                 console.log('scope.child is:'+JSON.stringify($scope.child));
                 
 /*
@@ -212,9 +213,10 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
         $scope.update24m = function () {
-            Assessment.create24m($scope.assessment).success(function() {
-                $ionicPopup.alert({title: 'Thank You', content: '24M Child assessment created.'});
-                console.log('scope.child is:'+JSON.stringify($scope.child));
+            Assessment.create24m($scope.assessment).success(function(data) {
+            $ionicPopup.alert({title: '24M Assessment Created', content: 'Is Child At Risk? '+data.externalatrisk__c});
+
+            console.log('scope.child is:'+JSON.stringify($scope.child));
                 
                 
                 /*
@@ -255,8 +257,9 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
 
 
         $scope.update35y = function () {
-            Assessment.create35y($scope.assessment).success(function() {
-                $ionicPopup.alert({title: 'Thank You', content: '35Y Child assessment created.'});
+            Assessment.create35y($scope.assessment).success(function(data) {
+                               $ionicPopup.alert({title: '3.5Y Assessment Created', content: 'Is Child At Risk? '+data.externalatrisk__c});
+
               
 
               console.log('scope.child is:'+JSON.stringify($scope.child));
