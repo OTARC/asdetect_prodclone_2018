@@ -161,7 +161,7 @@ if (isEmpty(consultation_date__c) ||
     //calculate at risk - TODO make this more robust
     winston.info('calculating external risk');
     var externalatrisk__c='No';
-    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
+    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (showing__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
     if (no_of_atypical_key_items>=3) {
         externalatrisk__c='Yes';
@@ -235,10 +235,10 @@ if (isEmpty(consultation_date__c) ||
     //var recordtypeid='012j0000000mFHuAAM'; -- moved to config
     var recordtypeid=config.asdetect.recordType24M;
 
-    //calculate at risk - TODO make this more robust
+    //calculate the at risk - TODO make this more robust
     winston.info('calculating external risk');
     var externalatrisk__c='No';
-    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (imitation__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
+    var no_of_atypical_key_items=( (pointing__c=='Atypical'? 1:0) + (does_child_make_eye_contact_with_you__c=='Atypical'? 1: 0) +  (waves_bye_bye__c=='Atypical'? 1:0)  + (showing__c=='Atypical'? 1:0)   + (pretend_play__c=='Atypical'? 1:0)   );
     
     if (no_of_atypical_key_items>=3) {
         externalatrisk__c='Yes';
