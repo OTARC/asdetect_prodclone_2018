@@ -242,7 +242,7 @@ function resetpassword(req, res, next) {
 
     var user = req.body;
 
-    console.log('user received: '+user);
+    console.log('user received resetpassword request for: '+user.email__c);
 
     if (!validator.isEmail(user.email__c)) {
         return res.send(400, "Invalid email address");
