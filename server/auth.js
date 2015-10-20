@@ -337,6 +337,7 @@ function validateToken (req, res, next) {
 exports.login = login;
 exports.logout = logout;
 exports.signup = signup;
+exports.resetpassword=resetpassword;
 exports.createUser = createUser;
 exports.createAccessToken = createAccessToken;
 exports.validateToken = validateToken;
