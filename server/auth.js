@@ -263,20 +263,6 @@ function resetpassword(req, res, next) {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Create a user
  * @param user
