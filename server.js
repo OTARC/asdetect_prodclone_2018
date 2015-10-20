@@ -9,14 +9,9 @@ var express = require('express'),
     util = require('util'),
 
     // App modules
-    //offers = require('./server/offers'),
-    //products = require('./server/products'),
+   
     users = require('./server/users'),
     cases = require('./server/cases'),
-    //wallet = require('./server/wallet'),
-    //wishlist = require('./server/wishlist'),
-    //stores = require('./server/stores'),
-    //pictures = require('./server/pictures'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
@@ -69,15 +64,9 @@ app.post('/assessment/24m',auth.validateToken,assessment.create24mAssessment);
 app.post('/assessment/35y',auth.validateToken,assessment.create35yAssessment);
 app.get('/interactions', auth.validateToken, interactions.getItems);
 app.post('/interactions', auth.validateToken, interactions.addItem);
-
 app.get('/deleteChildrenAndTests',auth.validateToken,utilities.deleteChildrenAndTests);
 app.get('/deleteOldTokens',auth.validateToken,utilities.deleteOldTokens);
-
-
 app.get('/deleteContactAndChildrenAndTests',auth.validateToken,utilities.deleteContactAndChildrenAndTests);
-
-
-
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);
 
 
