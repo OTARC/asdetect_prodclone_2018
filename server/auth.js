@@ -230,6 +230,54 @@ function signup(req, res, next) {
 };
 
 /**
+ * REsetpassword
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*|ServerResponse}
+ */
+function resetpassword(req, res, next) {
+
+    winston.info('reset password');
+
+    var user = req.body;
+
+    console.log(user);
+
+    if (!validator.isEmail(user.email__c)) {
+        return res.send(400, "Invalid email address");
+    }
+   
+    db.query('SELECT id FROM asdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
+        .then(function (u) {
+            if(u) {   
+/* this is a valid user*/
+            console.log('found an existing user');
+            return res.send('OK');
+            }
+            console.log('User not registered');
+            return res.send(400, "This user is not registered");
+            
+        })
+        .catch(next);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
  * Create a user
  * @param user
  * @param password

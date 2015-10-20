@@ -37,6 +37,16 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
                 }
             })
 
+            .state('app.resetpassword', {
+                url: "/resetpassword",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/resetpassword.html",
+                        controller: "ResetPasswordCtrl"
+                    }
+                }
+            })
+
     })
 
     /*
@@ -110,7 +120,11 @@ return $http.post($rootScope.server.url + '/logout')
             },
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
+            },
+             resetpassword: function (user) {
+                return $http.post($rootScope.server.url + '/resetpassword', user);
             }
+
         }
     })
 
@@ -204,6 +218,32 @@ return $http.post($rootScope.server.url + '/logout')
             .error(function (err) {
                 console.log('Error logging out');
             });
+
+
+     })
+
+
+
+
+     .controller('ResetPasswordCtrl', function ($scope, $state, $ionicPopup, $rootScope, $window, Auth, Interaction) {
+
+            /*
+               Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+               .success(function(status) {
+                console.log('Interaction recorded.');
+            });
+            */
+
+ $scope.user = {};
+
+   $scope.resetpassword = function () {
+           
+            Auth.resetpassword($scope.user)
+                .success(function (data) {
+                     $ionicPopup.alert({title: 'Reset Password', content: "Check your email"});
+                });
+        };
+
 
 
      })

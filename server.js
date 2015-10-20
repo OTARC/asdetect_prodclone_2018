@@ -44,7 +44,10 @@ app.use(function(err, req, res, next) {
 
 app.post('/login', auth.login);
 app.post('/logout', auth.validateToken, auth.logout);
+
 app.post('/signup', auth.signup);
+app.post('/resetpassword', auth.resetpassword);
+
 app.post('/fblogin', facebook.login);
 app.get('/users/me', auth.validateToken, users.getProfile);
 app.put('/users/me', auth.validateToken, users.updateProfile);
