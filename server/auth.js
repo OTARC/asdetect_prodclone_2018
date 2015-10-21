@@ -251,8 +251,9 @@ function requestResetPassword(req, res, next) {
     db.query('SELECT id FROM asdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {   
-/* this is a valid user*/
+            /* this is a valid user*/
             console.log('found an existing user');
+            // do something to initiate an email etc.
             return res.send('OK');
             }
             console.log('User not registered');
@@ -274,7 +275,6 @@ function createUser(user, password) {
     winston.info('createUser');
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
-        
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
         externalUserId=uuid.v4();
 
@@ -288,6 +288,33 @@ function createUser(user, password) {
         });
     return deferred.promise;
 };
+
+
+
+
+
+/**
+ * Update user password
+ * @param user
+ * @param password
+ * @returns {promise|*|Q.promise}
+ */
+function updateUserPassword(user, password) {
+
+    winston.info('updateUserPassword');
+    var deferred = Q.defer(),    
+// the loyaltyid__c field identifies the user
+    db.query('UPDATE asdetect.asdetect_contact__c SET password__c=$1 WHERE loyaltyid__c=$2',
+        [password, user.loyaltyid__c], true)
+        .then(function (updatedUser) {
+            deferred.resolve(updatedUser);
+        })
+        .catch(function(err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
+};
+
 
 /**
  * Validate authorization token
