@@ -117,12 +117,24 @@ function login(req, res, next) {
 
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
-
     console.log('user agent is: '+ua);
+    
+    var os='undefined';
 
-    var os = parser.setUA(ua).getResult().os.name;
-   
-
+ switch(ua) {
+    case 'ASDetect-iPhone-App':
+        os='iPhone';
+        break;
+    case 'ASDetect-iPad-App':
+        os='iPad';
+        break;
+    case 'ASDetect-Android-App':
+        os='Android';
+        break;
+    default:
+    //is not an ipad or iphone or android? - lets do the best we can to find out the agent os
+        os=parser.setUA(ua).getResult().os.name;
+}
 
     // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
     // these users don't have passwords
@@ -288,9 +300,6 @@ function createUser(user, password) {
         });
     return deferred.promise;
 };
-
-
-
 
 
 /**
