@@ -236,7 +236,7 @@ function signup(req, res, next) {
  * @param next
  * @returns {*|ServerResponse}
  */
-function resetpassword(req, res, next) {
+function requestResetPassword(req, res, next) {
 
     winston.info('reset password');
 
@@ -323,7 +323,7 @@ function validateToken (req, res, next) {
 exports.login = login;
 exports.logout = logout;
 exports.signup = signup;
-exports.resetpassword=resetpassword;
+exports.requestResetPassword=requestResetPassword;
 exports.createUser = createUser;
 exports.createAccessToken = createAccessToken;
 exports.validateToken = validateToken;

@@ -37,12 +37,12 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
                 }
             })
 
-            .state('app.resetpassword', {
-                url: "/resetpassword",
+            .state('app.requestresetpassword', {
+                url: "/requestresetpassword",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/resetpassword.html",
-                        controller: "ResetPasswordCtrl"
+                        templateUrl: "templates/requestresetpassword.html",
+                        controller: "RequestResetPasswordCtrl"
                     }
                 }
             })
@@ -121,8 +121,8 @@ return $http.post($rootScope.server.url + '/logout')
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
             },
-             resetpassword: function (user) {
-                return $http.post($rootScope.server.url + '/resetpassword', user);
+             requestresetpassword: function (user) {
+                return $http.post($rootScope.server.url + '/requestresetpassword', user);
             }
 
         }
@@ -225,7 +225,7 @@ return $http.post($rootScope.server.url + '/logout')
 
 
 
-     .controller('ResetPasswordCtrl', function ($scope, $state, $ionicPopup, $rootScope, $window, Auth, Interaction) {
+     .controller('RequestResetPasswordCtrl', function ($scope, $state, $ionicPopup, $rootScope, $window, Auth, Interaction) {
 
             /*
                Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
@@ -236,14 +236,14 @@ return $http.post($rootScope.server.url + '/logout')
 
  $scope.user = {};
 
-   $scope.resetpassword = function () {
+   $scope.requestresetpassword = function () {
            
-            Auth.resetpassword($scope.user)
+            Auth.requestresetpassword($scope.user)
                 .success(function (data) {
-                     $ionicPopup.alert({title: 'Reset Password', content: "Check your email"});
+                     $ionicPopup.alert({title: 'Request Reset Password', content: "Check your email"});
                 })
                 .error(function () {
-                            $ionicPopup.alert({title: 'Reset Password', content: "Problem"});
+                            $ionicPopup.alert({title: 'Request Reset Password', content: "Problem"});
                         });
         };
 

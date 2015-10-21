@@ -46,7 +46,7 @@ app.post('/login', auth.login);
 app.post('/logout', auth.validateToken, auth.logout);
 
 app.post('/signup', auth.signup);
-app.post('/resetpassword', auth.resetpassword);
+app.post('/requestresetpassword', auth.requestResetPassword);
 
 app.post('/fblogin', facebook.login);
 app.get('/users/me', auth.validateToken, users.getProfile);
