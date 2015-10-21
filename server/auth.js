@@ -302,7 +302,8 @@ function createUser(user, password) {
 function updateUserPassword(user, password) {
 
     winston.info('updateUserPassword');
-    var deferred = Q.defer(),    
+    var deferred = Q.defer();
+        
 // the loyaltyid__c field identifies the user
     db.query('UPDATE asdetect.asdetect_contact__c SET password__c=$1 WHERE loyaltyid__c=$2',
         [password, user.loyaltyid__c], true)
