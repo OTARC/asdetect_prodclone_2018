@@ -47,6 +47,16 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
                 }
             })
 
+            .state('app.resetpassword', {
+                url: "/resetpassword/{password_reset_token__c:string}/{email__c:string}",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/resetpassword.html",
+                        controller: "ResetPasswordCtrl"
+                    }
+                }
+            })
+
     })
 
     /*
@@ -121,8 +131,11 @@ return $http.post($rootScope.server.url + '/logout')
             signup: function (user) {
                 return $http.post($rootScope.server.url + '/signup', user);
             },
-             requestresetpassword: function (user) {
+            requestresetpassword: function (user) {
                 return $http.post($rootScope.server.url + '/requestresetpassword', user);
+            },
+            resetpassword: function (user) {
+                return $http.post($rootScope.server.url + '/resetpassword', user);
             }
 
         }
@@ -234,7 +247,7 @@ return $http.post($rootScope.server.url + '/logout')
             });
             */
 
- $scope.user = {};
+ $scope.user= {};
 
    $scope.requestresetpassword = function () {
            
@@ -250,6 +263,31 @@ return $http.post($rootScope.server.url + '/logout')
 
 
      })
+
+
+ .controller('ResetPasswordCtrl', function ($scope, $state, $ionicPopup, $rootScope, $stateParams, $window, Auth, Interaction) {
+
+
+ $scope.user = {};
+ $scope.user.password_reset_token__c=$stateParams.password_reset_token__c;
+ $scope.user.email__c=$stateParams.email__c;
+
+
+ $scope.resetpassword = function () {
+           
+            Auth.resetpassword($scope.user)
+                .success(function (data) {
+                     $ionicPopup.alert({title:  'Reset Password', content: "Submitted"});
+                })
+                .error(function () {
+                            $ionicPopup.alert({title: 'Reset Password', content: "Problem"});
+                        });
+        };
+
+
+
+     })
+
 
     .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
 

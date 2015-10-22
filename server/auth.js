@@ -250,7 +250,7 @@ function signup(req, res, next) {
  */
 function requestResetPassword(req, res, next) {
 
-    winston.info('reset password');
+    winston.info('request reset password');
 
     var user = req.body,
         token = uuid.v4();
@@ -266,6 +266,26 @@ function requestResetPassword(req, res, next) {
             return res.send('OK');            
         })
         .catch(next);
+};
+
+
+
+function resetPassword(req, res, next) {
+
+    winston.info('reset password');
+
+    var user = req.body;       
+
+    console.log('resetting password request for: '+user.email__c);
+
+    encryptPassword(user.password__c, function (err, hash) {
+                if (err) return next(err);
+                updateUserPassword(user, hash)
+                    .then(function () {
+                        return res.send('OK');
+                    })
+                    .catch(next);
+            });
 };
 
 
@@ -307,8 +327,8 @@ function updateUserPassword(user, password) {
     var deferred = Q.defer();
         
 // the loyaltyid__c field identifies the user
-    db.query('UPDATE asdetect.asdetect_contact__c SET password__c=$1 WHERE loyaltyid__c=$2',
-        [password, user.loyaltyid__c], true)
+    db.query('UPDATE asdetect.asdetect_contact__c SET password__c=$1, password_reset_token__c=NULL WHERE password_reset_token__c=$2',
+        [password, user.password_reset_token__c], true)
         .then(function (updatedUser) {
             deferred.resolve(updatedUser);
         })
@@ -354,6 +374,7 @@ exports.login = login;
 exports.logout = logout;
 exports.signup = signup;
 exports.requestResetPassword=requestResetPassword;
+exports.resetPassword=resetPassword;
 exports.createUser = createUser;
 exports.createAccessToken = createAccessToken;
 exports.validateToken = validateToken;
