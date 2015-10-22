@@ -262,16 +262,8 @@ function requestResetPassword(req, res, next) {
     }
    
     db.query('UPDATE asdetect.asdetect_contact__C set password_reset_token__c=$1 WHERE email__c=$2', [token,user.email__c], true)
-        .then(function (u) {
-            if(u) {   
-            /* this is a valid user*/
-            console.log('found an existing user');
-            // do something to initiate an email etc.
-            return res.send('OK');
-            }
-            console.log('User not registered');
-            return res.send(400, "This user is not registered");
-            
+        .then(function () {     
+            return res.send('OK');            
         })
         .catch(next);
 };
