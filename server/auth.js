@@ -252,7 +252,8 @@ function requestResetPassword(req, res, next) {
 
     winston.info('reset password');
 
-    var user = req.body;
+    var user = req.body,
+        token = uuid.v4();
 
     console.log('user received resetpassword request for: '+user.email__c);
 
@@ -260,7 +261,7 @@ function requestResetPassword(req, res, next) {
         return res.send(400, "Invalid email address");
     }
    
-    db.query('SELECT id FROM asdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
+    db.query('UPDATE asdetect.asdetect_contact__C set password_reset_token__c=$1 WHERE email__c=$2', [token,user.email__c], true)
         .then(function (u) {
             if(u) {   
             /* this is a valid user*/
