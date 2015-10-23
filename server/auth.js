@@ -306,7 +306,7 @@ function createUser(user, password) {
     db.query('INSERT INTO asdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
         [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
         .then(function (insertedUser) {
-            console.log('XXXXXXXXXXX'+insertedUser.rowCount);
+            console.log(JSON.stringify(insertedUser));
             deferred.resolve(insertedUser);
         })
         .catch(function(err) {
