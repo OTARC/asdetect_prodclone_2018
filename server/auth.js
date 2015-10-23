@@ -91,8 +91,8 @@ function cleanupAccessTokens(user) {
     var deferred = Q.defer();
     
     db.query('delete from tokens where userId=$1 and now()-created > $2', [user.id, tokenlife])
-        .then(function(deletedrecords) {
-            console.log('XXXXXX'+JSON.stringify(deletedrecords));
+        .then(function() {
+            //deferred.resolve(token);
         })
         .catch(function(err) {
             deferred.reject(err);
@@ -190,7 +190,6 @@ function logout(req, res, next) {
     .then
     db.query('DELETE FROM tokens WHERE token = $1', [token])
         .then(function () {
-            
             winston.info('Logout successful');
             res.send('OK');
         })
@@ -306,7 +305,7 @@ function createUser(user, password) {
 
     db.query('INSERT INTO asdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
         [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
-        .then(function (insertedUser) {       
+        .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
         .catch(function(err) {
