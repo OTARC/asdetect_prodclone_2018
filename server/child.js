@@ -14,14 +14,14 @@ function findById(id) {
     // Retrieve offer either by Salesforce id or Postgres id
     //TODO tighten this up to show only a child of this user (refer getAll)
     //
-    return db.query('select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,child_Ever_at_risk__c,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from asdetect.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    return db.query('select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,child_Ever_at_risk__c,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from latrobeasdetect.mch_child_Asdetect__c WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
 };
 
 //get all children for a contact
 function getAll(req, res, next) { 
     winston.info('child.getAll()');
     var externalUserId = req.externalUserId;
-    db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c,child_currently_at_risk__c ,child_ever_at_risk__c, asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from asdetect.mch_child_Asdetect__c where asdetect_contact__r__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
+    db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c,child_currently_at_risk__c ,child_ever_at_risk__c, asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from latrobeasdetect.mch_child_Asdetect__c where asdetect_contact__r__loyaltyid__c=$1 LIMIT $2", [externalUserId,20])       
         .then(function (child) {
             winston.info(JSON.stringify(child));
             return res.send(JSON.stringify(child));
@@ -64,7 +64,7 @@ function addChild(req, res, next) {
 
     console.log(JSON.stringify(req.body));
         
-            db.query('INSERT INTO asdetect.mch_child_asdetect__c (asdetect_contact__r__loyaltyid__c, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)', [externalUserId, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
+            db.query('INSERT INTO latrobeasdetect.mch_child_asdetect__c (asdetect_contact__r__loyaltyid__c, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)', [externalUserId, childs_initials__c,child_s_first_name__c,child_s_last_name__c,childs_nickname__c,birthdate__c,gender__c,diagnosis__c,externalchildid__c], true)
 
                 .then(function () {
                     return res.send({'externalchildid__c':externalchildid__c});

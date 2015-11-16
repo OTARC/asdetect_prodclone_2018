@@ -71,7 +71,7 @@ function logUserInteraction(externaluserid,itype,idescription,ios) {
 
     var token = uuid.v4(),  
     deferred = Q.defer();
-    db.query('INSERT INTO asdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3, $4)',
+    db.query('INSERT INTO latrobeasdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3, $4)',
                     [externaluserid, itype, idescription,ios], true)
     .then(function() {
             //deferred.resolve(token);
@@ -142,7 +142,7 @@ function login(req, res, next) {
         return res.send(401, invalidCredentials);
     }
 
-    db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM asdetect.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
+    db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM latrobeasdetect.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
         .then(function (user) {
             if (!user) {
                 return res.send(401, invalidCredentials);
@@ -224,7 +224,7 @@ function signup(req, res, next) {
         return res.send(400, "Password must be at least 4 characters");
     }
 
-    db.query('SELECT id FROM asdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
+    db.query('SELECT id FROM latrobeasdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
                 return res.send(400, "Email address is already registered");
@@ -261,7 +261,7 @@ function requestResetPassword(req, res, next) {
         return res.send(400, "Invalid email address");
     }
    
-    db.query('UPDATE asdetect.asdetect_contact__C set password_reset_token__c=$1 WHERE email__c=$2', [token,user.email__c], true)
+    db.query('UPDATE latrobeasdetect.asdetect_contact__C set password_reset_token__c=$1 WHERE email__c=$2', [token,user.email__c], true)
         .then(function () {     
             return res.send('OK');            
         })
@@ -303,7 +303,7 @@ function createUser(user, password) {
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
         externalUserId=uuid.v4();
 
-    db.query('INSERT INTO asdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
+    db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
         [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
@@ -327,7 +327,7 @@ function updateUserPassword(user, password) {
     var deferred = Q.defer();
         
 // the loyaltyid__c field identifies the user
-    db.query('UPDATE asdetect.asdetect_contact__c SET password__c=$1, password_reset_token__c=NULL WHERE password_reset_token__c=$2',
+    db.query('UPDATE latrobeasdetect.asdetect_contact__c SET password__c=$1, password_reset_token__c=NULL WHERE password_reset_token__c=$2',
         [password, user.password_reset_token__c], true)
         .then(function (updatedUser) {
             deferred.resolve(updatedUser);
