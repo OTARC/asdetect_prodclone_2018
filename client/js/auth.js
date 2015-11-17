@@ -275,7 +275,10 @@ return $http.post($rootScope.server.url + '/logout')
 
 
  $scope.resetpassword = function () {
-           
+           if ($scope.user.password !== $scope.user.password2) {
+                $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
+                return;
+            }
             Auth.resetpassword($scope.user)
                 .success(function (data) {
                      $ionicPopup.alert({title:  'Reset Password', content: "Done"});

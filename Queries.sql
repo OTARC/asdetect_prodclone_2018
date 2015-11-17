@@ -3,10 +3,10 @@
 select id,sfid,name, consultation_date__c,record_type__c,mch_child_asdetect__r__externalchildid__c, mch_child_asdetect__c ,at_risk__c,pointing__c, does_child_make_eye_contact_with_you__c, 
 waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,
 says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c 
-from asdetect.consultation_asdetect__c;
+from latrobeasdetect.consultation_asdetect__c;
 
 select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c, c.mch_child_asdetect__c ,c.at_risk__c,c.age_at_time_of_assessment_years_months__c
-from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where
+from latrobeasdetect.consultation_asdetect__c c,latrobeasdetect.mch_child_asdetect__c m where
 c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.asdetect_contact__c__loyaltyid__c!= '';
 
 select m.id,c.id,c.externalatrisk__c,c.sfid,c.name, c.consultation_date__c,c.record_type__c,c.mch_child_asdetect__r__externalchildid__c, c.mch_child_asdetect__c ,c.at_risk__c,c.age_at_time_of_assessment_years_months__c
@@ -14,10 +14,10 @@ from asdetect.consultation_asdetect__c c,asdetect.mch_child_asdetect__c m where
 c.mch_child_asdetect__r__externalchildid__c=m.externalchildid__c and m.externalchildid__c='idqsxzc7';
 
 
-select * from salesforce.mch_child_asdetect__c where externalchildid__c='idqsxzc7';
+select * from latrobeasdetect.mch_child_asdetect__c where externalchildid__c='idqsxzc7';
 
 
-select externalchildid__c from mch_child_asdetect__c;
+select externalchildid__c from latrobeasdetect.mch_child_asdetect__c;
 
 insert into salesforce.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, 
 waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,
@@ -34,10 +34,10 @@ drop function delete_children_and_tests(text);
 
 CREATE FUNCTION delete_children_and_tests(text) RETURNS void AS ' 
 
-delete from asdetect.consultation_asdetect__c where id in (select t.id "testid"  from asdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
+delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
 	c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c and u.loyaltyid__c=$1);  
 
-delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
+delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.loyaltyid__c=$1);
 ' LANGUAGE SQL ;    
 
@@ -52,13 +52,13 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE FUNCTION delete_contact_and_children_and_tests(text) RETURNS void AS ' 
 
-delete from asdetect.consultation_asdetect__c where id in (select t.id "testid"  from asdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
+delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, latrobeasdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
 	c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c and u.loyaltyid__c=$1);  
 
-delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
+delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,latrobeasdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.loyaltyid__c=$1);
 
-delete from asdetect.asdetect_contact__c where loyaltyid__c=$1;
+delete from latrobeasdetect.asdetect_contact__c where loyaltyid__c=$1;
 
 delete from tokens where externaluserid=$1;
 	
@@ -66,10 +66,10 @@ delete from tokens where externaluserid=$1;
 
 CREATE FUNCTION delete_contact_and_children_and_tests_by_username(text) RETURNS void AS ' 
 
-delete from asdetect.consultation_asdetect__c where id in (select t.id "testid"  from asdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
+delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, latrobeasdetect.consultation_asdetect__c t,latrobeasdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
 	c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c and u.lastname__c=$1);  
 
-delete from asdetect.mch_child_asdetect__c where id in (select c.id "childid" from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
+delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,latrobeasdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.lastname__c=$1);
 
 delete from asdetect.asdetect_contact__c where lastname__c=$1;
@@ -90,17 +90,17 @@ select u.loyaltyid__c,u.firstname__c,u.lastname__c,c.id "childid",c.child_s_firs
 select u.id "contactid",u.loyaltyid__c,u.firstname__c,u.email__c,c.id "childid",c.child_s_first_name__c,t.id "testid"  from asdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c;
 ~                                                                                                                                                              
 
-\d salesforce.consultation_asdetect__c;
-\d salesforce.mch_child_asdetect__c;
-\d salesforce.asdetect_contact__c;
-\dt salesforce.*;
+\d latrobeasdetect.consultation_asdetect__c;
+\d latrobeasdetect.mch_child_asdetect__c;
+\d latrobeasdetect.asdetect_contact__c;
+\dt latrobeasdetect.*;
 \d tokens;
 
 // tokens ans users
-select t.token,t.created,c.email__c from tokens t,asdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
+select t.token,t.created,c.email__c from tokens t,latrobeasdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
 
 //token age
-select t.token,t.created,c.email__c,now()-created as tokenAge from tokens t,asdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
+select t.token,t.created,c.email__c,now()-created as tokenAge from tokens t,latrobeasdetect.asdetect_contact__c c where t.externaluserid=c.loyaltyid__c;
 
 //delete old tokens
 DELETE FROM tokens WHERE created < now() - interval '10  minute'; 
