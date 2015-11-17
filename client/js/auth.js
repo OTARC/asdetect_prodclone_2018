@@ -275,7 +275,7 @@ return $http.post($rootScope.server.url + '/logout')
 
 
  $scope.resetpassword = function () {
-           if ($scope.user.password !== $scope.user.password2) {
+           if ($scope.user.password__c !== $scope.user.password2__c) {
                 $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
                 return;
             }
@@ -299,7 +299,7 @@ return $http.post($rootScope.server.url + '/logout')
         $scope.user = {};
 
         $scope.signup = function () {
-            if ($scope.user.password !== $scope.user.password2) {
+            if ($scope.user.password__c !== $scope.user.password2__c) {
                 $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
                 return;
             }
