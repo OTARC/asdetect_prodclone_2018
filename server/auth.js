@@ -90,7 +90,7 @@ function cleanupAccessTokens(user) {
     
     var deferred = Q.defer();
     
-    db.query('delete from tokens where userId=$1 and now()-created > $2', [user.id, tokenlife])
+    db.query('delete from tokens where externaluserid=$1 and now()-created > $2', [user.externaluserid, tokenlife])
         .then(function() {
             //deferred.resolve(token);
         })
