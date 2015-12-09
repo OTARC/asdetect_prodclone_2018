@@ -53,8 +53,8 @@ function addChild(req, res, next) {
     childs_nickname__c=req.body.childs_nickname__c,
     diagnosis__c=req.body.diagnosis__c,
     gender__c=req.body.gender__c,
-    adult_can_act_on_child_s_behalf__c=req.adult_can_act_on_child_s_behalf__c,
-    OTARC_can_use_childs_data_for_research__c=req.OTARC_can_use_childs_data_for_research__c;  
+    adult_can_act_on_child_s_behalf__c=req.body.adult_can_act_on_child_s_behalf__c,
+    OTARC_can_use_childs_data_for_research__c=req.body.OTARC_can_use_childs_data_for_research__c;  
 
     
     if (isEmpty(birthdate__c)||isEmpty(childs_initials__c)||isEmpty(child_s_first_name__c)||isEmpty(gender__c)) {
