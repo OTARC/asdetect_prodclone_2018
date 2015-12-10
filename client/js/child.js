@@ -68,6 +68,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
         }
     })
 
+
         .factory('Diag', function() {
 
         var diagnoses = [
@@ -133,6 +134,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
             $scope.genders = Gender.all();  
             $scope.diagnoses = Diag.all();  
 
+
         });
 
         $scope.submit = function () {
@@ -151,10 +153,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
             $scope.child = {};
             $scope.genders = Gender.all();  
             $scope.diagnoses = Diag.all(); 
-            $scope.checkboxModel = {
-       value1 : true,
-       value2 : 'YES'
-     };
+
 
 
         $scope.submit = function () {
