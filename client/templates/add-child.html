@@ -40,7 +40,20 @@
   <ion-radio ng-model="child.adult_can_act_on_child_s_behalf__c" ng-value="'true'">Yes</ion-radio>
   <ion-radio ng-model="child.adult_can_act_on_child_s_behalf__c" ng-value="'false'">No</ion-radio>
 </ion-list>
-
+  <div class="item item-divider">
+                Permission to use research data
+                </div>
+               <ion-list>
+  <ion-radio ng-model="child.OTARC_can_use_childs_data_for_research__c" ng-value="'true'">Yes</ion-radio>
+  <ion-radio ng-model="child.OTARC_can_use_childs_data_for_research__c" ng-value="'false'">No</ion-radio>
+</ion-list>
+  <div class="item item-divider">
+                Sibling with ASD?
+                </div>
+               <ion-list>
+  <ion-radio ng-model="child.child_has_a_sibling_with_an_asd__c" ng-value="'true'">Yes</ion-radio>
+  <ion-radio ng-model="child.child_has_a_sibling_with_an_asd__c" ng-value="'false'">No</ion-radio>
+</ion-list>
                
                 <div class="item item-divider">
                 Gender
