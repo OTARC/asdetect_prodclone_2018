@@ -150,7 +150,11 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
             
             $scope.child = {};
             $scope.genders = Gender.all();  
-            $scope.diagnoses = Diag.all();  
+            $scope.diagnoses = Diag.all(); 
+            $scope.checkboxModel = {
+       value1 : true,
+       value2 : 'YES'
+     };
 
 
         $scope.submit = function () {
