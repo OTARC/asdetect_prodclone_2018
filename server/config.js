@@ -27,10 +27,10 @@ module.exports = {
 
 
     asdetect: {
-        recordType12M:'012K000000059H4IAI',
-        recordType18M:'012K000000059H5IAI',
-        recordType24M:'012K000000059H6IAI',
-        recordType35Y:'012K000000059H7IAI',
+        recordType12M: process.env.recordType12M,
+        recordType18M: process.env.recordType18M,
+        recordType24M: process.env.recordType24M,
+        recordType35Y: process.env.recordType35Y,
         tokenlife: '02:00:00'
 
     }
