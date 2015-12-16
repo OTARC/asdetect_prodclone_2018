@@ -51,6 +51,14 @@ console.log('app.js - $state.go to app.profile');
                     }
                 }
             })
+            .state('app.thanks', {
+                url: "/thanks",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/thanks.html"
+                    }
+                }
+            })
 
     })
 
