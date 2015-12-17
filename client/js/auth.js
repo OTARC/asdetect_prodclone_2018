@@ -253,7 +253,7 @@ return $http.post($rootScope.server.url + '/logout')
            
             Auth.requestresetpassword($scope.user)
                 .success(function (data) {
-                     $ionicPopup.alert({title: 'Reset Password Request', content: "Please check your email and follow the link provided"});
+                     $ionicPopup.alert({title: 'Reset Password Request', content: "Thanks, please check your email and follow the link provided"});
                       $state.go('app.welcome');
                 })
                 .error(function () {
@@ -281,7 +281,7 @@ return $http.post($rootScope.server.url + '/logout')
             }
             Auth.resetpassword($scope.user)
                 .success(function (data) {
-                     $ionicPopup.alert({title:  'Reset Password', content: "Done"});
+                     $ionicPopup.alert({title:  'Reset Password', content: "Password reset!"});
                      $state.go('app.thanks');
                 })
                 .error(function () {
