@@ -1,7 +1,7 @@
 var db = require('./pghelper'),
     winston = require('winston'),
     uuid = require('node-uuid'),
-    missingChildInformation ='One or more missing mandatory fields for Child',
+    missingChildInformation ='One or more mandatory fields are missing for this Child - (child_s_first_name__c, child_s_last_name__c, gender__c, birthdate__c, adult_can_act_on_child_s_behalf__c). Please refer to API guide.',
     util=require('util');
 
 
@@ -58,7 +58,10 @@ function addChild(req, res, next) {
     child_has_a_sibling_with_an_asd__c=req.body.child_has_a_sibling_with_an_asd__c;  
 
     
-    if (isEmpty(birthdate__c)||isEmpty(childs_initials__c)||isEmpty(child_s_first_name__c)||isEmpty(gender__c)) {
+    if (isEmpty(birthdate__c)||isEmpty(child_s_last_name__c)||isEmpty(child_s_first_name__c)|| isEmpty(gender__c)||isEmpty(adult_can_act_on_child_s_behalf__c)) 
+
+
+    {
       return res.send(400, missingChildInformation);  
     }
 

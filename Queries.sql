@@ -39,6 +39,9 @@ delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "t
 
 delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.loyaltyid__c=$1);
+
+delete from tokens where externaluserid=$1;
+
 ' LANGUAGE SQL ;    
 
 drop function delete_old_tokens;
@@ -60,7 +63,9 @@ and u.loyaltyid__c=$1);
 
 delete from latrobeasdetect.asdetect_contact__c where loyaltyid__c=$1;
 
-delete from tokens where externaluserid=$1;
+delete from latrobeasdetect.asdetect_interaction__c where externaluserid=$1;
+
+delete from latrobeasdetect.asdetect_interaction__ c where asdetect_contact__r__loyaltyid__c=$1;
 	
 ' LANGUAGE SQL ; 
 
