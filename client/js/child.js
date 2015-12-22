@@ -141,6 +141,9 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
             Child.create($scope.child).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: 'Child record edited.'});
             });
+  
+
+          
 
        }
     })
@@ -172,7 +175,14 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
 
 
-            });
+            })
+
+
+             .error(function (data) {
+                            console.log(JSON.stringify(data));
+                            $ionicPopup.alert({title: 'Oops', content: "Adding a Child failed"});
+                        });
+
 
 
 
