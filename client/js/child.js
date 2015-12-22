@@ -179,7 +179,7 @@ angular.module('nibs.child', ['openfb', 'nibs.status', 'nibs.activity','nibs.int
 
 
              .error(function (err) {
-                            console.log(JSON.stringify(err));
+                            console.log("XXXXXX:"+JSON.stringify(err));
                             $ionicPopup.alert({title: 'Oops', content: "Adding a Child failed. Message is: "+err.data});
                         });
 
