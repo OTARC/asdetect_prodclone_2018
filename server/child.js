@@ -62,6 +62,7 @@ function addChild(req, res, next) {
 
 
     {
+      winston.info('child.addChild() -  ERROR: Failed mandatory fields validation')
       return res.send(400, missingChildInformation);  
     }
 
