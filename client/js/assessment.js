@@ -100,6 +100,7 @@ angular.module('nibs.assessment', ['openfb', 'nibs.child','nibs.status', 'nibs.a
     //Controllers
     .controller('AssessmentListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Assessment, User) {
         Assessment.all().success(function(assessment) {
+            console.log('called Assessment.all()');
             $scope.assessment = assessment;
         });
 
