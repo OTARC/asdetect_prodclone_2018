@@ -5,8 +5,8 @@ var db = require('./pghelper'),
     util=require('util');
 
 
-function isEmpty(val){
-    winston.info('child.isEmpty()');
+function isEmpty(field,val){
+    winston.info('child.isEmpty()  - checking field: '+field);
     return (val === undefined || val == null || val == "") ? true : false;
 }
 
@@ -58,7 +58,7 @@ function addChild(req, res, next) {
     child_has_a_sibling_with_an_asd__c=req.body.child_has_a_sibling_with_an_asd__c;  
 
     
-    if (isEmpty(birthdate__c)||isEmpty(child_s_last_name__c)||isEmpty(child_s_first_name__c)|| isEmpty(gender__c)||isEmpty(adult_can_act_on_child_s_behalf__c)) 
+    if (isEmpty('birthdate__c',birthdate__c)||isEmpty('child_s_last_name__c',child_s_last_name__c)||isEmpty('child_s_first_name__c',child_s_first_name__c)|| isEmpty('gender__c',gender__c)||isEmpty('adult_can_act_on_child_s_behalf__c',adult_can_act_on_child_s_behalf__c)) 
 
 
     {
