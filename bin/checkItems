@@ -15,14 +15,14 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     return true;
   };
 
-  client.query('SELECT count(*) as t FROM tokens', function(err, result) {
+  client.query('delete from tokens where now()-created>= "10 days"', function(err, result) {
     if(handleError(err, client, done)) return;
 
-    if (result.rows[0].t > 0) {
+    
       sendgrid.send({
           to: 'mburnside@salesforce.com',
           from: 'asdetect@email.com',
-          subject: 'Currently '+result.rows[0].t +' Postgres tokens.',
+          subject: 'Delete postgres tokens >= 10 days old.',
           text: 'Automated email from sendgrid.'
         }, function(err, json) {
           if (err) {
@@ -32,6 +32,6 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
           done();
           pg.end();
       });
-    }
+    
   });
 });
