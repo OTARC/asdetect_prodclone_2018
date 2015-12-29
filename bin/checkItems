@@ -18,7 +18,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   client.query('delete from tokens where now()-created>= \'10 days\'', function(err, result) {
     if(handleError(err, client, done)) return;
 
-    
+      console.log('scheduler is cleaning up tokens');
       sendgrid.send({
           to: 'mburnside@salesforce.com',
           from: 'asdetect@email.com',
