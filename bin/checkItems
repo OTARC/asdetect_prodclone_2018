@@ -22,8 +22,8 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       sendgrid.send({
           to: 'mburnside@salesforce.com',
           from: 'asdetect@email.com',
-          subject: 'Delete postgres tokens >= 10 days old.',
-          text: 'Automated email from sendgrid.'
+          subject: 'Postgres Token Cleaner.',
+          text: 'deleted tokens >= 10 days old.'
         }, function(err, json) {
           if (err) {
             console.error(err);
