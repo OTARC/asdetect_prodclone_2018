@@ -15,7 +15,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     return true;
   };
 
-  client.query('delete from tokens where now()-created>= "10 days"', function(err, result) {
+  client.query('delete from tokens where now()-created>= \'10 days\'', function(err, result) {
     if(handleError(err, client, done)) return;
 
     
