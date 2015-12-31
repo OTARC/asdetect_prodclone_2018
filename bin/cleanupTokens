@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+var pg = require('pg');
+
+var sendgrid  = require('sendgrid')(
+  process.env.SENDGRID_USERNAME,
+  process.env.SENDGRID_PASSWORD
+);
+
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  var handleError = function(err) {
+    if(!err) return false;
+    done(client);
+    next(err);
+    return true;
+  };
+
+var tokencount=0;
+  
+client.query('SELECT count(*) as t FROM tokens where now()-created>= \'10 days\'', function(err, result) {
+if(handleError(err, client, done)) return;
+if (result.rows[0].t >= 0) {
+tokencount=result.rows[0].t;
+console.log('Scheduler:  counting tokens older than ten days ('+tokencount+')');
+}
+
+});
+
+
+  client.query('delete from tokens where now()-created>= \'10 days\'', function(err, result) {
+    if(handleError(err, client, done)) return;
+
+      console.log('Scheduler: cleaning up tokens older than ten days');
+      sendgrid.send({
+          to: 'mburnside@salesforce.com',
+          from: 'asdetect@email.com',
+          subject: 'Postgres Token Cleaner.',
+          text: 'Cleaned up all tokens older than ten days ('+tokencount+')'
+        }, function(err, json) {
+          if (err) {
+            console.error(err);
+          }
+
+          done();
+          pg.end();
+      });
+    
+  });
+});
