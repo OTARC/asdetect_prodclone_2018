@@ -31,7 +31,7 @@ module.exports = {
         recordType18M: process.env.recordType18M,
         recordType24M: process.env.recordType24M,
         recordType35Y: process.env.recordType35Y,
-        tokenlife: '02:00:00'
+        tokenlife: '00:00:00'
 
     }
 
