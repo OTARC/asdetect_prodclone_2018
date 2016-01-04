@@ -281,7 +281,7 @@ return $http.post($rootScope.server.url + '/logout')
             }
             Auth.resetpassword($scope.user)
                 .success(function (data) {
-                     $ionicPopup.alert({title:  'Reset Password', content: "Password reset!"});
+                     //$ionicPopup.alert({title:  'Reset Password', content: "Password reset!"});
                      $state.go('app.thanks');
                 })
                 .error(function () {
