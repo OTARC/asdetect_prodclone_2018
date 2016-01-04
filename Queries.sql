@@ -85,7 +85,16 @@ delete from asdetect.asdetect_contact__c where lastname__c=$1;
 
 
 
+select i.asdetect_contact__r__loyaltyid__c,c.email__c,c.firstname__c,c.lastname__c,type__c,now()-max(i.createddate) "elapsed" from latrobeasdetect.asdetect_interaction__c i,latrobeasdetect.asdetect_contact__c c
+where i.asdetect_contact__r__loyaltyid__c=c.loyaltyid__c 
+and c.loyaltyid__c in (select externaluserid from tokens where externaluserid=c.loyaltyid__C)
+group by i.asdetect_contact__r__loyaltyid__c,c.email__c,c.firstname__C,c.lastname__c,type__c having now()-max(i.createddate) > '0 days'
 
+
+select t.token token from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  
+and t.externaluserid in (select asdetect_contact__r__loyaltyid__c 
+from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  
+group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)>'0 days')
 
 
 select u.loyaltyid__c,u.firstname__c,u.lastname__c,c.id "childid",c.child_s_first_name__c,c.birthdate__c from asdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c;
