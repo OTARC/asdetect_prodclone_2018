@@ -16,7 +16,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   };
 
 var tokencount=0;
-console.log('Postgres Token Cleaner - cleaning up tokens with inactivity for THREE days or more');
+console.log('Postgres Token Cleaner: cleaning up tokens with inactivity for THREE days or more');
 client.query('select count(t.token) cnt from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  and t.externaluserid in (select asdetect_contact__r__loyaltyid__c from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)> \'3 days\' )', function(err, result) {
 if(handleError(err, client, done)) return;
 if (result.rows[0].cnt >= 0) {
