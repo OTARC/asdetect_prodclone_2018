@@ -32,7 +32,7 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     //console.log('logging req: '+ util.inspect(req));
-    var externalchildid__c = id;
+    var externalchildid__c = req.params.id;
     var externalUserId = req.externalUserId;
 
     findById(externalUserId,externalchildid__c)
