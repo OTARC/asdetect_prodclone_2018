@@ -71,7 +71,8 @@ a {
 }
 
 .welcome {
-    background: url('img/latrobe.jpg') no-repeat center center fixed;
+    /*background: url('img/latrobe.jpg') no-repeat center center fixed;*/
+    background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
