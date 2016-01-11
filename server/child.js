@@ -14,7 +14,7 @@ function findById(externalUserId,externalchildid__c) {
     // Retrieve offer either by Salesforce id or Postgres id
     //TODO tighten this up to show only a child of this user (refer getAll)
     //
-    return db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,child_Ever_at_risk__c,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from latrobeasdetect.mch_child_Asdetect__c WHERE asdetect_contact__r__loyaltyid__c=$1 and externalchildid__c=$2" + , [externalUserId,externalchildid__c], true);
+    return db.query("select id,sfId,childs_initials__c,child_s_first_name__c, child_s_last_name__c, childs_nickname__c,birthdate__c,total_months_old__c,gender__c ,child_currently_at_risk__c ,child_Ever_at_risk__c,asdetect_contact__c ,externalchildid__c,_hc_lastop,_hc_err from latrobeasdetect.mch_child_Asdetect__c WHERE asdetect_contact__r__loyaltyid__c=$1 and externalchildid__c=$2", [externalUserId,externalchildid__c], true);
 };
 
 //get all children for a contact
