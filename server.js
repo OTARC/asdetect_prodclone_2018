@@ -15,7 +15,7 @@ var express = require('express'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
-    activities = require('./server/activities'),
+    //activities = require('./server/activities'),
     utilities=require('./server/utilities.js'),
     interactions = require('./server/interactions');
     
