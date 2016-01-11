@@ -1,5 +1,5 @@
 var db = require('./pghelper'),
-    activities = require('./activities'),
+    //activities = require('./activities'),
     winston = require('winston');
 
 /**

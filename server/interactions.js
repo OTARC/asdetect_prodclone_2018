@@ -1,7 +1,7 @@
 var db = require('./pghelper'),
-    Q = require('q'),
-    wallet = require('./wallet'),
-    wishlist = require('./wishlist');
+    Q = require('q');
+    //wallet = require('./wallet'),
+    //wishlist = require('./wishlist');
 
 /**
  * Add interaction
@@ -106,6 +106,6 @@ function getStatus(points) {
 
 exports.getItems = getItems;
 exports.addItem = addItem;
-exports.getPointBalance = getPointBalance;
+//exports.getPointBalance = getPointBalance;
 exports.getStatus = getStatus;
 exports.deleteAll = deleteAll;
