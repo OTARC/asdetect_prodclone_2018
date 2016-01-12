@@ -24,6 +24,18 @@ function deleteContactAndChildrenAndTests(req, res, next) {
         .catch(next);
 };
 
+
+function deleteContactAndChildrenAndTestsByLastName(req, res, next) { 
+    var externalUserId = req.externalUserId;
+    var lastname=req.params.lastname;
+    console.log('!!!!!! DANGER DANGER !!!!! DELETING CONTACT AND CHILDREN AND TESTS BY LASTNAME !!!!!');
+    db.query("select delete_contact_and_children_and_tests_by_username($1)", [lastname])       
+        .then(function (result) {
+            return res.send(JSON.stringify(result));
+        })
+        .catch(next);
+};
+
 function deleteOldTokens(req, res, next) { 
     var externalUserId = req.externalUserId;
     console.log('!!!!!! DELETING ALL OLD TOKENS !!!!!');
@@ -37,4 +49,5 @@ function deleteOldTokens(req, res, next) {
 
 exports.deleteChildrenAndTests=deleteChildrenAndTests;
 exports.deleteContactAndChildrenAndTests=deleteContactAndChildrenAndTests;
+exports.deleteContactAndChildrenAndTestsByLastName=deleteContactAndChildrenAndTestsByLastName;
 exports.deleteOldTokens=deleteOldTokens;

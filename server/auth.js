@@ -268,14 +268,10 @@ function requestResetPassword(req, res, next) {
         .catch(next);
 };
 
-
-
 function resetPassword(req, res, next) {
 
     winston.info('reset password');
-
     var user = req.body;       
-
     console.log('resetting password request for: '+user.email__c);
 
     encryptPassword(user.password__c, function (err, hash) {

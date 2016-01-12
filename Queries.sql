@@ -29,20 +29,23 @@ CREATE FUNCTION clean_tests(text) RETURNS void AS '
         WHERE salary < 0;
 ' LANGUAGE SQL;
 
-
+//DELETE CHILDREN AND TESTS
 drop function delete_children_and_tests(text);
 
-CREATE FUNCTION delete_children_and_tests(text) RETURNS void AS ' 
+CREATE FUNCTION delete_children_and_tests(text) RETURNS void AS $$ 
 
-delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, asdetect.consultation_asdetect__c t,asdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
+delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, latrobeasdetect.consultation_asdetect__c t,latrobeasdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
 	c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c and u.loyaltyid__c=$1);  
 
-delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,asdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
+delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,latrobeasdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.loyaltyid__c=$1);
 
-delete from tokens where externaluserid=$1;
+delete from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c=$1;
 
-' LANGUAGE SQL ;    
+INSERT INTO latrobeasdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1,'Admin Initiated Contact Cleanup','PG: delete_children_and_tests()',null);
+
+
+$$ LANGUAGE SQL ; 
 
 drop function delete_old_tokens;
 //delete all tokens except for the most recent
@@ -69,6 +72,7 @@ delete from latrobeasdetect.asdetect_interaction__ c where asdetect_contact__r__
 	
 ' LANGUAGE SQL ; 
 
+drop function delete_contact_and_children_and_tests_by_username(text);
 CREATE FUNCTION delete_contact_and_children_and_tests_by_username(text) RETURNS void AS ' 
 
 delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "testid"  from latrobeasdetect.mch_child_asdetect__c c, latrobeasdetect.consultation_asdetect__c t,latrobeasdetect.asdetect_contact__c u  where t.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c and 
@@ -77,7 +81,10 @@ delete from latrobeasdetect.consultation_asdetect__c where id in (select t.id "t
 delete from latrobeasdetect.mch_child_asdetect__c where id in (select c.id "childid" from latrobeasdetect.mch_child_asdetect__c c,latrobeasdetect.asdetect_contact__c u  where c.asdetect_contact__r__loyaltyid__c=u.loyaltyid__c
 and u.lastname__c=$1);
 
+delete from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c in (select loyaltyid__c from latrobeasdetect.asdetect_contact__c where lastname__c = $1);
+
 delete from asdetect.asdetect_contact__c where lastname__c=$1;
+
 
 
 	
