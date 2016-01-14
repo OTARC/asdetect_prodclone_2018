@@ -7,24 +7,19 @@ var express = require('express'),
     winston = require('winston'),
     sqlinit = require('./server/sqlinit'),
     util = require('util'),
-
     // App modules
-   
     users = require('./server/users'),
     cases = require('./server/cases'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
-    //activities = require('./server/activities'),
     utilities=require('./server/utilities.js'),
-    interactions = require('./server/interactions');
-    
-    //ASDECTECT
-    child=require('./server/child');
+    interactions = require('./server/interactions'),
+    child=require('./server/child'),
     assessment=require('./server/assessment');
 
 
-    app = express();
+app = express();
 
 app.set('port', process.env.PORT || 5000);
 
