@@ -2,7 +2,7 @@
 
 <ion-content has-header="true" padding="true">
 <ion-nav-buttons side="right">
-<a ui-sref="app.edit-child({childId: child.id})">Edit</a>
+<a ui-sref="app.edit-child({childId: child.externalchildid__c})">Edit</a>
 </ion-nav-buttons>
 
 <div class="list card">
@@ -12,20 +12,20 @@
        <p>Child details</p>
    </div>
    <div class="item item-body">
-       <a ui-sref="app.12Massessment({childId: child.id})">
+       <a ui-sref="app.12Massessment({childId: child.externalchildid__c})">
         <button ng-disabled="child.total_months_old__c<11 || child.total_months_old__c>=16" class="button button-assertive" >12M assessment</button>
     </a>
     
-    <a ui-sref="app.18Massessment({childId: child.id})">
+    <a ui-sref="app.18Massessment({childId: child.externalchildid__c})">
         <button ng-disabled="child.total_months_old__c<16 || child.total_months_old__c>=22" class="button button-assertive" >18M Assessment</button>
     </a>
     
-    <a ui-sref="app.24Massessment({childId: child.id})">
+    <a ui-sref="app.24Massessment({childId: child.externalchildid__c})">
         <button ng-disabled="child.total_months_old__c<22 || child.total_months_old__c>=31" class="button button-assertive" >24M Assessment</button>
     </a>
     
 
-    <a ui-sref="app.35Yassessment({childId: child.id})">
+    <a ui-sref="app.35Yassessment({childId: child.externalchildid__c})">
         <button ng-disabled="child.total_months_old__c<31" class="button button-assertive" >35Y Assessment</button>
     </a>
     <p>ID: {{child.id}}</p>
