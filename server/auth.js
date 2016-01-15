@@ -182,7 +182,7 @@ function login(req, res, next) {
  * @param next
  */
 function logout(req, res, next) {
-    winston.info('logout(): '+req.externalUserId);
+    winston.info('logout(): externaluserid='+req.externalUserId);
     var token = req.headers['authorization'];
     
 
