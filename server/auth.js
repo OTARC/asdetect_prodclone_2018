@@ -275,7 +275,7 @@ function resetPassword(req, res, next) {
 
  
     var user = req.body;  
-    winston.info('reset password: 'user.email__c);      
+    winston.info('reset password: '+ user.email__c);      
     console.log('resetting password request for: '+user.email__c);
 
     encryptPassword(user.password__c, function (err, hash) {
