@@ -51,7 +51,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
                 url: "/resetpassword/:password_reset_token__c/:email__c",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/resetpassword.html",
+                        templateUrl: "templates/resetpassword2.html",
                         controller: "ResetPasswordCtrl"
                     }
                 }
