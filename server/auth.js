@@ -51,7 +51,7 @@ function createAccessToken(user) {
     var token = uuid.v4(), 
     deferred = Q.defer();
 
-    winston.info('createAccessToken(): externaluserid='+user.email__c+' token='+token);
+    winston.info('createAccessToken(): user='+user.email__c+' token='+token);
 
     
     
@@ -85,7 +85,7 @@ function logUserInteraction(externaluserid,itype,idescription,ios) {
 
 
 function cleanupAccessTokens(user) {
-    winston.info('cleanupAccessTokens(): externaluserid='+user.externaluserid);
+    winston.info('cleanupAccessTokens(): user='+user.email__c);
 
     var tokenlife=config.asdetect.tokenlife;
     
