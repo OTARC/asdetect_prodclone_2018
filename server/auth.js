@@ -51,7 +51,7 @@ function createAccessToken(user) {
     var token = uuid.v4(), 
     deferred = Q.defer();
 
-    winston.info('createAccessToken(): user='+user.email__c+' token='+token);
+    winston.info('createAccessToken(): user='+user.email__c+' ('+user.externaluserid+') token='+token);
 
     
     
@@ -183,7 +183,7 @@ function login(req, res, next) {
  * @param next
  */
 function logout(req, res, next) {
-    winston.info('logout(): externaluserid='+req.externalUserId);
+    winston.info('logout(): user='+req.body.email__c+ '('+req.externalUserId+')');
     var token = req.headers['authorization'];
     
 
