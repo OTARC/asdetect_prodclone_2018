@@ -48,10 +48,11 @@ function comparePassword(password, hash, callback) {
  * @returns {promise|*|Q.promise}
  */
 function createAccessToken(user) {
-    winston.info('createAccessToken(): externaluserid='+user.externaluserid);
-    var token = uuid.v4(),
-    
+    var token = uuid.v4(), 
     deferred = Q.defer();
+
+    winston.info('createAccessToken(): externaluserid='+user.email__c+' token='+token);
+
     
     
     db.query('INSERT INTO tokens (userId, externalUserId, token) VALUES ($1, $2, $3)', [user.id, user.externaluserid, token])
