@@ -256,7 +256,7 @@ function requestResetPassword(req, res, next) {
 
     var user = req.body,
         token = uuid.v4();
-    winston.info('requestResetPassword(): '+user.email__c);
+    winston.info('requestResetPassword(): user='+user.email__c);
 
     console.log('user received resetpassword request for: '+user.email__c);
 
@@ -275,7 +275,7 @@ function resetPassword(req, res, next) {
 
  
     var user = req.body;  
-    winston.info('resetPassword(): '+ user.email__c);      
+    winston.info('resetPassword(): user='+ user.email__c);      
     console.log('resetting password request for: '+user.email__c);
 
     encryptPassword(user.password__c, function (err, hash) {
@@ -297,7 +297,7 @@ function resetPassword(req, res, next) {
  */
 function createUser(user, password) {
 
-    winston.info('createUser(): '+user.email__c);
+    winston.info('createUser(): user='+user.email__c);
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
@@ -323,7 +323,7 @@ function createUser(user, password) {
  */
 function updateUserPassword(user, password) {
 
-    winston.info('updateUserPassword(): '+user.email__c);
+    winston.info('updateUserPassword(): user='+user.email__c);
     var deferred = Q.defer();
         
 // the loyaltyid__c field identifies the user
@@ -347,9 +347,10 @@ function updateUserPassword(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
-    winston.info('validateToken');
+   
     
     var token = req.headers['authorization'];
+    winston.info('validateToken(): token='+token);
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
     }
