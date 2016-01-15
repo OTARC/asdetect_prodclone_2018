@@ -14,7 +14,7 @@ var bcrypt = require('bcrypt'),
  * @param callback
  */
 function encryptPassword(password, callback) {
-    winston.info('encryptPassword');
+    winston.info('encryptPassword()');
     bcrypt.genSalt(10, function (err, salt) {
         if (err) {
             return callback(err);
@@ -32,7 +32,7 @@ function encryptPassword(password, callback) {
  * @param callback
  */
 function comparePassword(password, hash, callback) {
-    winston.info('comparePassword');
+    winston.info('comparePassword()');
 
     bcrypt.compare(password, hash, function (err, match) {
         if (err) {
@@ -48,7 +48,7 @@ function comparePassword(password, hash, callback) {
  * @returns {promise|*|Q.promise}
  */
 function createAccessToken(user) {
-    winston.info('createAccessToken');
+    winston.info('createAccessToken(): externaluserid='+user.externaluserid);
     var token = uuid.v4(),
     
     deferred = Q.defer();
@@ -67,7 +67,7 @@ function createAccessToken(user) {
 
 
 function logUserInteraction(externaluserid,itype,idescription,ios) {
-    winston.info('logUserInteraction: '+itype);
+    winston.info('logUserInteraction(): externaluserid='+externaluserid+' type='+itype);
 
     var token = uuid.v4(),  
     deferred = Q.defer();
@@ -84,7 +84,7 @@ function logUserInteraction(externaluserid,itype,idescription,ios) {
 
 
 function cleanupAccessTokens(user) {
-    winston.info('cleanupAccessTokens: '+user.externaluserid);
+    winston.info('cleanupAccessTokens(): externaluserid='+user.externaluserid);
 
     var tokenlife=config.asdetect.tokenlife;
     
@@ -114,7 +114,7 @@ function login(req, res, next) {
 
     var creds = req.body;
 
-    winston.info('login: '+creds.email__c);
+    winston.info('login(): '+creds.email__c);
     console.log(creds);
 
     var parser = new UAParser();
@@ -182,7 +182,7 @@ function login(req, res, next) {
  * @param next
  */
 function logout(req, res, next) {
-    winston.info('logout: '+req.externalUserId);
+    winston.info('logout(): '+req.externalUserId);
     var token = req.headers['authorization'];
     
 
@@ -210,7 +210,7 @@ function signup(req, res, next) {
    
 
     var user = req.body;
-    winston.info('signup: '+user.email__c);
+    winston.info('signup(): '+user.email__c);
 
     console.log(user);
 
@@ -256,7 +256,7 @@ function requestResetPassword(req, res, next) {
 
     var user = req.body,
         token = uuid.v4();
-    winston.info('request reset password: '+user.email__c);
+    winston.info('requestResetPassword(): '+user.email__c);
 
     console.log('user received resetpassword request for: '+user.email__c);
 
@@ -275,7 +275,7 @@ function resetPassword(req, res, next) {
 
  
     var user = req.body;  
-    winston.info('reset password: '+ user.email__c);      
+    winston.info('resetPassword(): '+ user.email__c);      
     console.log('resetting password request for: '+user.email__c);
 
     encryptPassword(user.password__c, function (err, hash) {
@@ -297,7 +297,7 @@ function resetPassword(req, res, next) {
  */
 function createUser(user, password) {
 
-    winston.info('createUser: '+user.email__c);
+    winston.info('createUser(): '+user.email__c);
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
@@ -323,7 +323,7 @@ function createUser(user, password) {
  */
 function updateUserPassword(user, password) {
 
-    winston.info('updateUserPassword: '+user.email__c);
+    winston.info('updateUserPassword(): '+user.email__c);
     var deferred = Q.defer();
         
 // the loyaltyid__c field identifies the user
