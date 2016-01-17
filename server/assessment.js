@@ -51,6 +51,7 @@ function getById(req, res, next) {
 // add 12 month assessment
 function create12mAssessment(req, res, next) {
     winston.info('create12mAssessment()');
+    winston.info('create12mAssessment(): payload='+JSON.stringify(req.body));
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -101,8 +102,8 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
     else {
         externalatrisk__c='No';
     }
-    console.log('create12mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-    console.log(JSON.stringify(req.body));
+    winston.info('create12mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+    
 
     // insert into Postgres
     db.query('insert into latrobeasdetect.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, conversational_babble__c,says_1_3_clear_words__c, understands_obeys_simple_instructions__c, attending_to_sounds__c,externalatrisk__c], true)
@@ -122,6 +123,7 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
 // add 18 month assessment
 function create18mAssessment(req, res, next) {
     winston.info('create18mAssessment()');
+    winston.info('create18mAssessment(): payload='+JSON.stringify(req.body));
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -181,8 +183,8 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
     else {
         externalatrisk__c='No';
     }
-    console.log('create18mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-    console.log(JSON.stringify(req.body));
+    winston.info('create18mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+    
 
 //insert into Postgres
     db.query('insert into latrobeasdetect.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,uses_5_10_words__c,understands_words__c,points_to_facial_features__c,loss_of_skills__c,externalatrisk__c], true)
@@ -200,6 +202,7 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
 
 function create24mAssessment(req, res, next) {
     winston.info('create24mAssessment()');
+    winston.info('create24mAssessment(): payload='+JSON.stringify(req.body));
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,
@@ -220,7 +223,7 @@ function create24mAssessment(req, res, next) {
     interest_in_other_children__c=req.body.interest_in_other_children__c;
 
     winston.info('create24mAssessment(): externalUserId='+externalUserId+', externalchildid__c='+externalchildid__c);
-
+    
 
 //basic error checking
 
@@ -261,8 +264,8 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
         externalatrisk__c='No';
     }
     
-    console.log('create24mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-    console.log(JSON.stringify(req.body));
+    winston.info('create24mAssessment(): Calculated external AtRisk:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+    
 
     db.query('insert into latrobeasdetect.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, waves_bye_bye__c, imitation__c, responds_to_name__c, social_smile__c, understands_obeys_simple_instructions__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,uses_20_50_words__c,two_word_utterances__c,parallel_play__c,interest_in_other_children__c,externalatrisk__c], true)
     .then(function () {                   
@@ -280,6 +283,7 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
 
 function create35yAssessment(req, res, next) {
     winston.info('create35yAssessment()');
+    winston.info('create35yAssessment(): payload='+JSON.stringify(req.body));
     var externalUserId = req.externalUserId,
     externalchildid__c=req.body.externalchildid__c,
     consultation_date__c = req.body.consultation_date__c,   
@@ -356,8 +360,8 @@ if (isEmpty('consultation_date__c',consultation_date__c) ||
         externalatrisk__c='No';
     }
     
-    console.log('create35yAssessment(): Calculated external AtRisk (dont forget! for 35Y eyecontact is an override:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
-    console.log(JSON.stringify(req.body));
+    winston.info('create35yAssessment(): Calculated external AtRisk (dont forget! for 35Y eyecontact is an override:' + externalatrisk__c + ':count is '+ no_of_atypical_key_items);
+    
         
         db.query('insert into latrobeasdetect.consultation_asdetect__c (recordtypeid,consultation_date__c,mch_child_asdetect__r__externalchildid__c ,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)', [recordtypeid,consultation_date__c,externalchildid__c,pointing__c, does_child_make_eye_contact_with_you__c, responds_to_name__c, social_smile__c,showing__c,pretend_play__c,follows_point__c,loss_of_skills__c,follows_two_unrelated_commands__c,odd_or_unusual_speech__c,sensory_behaviours_and_interests__c,reciprocal_social_interaction__c,gestures__c,sharing_interest__c,uses_5_6_word_sentences__c,conversation__c,hand_as_a_tool__c,immediate_echolalia__c,pronoun_reversals__c,repetitive_speech__c,motor_stereotypes__c,rep_rest_behaviours_and_interests__c,externalatrisk__c], true)
         .then(function () {                   
