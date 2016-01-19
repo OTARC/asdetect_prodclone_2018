@@ -4,7 +4,7 @@ var db = require('./pghelper'),
     missingChildInformation ='One or more mandatory fields are missing for this Child - (child_s_first_name__c, child_s_last_name__c, gender__c, birthdate__c, adult_can_act_on_child_s_behalf__c). Please refer to API guide.',
     util=require('util');
 
-
+//helper to determine if a field is null
 function isEmpty(field,val){
     winston.info('child.isEmpty():  Checking field: '+field);
     return (val === undefined || val == null || val == "") ? true : false;
