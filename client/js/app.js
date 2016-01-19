@@ -1,4 +1,4 @@
-var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.case','nibs.child','nibs.assessment','nibs.interaction'])
+var app = angular.module('asdetect', ['ionic', 'openfb', 'asdetect.config', 'asdetect.profile', 'asdetect.auth', 'asdetect.case','asdetect.child','asdetect.assessment','asdetect.interaction'])
 
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 

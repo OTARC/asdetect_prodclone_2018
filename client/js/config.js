@@ -1,4 +1,4 @@
-angular.module('nibs.config', [])
+angular.module('asdetect.config', [])
 
     .constant('SERVER_URL', null)
 

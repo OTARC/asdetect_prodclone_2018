@@ -1,4 +1,4 @@
-angular.module('nibs.gallery', ['nibs.s3uploader'])
+angular.module('asdetect.gallery', ['asdetect.s3uploader'])
 
     // Routes
     .config(function ($stateProvider) {

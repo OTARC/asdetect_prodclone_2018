@@ -1,4 +1,4 @@
-angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status'])
+angular.module('asdetect.profile', ['asdetect.s3uploader', 'asdetect.config', 'asdetect.status'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -115,7 +115,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
             
             User.update($scope.user).success(function() {
                 Status.show('Your profile has been saved.');
-Interaction.create({type__c: "Updated profile", description__c:"Called from Angular module nibs.profile",externalchildid__c:""})
+Interaction.create({type__c: "Updated profile", description__c:"Called from Angular module asdetect.profile",externalchildid__c:""})
             .success(function(status) {
                 console.log('Interaction recorded.');
             });

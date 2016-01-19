@@ -1,4 +1,4 @@
-angular.module('nibs.status', [])
+angular.module('asdetect.status', [])
 
     .factory('Status', function ($rootScope, $ionicPopup, STATUS_LABELS) {
 

@@ -1,4 +1,4 @@
-angular.module('nibs.case', [])
+angular.module('asdetect.case', [])
 
     // Routes
     .config(function ($stateProvider) {

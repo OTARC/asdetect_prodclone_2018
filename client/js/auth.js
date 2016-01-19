@@ -1,4 +1,4 @@
-angular.module('nibs.auth', ['openfb', 'nibs.config', 'nibs.interaction'])
+angular.module('asdetect.auth', ['openfb', 'asdetect.config', 'asdetect.interaction'])
 
     /*
      * Routes
@@ -171,7 +171,7 @@ return $http.post($rootScope.server.url + '/logout')
                 .success(function (data) {
 
             /*
-             Interaction.create({type__c: "Logged in", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+             Interaction.create({type__c: "Logged in", description__c:"Called from Angular asdetect.auth",externalchildid__c:""})
                 .success(function(status) {
                     console.log('Interaction recorded.');
                 });
@@ -216,7 +216,7 @@ return $http.post($rootScope.server.url + '/logout')
     .controller('LogoutCtrl', function ($scope, $rootScope, $window, Auth, Interaction) {
 
             /*
-               Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+               Interaction.create({type__c: "Logged out", description__c:"Called from Angular asdetect.auth",externalchildid__c:""})
                .success(function(status) {
                 console.log('Interaction recorded.');
             });
@@ -241,7 +241,7 @@ return $http.post($rootScope.server.url + '/logout')
      .controller('RequestResetPasswordCtrl', function ($scope, $state, $ionicPopup, $rootScope, $window, Auth, Interaction) {
 
             /*
-               Interaction.create({type__c: "Logged out", description__c:"Called from Angular nibs.auth",externalchildid__c:""})
+               Interaction.create({type__c: "Logged out", description__c:"Called from Angular asdetect.auth",externalchildid__c:""})
                .success(function(status) {
                 console.log('Interaction recorded.');
             });

@@ -1,4 +1,4 @@
-angular.module('nibs.s3uploader', [])
+angular.module('asdetect.s3uploader', [])
 
     .factory('S3Uploader', function ($q, $window, $http, $ionicPopup, $rootScope) {
 

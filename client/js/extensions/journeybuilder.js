@@ -1,5 +1,5 @@
 // Enable journeybuilder endpoints in server.js to use this
-angular.module('nibs.journeybuilder', [])
+angular.module('asdetect.journeybuilder', [])
 
 .factory('JourneyBuilder', function ($http, $rootScope) {
     return {

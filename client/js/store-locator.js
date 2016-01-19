@@ -1,4 +1,4 @@
-angular.module('nibs.store-locator', [])
+angular.module('asdetect.store-locator', [])
 
     // Routes
     .config(function ($stateProvider) {

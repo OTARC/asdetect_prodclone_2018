@@ -1,4 +1,4 @@
-angular.module('nibs.settings', ['openfb', 'nibs.activity'])
+angular.module('asdetect.settings', ['openfb', 'asdetect.activity'])
 
     // Routes
     .config(function ($stateProvider) {

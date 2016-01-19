@@ -1,4 +1,4 @@
-angular.module('nibs.interaction', [])
+angular.module('asdetect.interaction', [])
 
     // Routes
     .config(function ($stateProvider) {
