@@ -17,7 +17,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
 var tokencount=0;
 console.log('Postgres Token Cleaner: cleaning up tokens with inactivity for THREE days or more');
-client.query('select count(t.token) cnt from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  and t.externaluserid in (select asdetect_contact__r__loyaltyid__c from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)> \'3 days\' )', function(err, result) {
+client.query('select count(t.token) cnt from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  and t.externaluserid in (select asdetect_contact__r__loyaltyid__c from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)> \'10 days\' )', function(err, result) {
 if(handleError(err, client, done)) return;
 if (result.rows[0].cnt >= 0) {
 tokencount=result.rows[0].cnt;
@@ -27,14 +27,14 @@ console.log('Postgres Token Cleaner:  found '+tokencount+ ' tokens');
 });
 
 
-client.query('delete from tokens where token in (select t.token from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  and t.externaluserid in (select asdetect_contact__r__loyaltyid__c from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)> \'3 days\' )) ', function(err, result) {
+client.query('delete from tokens where token in (select t.token from tokens t,latrobeasdetect.asdetect_contact__c c  where t.externaluserid=c.loyaltyid__c  and t.externaluserid in (select asdetect_contact__r__loyaltyid__c from latrobeasdetect.asdetect_interaction__c where asdetect_contact__r__loyaltyid__c = t.externaluserid  group by asdetect_contact__r__loyaltyid__c  having min(now()-createddate)> \'10 days\' )) ', function(err, result) {
     if(handleError(err, client, done)) return;
 
       console.log('Postgres Token Cleaner: cleaning up '+tokencount+' tokens via SQL DELETE');
       sendgrid.send({
           to: 'mburnside@salesforce.com',
           from: 'asdetect@email.com',
-          subject: 'Postgres Token Cleaner: 3 Day Inactivity',
+          subject: 'Postgres Token Cleaner: 10 Day Inactivity',
           text: 'Cleaned up '+tokencount+ ' tokens'
         }, function(err, json) {
           if (err) {
