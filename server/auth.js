@@ -350,8 +350,8 @@ function validateToken (req, res, next) {
    
     
     var token = req.headers['authorization'];
-    winston.info('validateToken(): token='+token);
-    winston.info('req.path='+req.path);
+    winston.info('validateToken(): req.path='+req.path+' token='+token);
+    
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
     }
