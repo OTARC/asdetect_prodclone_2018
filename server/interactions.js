@@ -40,6 +40,7 @@ function getItems(req, res, next) {
     var externalUserId = req.externalUserId;
     console.log('external user id:' + externalUserId);
 
+    // currently the last 20 interactions
     db.query("SELECT i.id,i.sfid,i.name,i.asdetect_contact__r__loyaltyid__c AS userId, i.type__c , i.description__c, i.name, c.child_s_first_name__c,i.createddate,i.mch_child_asdetect__r__externalchildid__c as externalchildid__c, i._hc_lastop,i._hc_err FROM latrobeasdetect.asdetect_interaction__c i LEFT OUTER JOIN latrobeasdetect.mch_child_asdetect__c c ON (i.mch_child_asdetect__r__externalchildid__c=c.externalchildid__c) WHERE i.asdetect_contact__r__loyaltyid__c=$1 order by i.createdDate desc LIMIT 20", [externalUserId])
         .then(function (interactions) {
             console.log(JSON.stringify(interactions));
