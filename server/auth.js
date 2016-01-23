@@ -371,7 +371,7 @@ function validateToken (req, res, next) {
             }
             req.userId = item.userid;
             req.externalUserId = item.externaluserid;
-            winston.info('vaidateToken(): Token for externaluserid '+req.externalUserId+' validated');
+            winston.info('vaidateToken(): Token '+token+' found for externaluserid '+req.externalUserId+' validated');
             return next();
         })
         .catch(next);
