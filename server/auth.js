@@ -36,6 +36,7 @@ function comparePassword(password, hash, callback) {
 
     bcrypt.compare(password, hash, function (err, match) {
         if (err) {
+            winston.info('comparePassword(): ERROR - incorrect password');
             return callback(err);
         }
         return callback(null, match);
@@ -148,6 +149,7 @@ function login(req, res, next) {
     db.query('SELECT id, firstname__c, lastname__c , email__c, loyaltyid__c as externalUserId, password__c  FROM latrobeasdetect.asdetect_contact__c WHERE email__c=$1', [creds.email__c], true)
         .then(function (user) {
             if (!user) {
+                winston.info('login(): ERROR - User '+creds.email__c+ ' not found');
                 return res.send(401, invalidCredentials);
             }
             comparePassword(creds.password__c, user.password__c, function (err, match) {
@@ -168,6 +170,7 @@ function login(req, res, next) {
 
                 } else {
                     // Passwords don't match
+                    winston.info('login(): ERROR  User '+creds.email__c+ 'password not matched');
                     return res.send(401, invalidCredentials);
                 }
             });
@@ -230,6 +233,7 @@ function signup(req, res, next) {
     db.query('SELECT id FROM latrobeasdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
+                winston.info('signup(): ERROR  Email address '+user.email__c+ 'already exists');
                 return res.send(400, "Email address is already registered");
             }
             encryptPassword(user.password__c, function (err, hash) {
@@ -356,17 +360,18 @@ function validateToken (req, res, next) {
         token = req.session['token']; // Allow token to be passed in session cookie
     }
     if (!token) {
-        winston.info('No token provided');
+        winston.info('validateToken(): ERROR No token provided');
         return res.send(401, 'Invalid token');
     }
     db.query('SELECT * FROM tokens WHERE token = $1', [token], true, true)
         .then(function (item) {
             if (!item) {
-                winston.info('Invalid token');
+                winston.info('validateToken(): ERROR Invalid token');
                 return res.send(401, 'Invalid token');
             }
             req.userId = item.userid;
             req.externalUserId = item.externaluserid;
+            winston.info('vaidateToken(): Token for externaluserid '+req.externalUserId+' validated');
             return next();
         })
         .catch(next);
