@@ -170,7 +170,7 @@ function login(req, res, next) {
 
                 } else {
                     // Passwords don't match
-                    winston.info('login(): ERROR  User '+creds.email__c+ 'password not matched');
+                    winston.info('login(): ERROR  User '+creds.email__c+ ' incorrect password');
                     return res.send(401, invalidCredentials);
                 }
             });
@@ -193,7 +193,7 @@ function logout(req, res, next) {
 
     logUserInteraction(req.externalUserId,'Logged Out','Node.js auth','')
     .then
-    db.query('DELETE FROM tokens WHERE token = $1', [token])
+    db.query('delete from tokens WHERE token = $1', [token])
         .then(function () {
             winston.info('Logout successful');
             res.send('OK');
