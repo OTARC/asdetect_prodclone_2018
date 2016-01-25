@@ -52,6 +52,7 @@ app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
 // ASDETECT REST
+// the presence of validateToken indicates the inspection of the authorization header for a valid token
 app.get('/child', auth.validateToken,child.getAll);
 app.get('/child/:id', auth.validateToken,child.getById);
 app.post('/child', auth.validateToken,child.addChild);
