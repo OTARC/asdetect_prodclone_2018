@@ -6,7 +6,7 @@ var db = require('./pghelper'),
 
 //helper function for input validation
 function isEmpty(field,val){
-    winston.info('assessment.isEmpty() - cheking field: '+field);
+    winston.info('assessment.isEmpty() - checking field: '+field);
     return (val === undefined || val == null || val == "") ? true : false;
 }
 
