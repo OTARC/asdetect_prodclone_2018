@@ -32,13 +32,14 @@ function encryptPassword(password, callback) {
  * @param callback
  */
 function comparePassword(password, hash, callback) {
-    winston.info('comparePassword()');
+    winston.info('comparePassword(): checking password for match');
 
     bcrypt.compare(password, hash, function (err, match) {
         if (err) {
             winston.info('comparePassword(): ERROR - incorrect password');
             return callback(err);
         }
+        winston.info('comparePassword(): Match found');
         return callback(null, match);
     });
 }
