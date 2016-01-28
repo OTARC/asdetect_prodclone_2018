@@ -354,7 +354,7 @@ function validateToken (req, res, next) {
    
     
     var token = req.headers['authorization'];
-    winston.info('validateToken(): req.path='+req.path+' token='+token);
+    winston.info('validateToken(): Validating token '+token+ 'for req.path='+req.path);
     
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
@@ -371,7 +371,7 @@ function validateToken (req, res, next) {
             }
             req.userId = item.userid;
             req.externalUserId = item.externaluserid;
-            winston.info('vaidateToken(): Token '+token+' found for externaluserid '+req.externalUserId+' validated');
+            winston.info('vaidateToken(): Validated token '+token+' for req.path='+req.path+' externaluserid= '+req.externalUserId);
             return next();
         })
         .catch(next);
