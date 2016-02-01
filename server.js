@@ -69,6 +69,7 @@ app.get('/deleteOldTokens',auth.validateToken,utilities.deleteOldTokens);
 app.get('/deleteContactAndChildrenAndTests',auth.validateToken,utilities.deleteContactAndChildrenAndTests);
 app.get('/deleteContactAndChildrenAndTestsByLastName/:lastname',auth.validateToken,utilities.deleteContactAndChildrenAndTestsByLastName);
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);
+app.post('/validateTokenForUser',auth.validateTokenForUser);
 
 
 app.listen(app.get('port'), function () {

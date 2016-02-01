@@ -352,7 +352,6 @@ function updateUserPassword(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
-   
     
     var token = req.headers['authorization'];
     winston.info('validateToken(): Validating token '+token+ 'for req.path='+req.path);
@@ -378,6 +377,30 @@ function validateToken (req, res, next) {
         .catch(next);
 };
 
+function validateTokenForUser (req, res, next) {
+    
+    var token=req.body.token;
+    var email__c=req.body.email__c;
+
+    winston.info('validateToken(): Validating token '+token+ 'for user='+req.email__c;
+ 
+    db.query('SELECT * FROM tokens t,latrobeasdetect.asdetect_contact__c c WHERE t.externaluserid=c.loyaltyid__c and c.email__c=$1 and t.token = $2', [email__c,token], true, true)
+        .then(function (item) {
+            if (!item) {
+                winston.info('validateToken(): ERROR Invalid token');
+                return res.send(401, 'Invalid token');
+            }
+            winston.info('vaidateToken(): Validated token '+token+' for req.path='+req.path+' externaluserid='+req.externalUserId);
+            return res.send('ok');
+        })
+        .catch(next);
+};
+
+
+
+
+
+
 exports.login = login;
 exports.logout = logout;
 exports.signup = signup;
@@ -386,3 +409,4 @@ exports.resetPassword=resetPassword;
 exports.createUser = createUser;
 exports.createAccessToken = createAccessToken;
 exports.validateToken = validateToken;
+exports.validateTokenForUser=validateTokenForUser;
