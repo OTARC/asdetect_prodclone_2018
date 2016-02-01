@@ -382,7 +382,7 @@ function validateTokenForUser (req, res, next) {
     var token=req.body.token;
     var email__c=req.body.email__c;
 
-    winston.info('validateToken(): Validating token '+token+ 'for user='+req.email__c);
+    winston.info('validateToken(): Validating token '+token+ 'for user='+email__c);
  
     db.query('SELECT * FROM tokens t,latrobeasdetect.asdetect_contact__c c WHERE t.externaluserid=c.loyaltyid__c and c.email__c=$1 and t.token = $2', [email__c,token], true, true)
         .then(function (item) {
