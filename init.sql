@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS tokens (
   );
 
 
-//legacy
+
 CREATE TABLE IF NOT EXISTS picture (
     id           BIGSERIAL,
     userId       BIGINT,
