@@ -53,6 +53,7 @@ function createAccessToken(user) {
     var token = uuid.v4(), 
     deferred = Q.defer();
 
+    
     winston.info('createAccessToken(): user='+user.email__c+' ('+user.externaluserid+') token='+token);
 
     
@@ -302,14 +303,14 @@ function resetPassword(req, res, next) {
  */
 function createUser(user, password) {
 
-    winston.info('createUser(): user='+user.email__c);
+    winston.info('createUser(): user='+user.email__c+' country='+user.country__c);
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
         externalUserId=uuid.v4();
 
     db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
-        [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
+        [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
