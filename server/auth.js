@@ -223,10 +223,10 @@ function signup(req, res, next) {
         return res.send(400, "Invalid email address");
     }
     if (!validator.isLength(user.firstname__c, 1) || !validator.isAlphanumeric(user.firstname__c)) {
-        return res.send(400, "First name must be at least one character");
+        return res.send(400, "First name must be letters and numbers only and be at least one character");
     }
     if (!validator.isLength(user.lastname__c, 1) || !validator.isAlphanumeric(user.lastname__c)) {
-        return res.send(400, "Last name must be at least one character");
+        return res.send(400, "Last name must be letters and numbers only and be at least one character");
     }
     if (!validator.isLength(user.password__c, 4)) {
         return res.send(400, "Password must be at least 4 characters");
@@ -310,7 +310,7 @@ function createUser(user, password) {
         externalUserId=uuid.v4();
 
     db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
-        [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId], true)
+        [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
