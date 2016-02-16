@@ -222,11 +222,11 @@ function signup(req, res, next) {
     console.log(user);
 
 //quick fix for annoying iPhone extraneous space
-    user.lastname__c=user.lastname__c.trim();
-    user.firstname__c=user.firstname__c.trim();
+    //user.lastname__c=user.lastname__c.trim();
+    //user.firstname__c=user.firstname__c.trim();
 
-    console.log('Trimmed lastname: '+user.lastname__c);
-    console.log('Trimmed firstname: ' +user.firstname__c);
+    //console.log('Trimmed lastname: '+user.lastname__c);
+    //console.log('Trimmed firstname: ' +user.firstname__c);
 
 
 
