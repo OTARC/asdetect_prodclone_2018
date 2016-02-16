@@ -225,6 +225,9 @@ function signup(req, res, next) {
     user.lastname__c=user.lastname__c.trim();
     user.firstname__c=user.firstname__c.trim();
 
+    console.log('Trimmed lastname: '+user.lastname__c);
+    console.log('Trimmed firstname: ' +user.firstname__c);
+
 
 
     if (!validator.isEmail(user.email__c)) {
