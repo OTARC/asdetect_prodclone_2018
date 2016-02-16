@@ -217,7 +217,15 @@ function signup(req, res, next) {
     var user = req.body;
     winston.info('signup(): '+user.email__c);
 
+
+
     console.log(user);
+
+//quick fix for annoying iPhone extraneous space
+    user.lastname__c=user.lastname__c.trim();
+    user.firstname__c=user.firstname__c.trim();
+
+
 
     if (!validator.isEmail(user.email__c)) {
         return res.send(400, "Invalid email address");
