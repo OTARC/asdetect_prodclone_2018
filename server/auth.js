@@ -233,10 +233,10 @@ function signup(req, res, next) {
     if (!validator.isEmail(user.email__c)) {
         return res.send(400, "Invalid email address");
     }
-    if (!validator.isLength(user.firstname__c, 1) || !validator.isAlphanumeric(user.firstname__c)) {
+    if (!validator.isLength(user.firstname__c.trim(), 1) || !validator.isAlphanumeric(user.firstname__c)) {
         return res.send(400, "First name must be alphanumeric and not contain spaces");
     }
-    if (!validator.isLength(user.lastname__c, 1) || !validator.isAlphanumeric(user.lastname__c)) {
+    if (!validator.isLength(user.lastname__c.trim(), 1) || !validator.isAlphanumeric(user.lastname__c)) {
         return res.send(400, "Last name must be alphanumeric and not contain spaces");
     }
     if (!validator.isLength(user.password__c, 4)) {
