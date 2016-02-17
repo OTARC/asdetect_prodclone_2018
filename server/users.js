@@ -12,7 +12,6 @@ function getProfile(req, res, next) {
     
 var userId = req.userId, 
 externalUserId = req.externalUserId;
-
 winston.info('getProfile(): externalUserId='+externalUserId);
    
             db.query(

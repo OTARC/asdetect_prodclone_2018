@@ -221,22 +221,16 @@ function signup(req, res, next) {
 
     console.log(user);
 
-//quick fix for annoying iPhone extraneous space
-    //user.lastname__c=user.lastname__c.trim();
-    //user.firstname__c=user.firstname__c.trim();
-
-    //console.log('Trimmed lastname: '+user.lastname__c);
-    //console.log('Trimmed firstname: ' +user.firstname__c);
-
-
-
+//quick fix for annoying iPhone extraneous space ?added by the keyboard? - 
+//trim it off to get through validation
+    
     if (!validator.isEmail(user.email__c)) {
         return res.send(400, "Invalid email address");
     }
-    if (!validator.isLength(user.firstname__c.trim(), 1) || !validator.isAlphanumeric(user.firstname__c)) {
+    if (!validator.isLength(user.firstname__c, 1)) {
         return res.send(400, "First name must be alphanumeric and not contain spaces");
     }
-    if (!validator.isLength(user.lastname__c.trim(), 1) || !validator.isAlphanumeric(user.lastname__c)) {
+    if (!validator.isLength(user.lastname__c, 1)) {
         return res.send(400, "Last name must be alphanumeric and not contain spaces");
     }
     if (!validator.isLength(user.password__c, 4)) {
