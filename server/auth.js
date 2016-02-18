@@ -215,11 +215,9 @@ function signup(req, res, next) {
    
 
     var user = req.body;
-    winston.info('signup(): '+user.email__c);
+    winston.info('signup(): email='+user.email__c+' firstname='+user.firstname__c+' lastname='+user.lastname__c);
 
-
-
-    console.log(user);
+    //console.log(user);
 
 //quick fix for annoying iPhone extraneous space ?added by the keyboard? - 
 //trim it off to get through validation
