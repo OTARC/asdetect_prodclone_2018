@@ -215,7 +215,7 @@ function signup(req, res, next) {
    
 
     var user = req.body;
-    winston.info('signup(): email='+user.email__c+' firstname='+user.firstname__c+' lastname='+user.lastname__c);
+    winston.info('signup(): email=['+user.email__c+'] firstname=['+user.firstname__c+'] lastname=['+user.lastname__c+']');
 
     //console.log(user);
 
