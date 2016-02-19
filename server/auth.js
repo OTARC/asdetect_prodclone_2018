@@ -119,7 +119,7 @@ function login(req, res, next) {
     var creds = req.body;
 
     winston.info('login(): '+creds.email__c);
-    console.log(creds);
+    //console.log(creds);
 
     var parser = new UAParser();
     var ua = req.headers['user-agent'];
