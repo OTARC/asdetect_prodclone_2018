@@ -1,7 +1,7 @@
 {
-  "name": "loyalty",
-  "version": "0.0.0",
-  "description": "Loyalty Mobile App",
+  "name": "ASdetect",
+  "version": "1.0.0",
+  "description": "ASdetect",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
