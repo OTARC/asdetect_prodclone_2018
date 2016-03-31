@@ -78,7 +78,7 @@ function logUserInteraction(externaluserid,itype,idescription,ios) {
     db.query('INSERT INTO latrobeasdetect.asdetect_interaction__c (asdetect_contact__r__loyaltyid__c, type__c,description__c,os__c) VALUES ($1, $2, $3, $4)',
                     [externaluserid, itype, idescription,ios], true)
     .then(function() {
-            //deferred.resolve(token);
+            deferred.resolve(token);
         })
         .catch(function(err) {
             deferred.reject(err);
@@ -211,8 +211,6 @@ function logout(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function signup(req, res, next) {
-
-   
 
     var user = req.body;
     winston.info('signup(): email=['+user.email__c+'] firstname=['+user.firstname__c+'] lastname=['+user.lastname__c+']');
