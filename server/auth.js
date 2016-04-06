@@ -213,6 +213,7 @@ function logout(req, res, next) {
 function signup(req, res, next) {
 
     var user = req.body;
+    winston.info('signup(): body='+user);
     winston.info('signup(): email=['+user.email__c+'] firstname=['+user.firstname__c+'] lastname=['+user.lastname__c+']');
 
     //console.log(user);
