@@ -213,8 +213,8 @@ function logout(req, res, next) {
 function signup(req, res, next) {
 
     var user = req.body;
-    //winston.info('signup(): body='+JSON.stringify(user));
-    winston.info('signup(): email=['+user.email__c+'] firstname=['+user.firstname__c+'] lastname=['+user.lastname__c+']');
+    winston.info('signup(): email=['+user.email__c+'] firstname=['+user.firstname__c+
+    		'] lastname=['+user.lastname__c+'] country='+user.country__c);
 
     //console.log(user);
 
@@ -312,7 +312,7 @@ function createUser(user, password) {
         externalUserId=uuid.v4();
 
     db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c,rest_endpoint_version__c) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
-        [user.email__c, password, user.firstname__c, user.lastname__c, 'Australia', externalUserId,'1.0'], true)
+        [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId,'1.1'], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
