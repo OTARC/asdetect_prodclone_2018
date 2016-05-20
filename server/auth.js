@@ -311,6 +311,8 @@ function createUser(user, password) {
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
         externalUserId=uuid.v4();
 
+// MB: 20/5/2016 please note the character '.' in the REST endpoint version text must be escaped with backslash thus '\.'
+    
     db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c,rest_endpoint_version__c) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId,rest_endpoint_version__c',
         [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId, '1\.1'], true)
         .then(function (insertedUser) {
