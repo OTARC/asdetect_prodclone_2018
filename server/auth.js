@@ -239,7 +239,7 @@ function signup(req, res, next) {
     db.query('SELECT id FROM latrobeasdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
         .then(function (u) {
             if(u) {
-                winston.info('signup(): ERROR  Email address '+user.email__c+ 'already exists');
+                winston.info('signup(): ERROR  Email address '+user.email__c+ ' already exists');
                 return res.send(400, "Email address is already registered");
             }
             encryptPassword(user.password__c, function (err, hash) {
@@ -311,10 +311,10 @@ function createUser(user, password) {
     var deferred = Q.defer(),
         //external userid is the EXTERNALID in the ASDetect_Contact__c table - it's critical for hooking up the MCH_Child_Asdetect__C detail records
         //externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
-        externalUserId=uuid.v4();
+        externalUserId=uuid.v4();  
+    db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c,rest_endpoint_version__c) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId,rest_endpoint_version__c',
+        [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId, 'V1Dot1'], true)
 
-    db.query('INSERT INTO latrobeasdetect.asdetect_contact__c (email__c, password__c, firstname__c, lastname__c, country__c, loyaltyid__c,rest_endpoint_version__c) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING id, firstname__c, lastname__c, email__c, loyaltyid__c as externalUserId',
-        [user.email__c, password, user.firstname__c, user.lastname__c, user.country__c, externalUserId,'1.0'], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
