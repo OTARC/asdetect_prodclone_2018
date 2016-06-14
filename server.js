@@ -92,7 +92,7 @@ app.post('/validateTokenForUser',auth.validateTokenForUser);
 //
 
 app.post('/v2/login', auth_v2.login);
-app.post('/v2/logout', auth_v2.validateToken, auth._v2logout);
+app.post('/v2/logout', auth_v2.validateToken, auth_v2.logout);
 
 app.post('/v2/signup', auth_v2.signup);
 app.post('/v2/requestresetpassword', auth_v2.requestResetPassword);
