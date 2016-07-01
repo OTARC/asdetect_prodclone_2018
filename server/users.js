@@ -57,7 +57,7 @@ function updateRESTEndpointVersion(user) {
 
     console.log('updating user REST endpoint version to 2.0');
 
-    db.query('update latrobeasdetect.asdetect_contact__c SET rest_endoint_version=$1 WHERE email__c=$2', [endpoint, user.email__c]);
+    db.query('update latrobeasdetect.asdetect_contact__c SET REST_endpoint_version__c=$1 WHERE email__c=$2', [endpoint, user.email__c]);
 
 }
 
