@@ -50,5 +50,17 @@ winston.info('updateProfile()');
         .catch(next);
 };
 
+
+function updateRESTEndpointVersion(user) {
+    winston.info('updateRESTEndpointVersion()');
+    var endpoint = 2.0;
+
+    console.log('updating user REST endpoint version to 2.0 ';
+
+    db.query('update latrobeasdetect.asdetect_contact__c SET rest_endoint_version=$1 WHERE email__c=$2';
+
+}
+
+
 exports.getProfile = getProfile;
 exports.updateProfile = updateProfile;

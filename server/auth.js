@@ -159,13 +159,15 @@ function login(req, res, next) {
                 
                 //If password matches, log user in and create interaction record
                 if (match) {  
-                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth',os)    
-                     .then             
-                     cleanupAccessTokens(user)
-                     .then
-                      createAccessToken(user)
-                        .then(function(token) {
-                            return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
+                    updateRESTEndpointVersion(user)
+                    .then
+                    logUserInteraction(user.externaluserid,'Logged In','Node.js auth',os)    
+                    .then             
+                    cleanupAccessTokens(user)
+                    .then
+                    createAccessToken(user)
+                    .then(function(token) {
+                        return res.send({'user':{'email__c': user.email__c, 'firstname__c': user.firstname__c, 'lastname__c': user.lastname__c}, 'token': token});
                         })
                         .catch(function(err) {
                             return next(err);    
