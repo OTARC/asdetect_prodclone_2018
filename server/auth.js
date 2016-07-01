@@ -162,10 +162,10 @@ function login(req, res, next) {
                     //updateRESTEndpointVersion(user)
                     //.then
                     
+                    //Code has been changed
                     console.log("attempting to update contacts where email__c = $1", [user.email__c]);
+                    db.query('update latrobeasdetect.asdetect_contact__c SET REST_endpoint_version__c=$1 WHERE email__c=$2', [endpoint, user.email__c]);
                     
-                    updateRESTEndpointVersion(user)
-                    .then
                     logUserInteraction(user.externaluserid,'Logged In','Node.js auth',os)    
                     .then             
                     cleanupAccessTokens(user)
