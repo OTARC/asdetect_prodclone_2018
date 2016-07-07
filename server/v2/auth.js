@@ -236,7 +236,7 @@ function signup(req, res, next) {
         return res.send(400, "Password must be at least 4 characters");
     }
 
-    db.query('SELECT id FROM latrobeasdetect.asdetect_contact__C WHERE email__c=$1', [user.email__c], true)
+    db.query('SELECT id FROM latrobeasdetect.asdetect_contact__C WHERE lower(email__c)=lower($1)', [user.email__c], true)
         .then(function (u) {
             if(u) {
                 winston.info('signup(): ERROR  Email address '+user.email__c+ 'already exists');
