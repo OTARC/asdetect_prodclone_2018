@@ -18,6 +18,17 @@ var express = require('express'),
     child=require('./server/child'),
     assessment=require('./server/assessment');
 
+    //V2 App modules
+    users_v2 = require('./server/v2/users'),
+    cases_v2 = require('./server/v2/cases'),
+    auth_v2 = require('./server/v2/auth'),
+    facebook_v2 = require('./server/v2/facebook'),
+    s3signing_v2 = require('./server/v2/s3signing'),
+    utilities_v2=require('./server/v2/utilities.js'),
+    interactions_v2 = require('./server/v2/interactions'),
+    child_v2=require('./server/v2/child'),
+    assessment_v2=require('./server/v2/assessment');
+
 
 app = express();
 
@@ -36,6 +47,9 @@ app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.send(500, err.message);
 });
+
+//V1 Endpoint methods
+//
 
 app.post('/login', auth.login);
 app.post('/logout', auth.validateToken, auth.logout);
@@ -70,6 +84,46 @@ app.get('/deleteContactAndChildrenAndTests',auth.validateToken,utilities.deleteC
 app.get('/deleteContactAndChildrenAndTestsByLastName/:lastname',auth.validateToken,utilities.deleteContactAndChildrenAndTestsByLastName);
 app.delete('/interactions', auth.validateToken, interactions.deleteAll);
 app.post('/validateTokenForUser',auth.validateTokenForUser);
+
+
+
+
+//V2 Endpoint methods
+//
+
+app.post('/v2/login', auth_v2.login);
+app.post('/v2/logout', auth_v2.validateToken, auth_v2.logout);
+
+app.post('/v2/signup', auth_v2.signup);
+app.post('/v2/requestresetpassword', auth_v2.requestResetPassword);
+app.post('/v2/resetpassword', auth_v2.resetPassword);
+
+app.post('/v2/fblogin', facebook_v2.login);
+app.get('/v2/users/me', auth_v2.validateToken, users_v2.getProfile);
+app.put('/v2/users/me', auth_v2.validateToken, users_v2.updateProfile);
+app.post('/v2/cases', auth_v2.validateToken, cases_v2.createCase);
+//app.get('/nfrevoke', cases.revokeToken);
+app.post('/v2/s3signing', auth_v2.validateToken, s3signing_v2.sign);
+
+// ASDETECT REST
+// the presence of validateToken indicates the inspection of the authorization header for a valid token
+app.get('/v2/child', auth_v2.validateToken,child_v2.getAll);
+app.get('/v2/child/:id', auth_v2.validateToken,child_v2.getById);
+app.post('/v2/child', auth_v2.validateToken,child_v2.addChild);
+app.get('/v2/assessment', auth_v2.validateToken, assessment_v2.getAll);
+app.get('/v2/assessment/:id', auth_v2.validateToken, assessment_v2.getById);
+app.post('/v2/assessment/12m',auth_v2.validateToken,assessment_v2.create12mAssessment);
+app.post('/v2/assessment/18m',auth_v2.validateToken,assessment_v2.create18mAssessment);
+app.post('/v2/assessment/24m',auth_v2.validateToken,assessment_v2.create24mAssessment);
+app.post('/v2/assessment/35y',auth_v2.validateToken,assessment_v2.create35yAssessment);
+app.get('/v2/interactions', auth_v2.validateToken, interactions_v2.getItems);
+app.post('/v2/interactions', auth_v2.validateToken, interactions_v2.addItem);
+app.get('/v2/deleteChildrenAndTests',auth_v2.validateToken,utilities_v2.deleteChildrenAndTests);
+app.get('/v2/deleteOldTokens',auth_v2.validateToken,utilities_v2.deleteOldTokens);
+app.get('/v2/deleteContactAndChildrenAndTests',auth_v2.validateToken,utilities_v2.deleteContactAndChildrenAndTests);
+app.get('/v2/deleteContactAndChildrenAndTestsByLastName/:lastname',auth_v2.validateToken,utilities_v2.deleteContactAndChildrenAndTestsByLastName);
+app.delete('/v2/interactions', auth_v2.validateToken, interactions_v2.deleteAll);
+app.post('/v2/validateTokenForUser',auth_v2.validateTokenForUser);
 
 
 app.listen(app.get('port'), function () {
