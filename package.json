@@ -14,9 +14,9 @@
   },
   "author": "Christophe Coenraets",
   "bugs": {
-    "url": "https://github.com/ccoenraets/loyalty/issues"
+    "url": "https://github.com/OTARC/asdetect_prodclone_2018"
   },
-  "homepage": "https://github.com/ccoenraets/loyalty",
+  "homepage": "https://github.com/OTARC/asdetect_prodclone_2018",
   "engines": {
     "node": "0.10.35"
   },
