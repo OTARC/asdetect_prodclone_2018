@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/OTARC/asdetect_prodclone_2018",
   "engines": {
-    "node": "0.10.x",
-    "npm": "5.6.x"
+    "node": "0.10.x"
     },
   "dependencies": {
     "bcrypt": "~0.7.7",
